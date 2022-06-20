@@ -18,11 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('nama', 100);
             $table->string('nip', 18)->nullable();
             $table->string('id_card', 50)->nullable();
-            $table->text('alamat');
-            $table->text('tempat_lahir');
-            $table->date('tgl_lahir');
-            $table->string('no_tlp', 16);
-            $table->text('pekerjaan');
+            $table->text('alamat')->nullable();
+            $table->text('tempat_lahir')->nullable();
+            $table->date('tgl_lahir')->nullable();
+            $table->string('no_tlp', 16)->nullable();
+            $table->text('pekerjaan')->nullable();
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->default('Laki-laki');
             $table->enum('level', ['admin', 'guru', 'ortu'])->default('ortu');
             $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');

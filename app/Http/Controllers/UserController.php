@@ -50,49 +50,42 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         try {
-            $user = new User;
-            $user->nama = $request->nama;
+            // Request validated mengambil data yang divalidasi di UserRequest. 
+            // Kalau nama field tidak ditulis di validasi maka tidak akan muncul di $request->validated()
             
-            if (FacadesRequest::is('*guru*')) {
-                $user->nip = $request->nip;
-            } else if (FacadesRequest::is('*ortu*')) {
-                $user->nip = 0;
-            } else {
-                throw new Exception('Error 500');
-            }
+            $data = $request->validated();
+            $data['password'] = bcrypt($request->password);
 
-            $user->alamat = $request->alamat;
-            $user->tempat_lahir = $request->tempat_lahir;
-            $user->tgl_lahir = $request->tgl_lahir;
-            $user->no_tlp = $request->no_tlp;
-            $user->pekerjaan = $request->pekerjaan ?? '-';
-            $user->id_card = $request->id_card ?? '-';
-
-            if (FacadesRequest::is('*guru*')) {
-                $user->level = 'guru';
-            } else if (FacadesRequest::is('*ortu*')) {
-                $user->level = 'ortu';
-            } else {
-                throw new Exception('Error 500');
-            }
-
-            if($request['foto']){
-                $base_64_foto = json_decode($request['foto'], true);
-                $upload_image = uploadFile($base_64_foto, 'foto_profil');
+            if(isset($data['foto'])){
+                $base_64_foto = json_decode($data['foto'], true);
+                $upload_image = uploadFile($base_64_foto, 'profil');
                 if ($upload_image === 0) {
                     return redirect()->back()->withInput()->with('error', 'Gagal mengupload gambar!');
                 }
-                $user->foto = $upload_image;
+                $data['foto'] = $upload_image;
             }
 
-            // $user->status = 'aktif';
-            $user->email = $request->email;
-            $user->password = bcrypt($request->password);
+            if (FacadesRequest::is('*guru*')) {
+                $data['level'] = 'guru';
+            } else if (FacadesRequest::is('*ortu*')) {
+                $data['level'] = 'ortu';
+            } else {
+                throw new Exception('Error 500');
+            }
 
-            $user->save();
+            if (FacadesRequest::is('*guru*')) {
+                $data['nip'] = $request->nip;
+            } else if (FacadesRequest::is('*ortu*')) {
+                $data['nip'] = 0;
+            } else {
+                throw new Exception('Error 500');
+            }
+
+
+            $user = User::create($data);
         } catch (Exception $e) {
             Log::info($e->getMessage());
-            return redirect()->back()->withInput()->with('error', 'Gagal menambahkan ' . $this->getFeedback($user->level) . ' !');
+            return redirect()->back()->withInput()->with('error', 'Gagal menambahkan data !');
         }
 
         return redirect()->route($this->getFeedback($user->level, 'english') . '.index')->with('success', 'Berhasil menambahkan data ' . $this->getFeedback($user->level));
@@ -112,56 +105,39 @@ class UserController extends Controller
     public function update(UserRequest $request, User $user)
     {
         try {
-            $user->nama = $request->nama;
+            $data = $request->validated();
 
-            if (FacadesRequest::is('*guru*')) {
-                $user->nip = $request->nip;
-            } else if (FacadesRequest::is('*ortu*')) {
-                $user->nip = 0;
-            } else {
-                throw new Exception('Error 500');
+            if(isset($data['password'])){
+                $data['password'] = bcrypt($request->password);
             }
 
-            $user->alamat = $request->alamat;
-            $user->tempat_lahir = $request->tempat_lahir;
-            $user->tgl_lahir = $request->tgl_lahir;
-            $user->no_tlp = $request->no_tlp;
-            $user->pekerjaan = $request->pekerjaan ?? '-';
-
-            if (FacadesRequest::is('*guru*')) {
-                $user->status_guru = $request->status_guru;
-            } else if (FacadesRequest::is('*ortu*')) {
-                $user->status_guru = 'bukan_guru';
-                $user->nama_ibu = $request->nama_ibu;
-                $user->pekerjaan_ibu = $request->pekerjaan_ibu;
-            } else {
-                throw new Exception('Error 500');
-            }
-
-            if (FacadesRequest::is('*guru*')) {
-                $user->level = 'guru';
-            } else if (FacadesRequest::is('*ortu*')) {
-                $user->level = 'ortu';
-            } else {
-                throw new Exception('Error 500');
-            }
-
-            if($request['foto']){
-                $base_64_foto = json_decode($request['foto'], true);
-                $upload_image = uploadFile($base_64_foto, 'foto_profil');
+            if(isset($data['foto'])){
+                $base_64_foto = json_decode($data['foto'], true);
+                $upload_image = uploadFile($base_64_foto, 'profil');
                 if ($upload_image === 0) {
                     return redirect()->back()->withInput()->with('error', 'Gagal mengupload gambar!');
                 }
-                $user->foto = $upload_image;
-            }
-            
-            $user->status = $request->status;
-            $user->email = $request->email;
-            if($request->password){
-                $user->password = bcrypt($request->password);
+                $data['foto'] = $upload_image;
             }
 
-            $user->save();
+            if (FacadesRequest::is('*guru*')) {
+                $data['level'] = 'guru';
+            } else if (FacadesRequest::is('*ortu*')) {
+                $data['level'] = 'ortu';
+            } else {
+                throw new Exception('Error 500');
+            }
+
+            if (FacadesRequest::is('*guru*')) {
+                $data['nip'] = $request->nip;
+            } else if (FacadesRequest::is('*ortu*')) {
+                $data['nip'] = 0;
+            } else {
+                throw new Exception('Error 500');
+            }
+
+            $user->update($data);
+            $user->refresh();
         } catch (Exception $e) {
             Log::info($e->getMessage());
             return redirect()->back()->withInput()->with('error', 'Gagal mengubah ' . $this->getFeedback($user->level) . ' !');
