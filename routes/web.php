@@ -107,16 +107,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('datatable', [MapelController::class, 'datatable'])->name('datatable');
     });
 
-    Route::group(['prefix' => 'ekskul', 'as' => 'ekskul.'], function () {
-        Route::get('/', [EkskulController::class, 'index'])->name('index');
-        Route::get('create', [EkskulController::class, 'create'])->name('create');
-        Route::post('store', [EkskulController::class, 'store'])->name('store');
-        Route::get('edit/{ekskul}', [EkskulController::class, 'edit'])->name('edit');
-        Route::patch('update/{ekskul}', [EkskulController::class, 'update'])->name('update');
-        Route::delete('destroy/{ekskul}', [EkskulController::class, 'destroy'])->name('destroy');
-        Route::get('datatable', [EkskulController::class, 'datatable'])->name('datatable');
-    });
-
     Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
         Route::get('/', [UserController::class, 'index'])->name('index');
         Route::get('create', [UserController::class, 'create'])->name('create');
@@ -206,12 +196,6 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::group(['prefix' => 'nilai', 'as' => 'nilai.'], function () {
-        // Route::get('create', [NilaiController::class, 'create'])->name('create');
-        // Route::post('store', [NilaiController::class, 'store'])->name('store');
-        // Route::get('edit/{nilai}', [NilaiController::class, 'edit'])->name('edit');
-        // Route::patch('update/{nilai}', [NilaiController::class, 'update'])->name('update');
-        // Route::delete('destroy/{nilai}', [NilaiController::class, 'destroy'])->name('destroy');
-        
         Route::get('index-ortu', [NilaiController::class, 'indexOrtu'])->name('index.ortu');
         Route::get('index-guru', [NilaiController::class, 'indexGuru'])->name('index.guru');
 
@@ -227,56 +211,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::group(['prefix' => 'history_nilai', 'as' => 'history_nilai.'], function () {
         Route::get('/', [NilaiController::class, 'historyNilai'])->name('index');
-    });
-
-    Route::group(['prefix' => 'nilai_ekskul', 'as' => 'nilai_ekskul.'], function () {
-        Route::get('/', [NilaiEkskulController::class, 'index'])->name('index');
-        Route::get('create', [NilaiEkskulController::class, 'create'])->name('create');
-        Route::post('store', [NilaiEkskulController::class, 'store'])->name('store');
-        Route::get('edit/{nilai_ekskul}', [NilaiEkskulController::class, 'edit'])->name('edit');
-        Route::patch('update/{nilai_ekskul}', [NilaiEkskulController::class, 'update'])->name('update');
-        Route::delete('destroy/{nilai_ekskul}', [NilaiEkskulController::class, 'destroy'])->name('destroy');
-        Route::get('datatable', [NilaiEkskulController::class, 'datatable'])->name('datatable');
-    });
-
-    Route::group(['prefix' => 'nilai_sikap', 'as' => 'nilai_sikap.'], function () {
-        Route::get('/', [NilaiSikapController::class, 'index'])->name('index');
-        Route::get('create', [NilaiSikapController::class, 'create'])->name('create');
-        Route::post('store', [NilaiSikapController::class, 'store'])->name('store');
-        Route::get('edit/{nilai_sikap}', [NilaiSikapController::class, 'edit'])->name('edit');
-        Route::patch('update/{nilai_sikap}', [NilaiSikapController::class, 'update'])->name('update');
-        Route::delete('destroy/{nilai_sikap}', [NilaiSikapController::class, 'destroy'])->name('destroy');
-        Route::get('datatable', [NilaiSikapController::class, 'datatable'])->name('datatable');
-    });
-
-    Route::group(['prefix' => 'nilai_kesehatan', 'as' => 'nilai_kesehatan.'], function () {
-        Route::get('/', [NilaiKesehatanController::class, 'index'])->name('index');
-        Route::get('create', [NilaiKesehatanController::class, 'create'])->name('create');
-        Route::post('store', [NilaiKesehatanController::class, 'store'])->name('store');
-        Route::get('edit/{nilai_kesehatan}', [NilaiKesehatanController::class, 'edit'])->name('edit');
-        Route::patch('update/{nilai_kesehatan}', [NilaiKesehatanController::class, 'update'])->name('update');
-        Route::delete('destroy/{nilai_kesehatan}', [NilaiKesehatanController::class, 'destroy'])->name('destroy');
-        Route::get('datatable', [NilaiKesehatanController::class, 'datatable'])->name('datatable');
-    });
-
-    Route::group(['prefix' => 'nilai_proporsi', 'as' => 'nilai_proporsi.'], function () {
-        Route::get('/', [NilaiProporsiController::class, 'index'])->name('index');
-        Route::get('create', [NilaiProporsiController::class, 'create'])->name('create');
-        Route::post('store', [NilaiProporsiController::class, 'store'])->name('store');
-        Route::get('edit/{nilai_proporsi}', [NilaiProporsiController::class, 'edit'])->name('edit');
-        Route::patch('update/{nilai_proporsi}', [NilaiProporsiController::class, 'update'])->name('update');
-        Route::delete('destroy/{nilai_proporsi}', [NilaiProporsiController::class, 'destroy'])->name('destroy');
-        Route::get('datatable', [NilaiProporsiController::class, 'datatable'])->name('datatable');
-    });
-
-    Route::group(['prefix' => 'prestasi', 'as' => 'prestasi.'], function () {
-        Route::get('/', [PrestasiController::class, 'index'])->name('index');
-        Route::get('create', [PrestasiController::class, 'create'])->name('create');
-        Route::post('store', [PrestasiController::class, 'store'])->name('store');
-        Route::get('edit/{prestasi}', [PrestasiController::class, 'edit'])->name('edit');
-        Route::patch('update/{prestasi}', [PrestasiController::class, 'update'])->name('update');
-        Route::delete('destroy/{prestasi}', [PrestasiController::class, 'destroy'])->name('destroy');
-        Route::get('datatable', [PrestasiController::class, 'datatable'])->name('datatable');
     });
 
     Route::group(['prefix' => 'akademik', 'as' => 'akademik.'], function () {

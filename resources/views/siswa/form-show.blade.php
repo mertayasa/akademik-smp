@@ -39,31 +39,18 @@
                         <td>Agama</td>
                         <td>: {{$siswa->agama}}</td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td>Email</td>
                         <td>: {{$siswa->email}}</td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <td>Nama Orang Tua</td>
                         <td>: {{$siswa->user->nama}}</td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td>Status</td>
                         <td>: {{$siswa->status}}</td>
-                    </tr>
-                    <tr>
-                        <td>Sikap Sosial</td>
-                        <td>: {{$siswa->sikap_sosial ?? '-'}}</td>
-                    </tr>
-                    <tr>
-                        <td>Sikap Spiritual</td>
-                        <td>: {{$siswa->sikap_spiritual ?? '-'}}</td>
-                    </tr>
-                    <tr>
-                        <td>Saran</td>
-                        <td>: {{$siswa->saran ?? '-'}}</td>
-                    </tr>
-        
+                    </tr> --}}
             </table>
         </div>
     </div>

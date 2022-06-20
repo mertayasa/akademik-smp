@@ -18,18 +18,14 @@ class Siswa extends Model
     protected $fillable = [
         'nama',
         'nis',
-        'email',
         'alamat',
         'tempat_lahir',
         'tgl_lahir',
         'jenis_kelamin',
         'id_user',
-        'status',
+        // 'status',
         'foto',
         'agama',
-        'sikap_spiritual',
-        'sikap_sosial',
-        'saran',
     ];
 
 

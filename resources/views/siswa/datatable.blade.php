@@ -7,9 +7,6 @@
         <th>Nama</th>
         <th>Nis</th>
         <th>Jenis Kelamin</th>
-        @if (Auth::user()->isAdmin())
-            <th>Status</th>
-        @endif
         <th>Aksi</th>
         </tr>
     </thead>
@@ -60,14 +57,6 @@
                 className:"text-center align-middle"
             }
         ]
-
-        if(isAdmin == true){
-            columns.push({
-                data: 'status', 
-                name: 'status',
-                className:"text-center align-middle"
-            })
-        }
 
         columns.push({
             data: 'action',

@@ -17,35 +17,43 @@ class MapelSeeder extends Seeder
         $mapel = [
             [
                 'nama' => 'Matematika',
-                'is_lokal' => 'false'
+                'kelompok' => Mapel::$kelompok[array_rand(Mapel::$kelompok)],
+                'paket' => Mapel::$paket[array_rand(Mapel::$paket)],
             ],
             [
                 'nama' => 'Bahasa Indonesia',
-                'is_lokal' => 'false'
+                'kelompok' => Mapel::$kelompok[array_rand(Mapel::$kelompok)],
+                'paket' => Mapel::$paket[array_rand(Mapel::$paket)],
             ],
             [
                 'nama' => 'Pendidikan Kewarganegaraan',
-                'is_lokal' => 'false'
+                'kelompok' => Mapel::$kelompok[array_rand(Mapel::$kelompok)],
+                'paket' => Mapel::$paket[array_rand(Mapel::$paket)],
             ],
             [
                 'nama' => 'IPA',
-                'is_lokal' => 'false'
+                'kelompok' => Mapel::$kelompok[array_rand(Mapel::$kelompok)],
+                'paket' => Mapel::$paket[array_rand(Mapel::$paket)],
             ],
             [
                 'nama' => 'IPS',
-                'is_lokal' => 'false'
+                'kelompok' => Mapel::$kelompok[array_rand(Mapel::$kelompok)],
+                'paket' => Mapel::$paket[array_rand(Mapel::$paket)],
             ],
             [
                 'nama' => 'Olahraga',
-                'is_lokal' => 'false'
+                'kelompok' => Mapel::$kelompok[array_rand(Mapel::$kelompok)],
+                'paket' => Mapel::$paket[array_rand(Mapel::$paket)],
             ],
             [
                 'nama' => 'Bahasa Inggris',
-                'is_lokal' => 'true'
+                'kelompok' => Mapel::$kelompok[array_rand(Mapel::$kelompok)],
+                'paket' => Mapel::$paket[array_rand(Mapel::$paket)],
             ],
             [
                 'nama' => 'Bahasa Bali',
-                'is_lokal' => 'true'
+                'kelompok' => Mapel::$kelompok[array_rand(Mapel::$kelompok)],
+                'paket' => Mapel::$paket[array_rand(Mapel::$paket)],
             ],
         ];
         foreach ($mapel as $data) {

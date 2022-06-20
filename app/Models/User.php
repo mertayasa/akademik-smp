@@ -24,20 +24,18 @@ class User extends Authenticatable
     protected $fillable = [
         'nama',
         'nip',
+        'id_card',
         'alamat',
         'tempat_lahir',
         'tgl_lahir',
         'no_tlp',
         'pekerjaan',
         'jenis_kelamin',
-        'status_guru',
         'level',
         'status',
         'email',	
         'password',
         'foto',
-        'nama_ibu',
-        'pekerjaan_ibu',
     ];
 
     /**
@@ -130,5 +128,10 @@ class User extends Authenticatable
         } else {
             return asset('images/default/default_profil.png');
         }
+    }
+
+    public function getNamaTelpAttribute()
+    {
+        return $this->attributes['nama'].' | '.$this->attributes['no_tlp'];
     }
 }

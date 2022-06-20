@@ -5,6 +5,7 @@
         <th></th>
         <th>Kode Kelas</th>
         <th>Jenjang Kelas</th>
+        <th>Kelompok</th>
         <th>Aksi</th>
         </tr>
     </thead>
@@ -48,6 +49,11 @@
                 {
                     data: 'jenjang', 
                     name: 'jenjang',
+                    className:"text-center align-middle"
+                },
+                {
+                    data: 'kelompok', 
+                    name: 'kelompok',
                     className:"text-center align-middle"
                 },
                 {

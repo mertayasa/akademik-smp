@@ -13,12 +13,17 @@ class Mapel extends Model
 
     protected $fillable = [
         'nama',
-        'is_lokal',
-        'status',
+        'kelompok',
+        'paket'
     ];
 
-    public function getIsLokalAttribute()
-    {
-        return $this->attributes['is_lokal'] == 'true' ? true : false;
-    }
+    static $paket = [
+        'Pelajaran Umum' => 'Pelajaran Umum', 
+        'Ekstrakurikuler' => 'Ekstrakurikuler'
+    ];
+
+    static $kelompok = [
+        'Pagi' => 'Pagi', 
+        'Siang' => 'Siang'
+    ];
 }

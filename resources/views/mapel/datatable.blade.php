@@ -4,7 +4,8 @@
         <th style="width: 30px">No</th>
         <th></th>
         <th>Nama Mata Pelajaran </th>
-        <th>Muatan Lokal</th>
+        <th>Kelompok</th>
+        <th>Paket</th>
         <th>Aksi</th>
         </tr>
     </thead>
@@ -45,9 +46,12 @@
                     name: 'nama',
                 },
                 {
-                    data: 'is_lokal', 
-                    name: 'is_lokal',
-                    className:"text-center align-middle"
+                    data: 'kelompok', 
+                    name: 'kelompok',
+                },
+                {
+                    data: 'paket', 
+                    name: 'paket',
                 },
                 {
                     data: 'action',

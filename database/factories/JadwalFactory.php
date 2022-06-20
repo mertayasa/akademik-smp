@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Jadwal;
 use App\Models\Kelas;
 use App\Models\Mapel;
+use App\Models\Ruangan;
 use App\Models\TahunAjar;
 use App\Models\User;
 use Carbon\Carbon;
@@ -33,6 +34,7 @@ class JadwalFactory extends Factory
             'id_guru' => User::where('level', 'guru')->inRandomOrder()->first()->id,
             'id_kelas' => Kelas::inRandomOrder()->first()->id,
             'id_mapel' => Mapel::inRandomOrder()->first()->id,
+            'id_ruangan' => Ruangan::inRandomOrder()->first()->id,
             'id_tahun_ajar' => TahunAjar::inRandomOrder()->first()->id,
             'jam_mulai' => $this->faker->time(),
             'jam_selesai' => $this->faker->time(),

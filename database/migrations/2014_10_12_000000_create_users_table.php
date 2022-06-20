@@ -15,15 +15,15 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('nip')->nullable();
+            $table->string('nama', 100);
+            $table->string('nip', 18)->nullable();
+            $table->string('id_card', 50)->nullable();
             $table->text('alamat');
             $table->text('tempat_lahir');
             $table->date('tgl_lahir');
-            $table->string('no_tlp');
+            $table->string('no_tlp', 16);
             $table->text('pekerjaan');
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->default('Laki-laki');
-            $table->enum('status_guru', ['tetap', 'honorer', 'bukan_guru'])->default('honorer');
             $table->enum('level', ['admin', 'guru', 'ortu'])->default('ortu');
             $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');
             $table->string('email')->unique();

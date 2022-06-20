@@ -17,41 +17,64 @@ class KelasSeeder extends Seeder
     {
         $kelas = [
             [
-                'kode' => 'Kelas I',
+                'kode' => 'Kelas IA',
                 'jenjang' => '1',
-                // WaliKelas::inRandomOrder()->first()->id,
-
+                'kelompok' => Kelas::$kelompok[array_rand(Kelas::$kelompok)],
             ],
             [
-                'kode' => 'Kelas II',
+                'kode' => 'Kelas IB',
+                'jenjang' => '1',
+                'kelompok' => Kelas::$kelompok[array_rand(Kelas::$kelompok)],
+            ],
+            [
+                'kode' => 'Kelas IC',
+                'jenjang' => '1',
+                'kelompok' => Kelas::$kelompok[array_rand(Kelas::$kelompok)],
+            ],
+            [
+                'kode' => 'Kelas ID',
+                'jenjang' => '1',
+                'kelompok' => Kelas::$kelompok[array_rand(Kelas::$kelompok)],
+            ],
+            [
+                'kode' => 'Kelas IIA',
                 'jenjang' => '2',
-                // WaliKelas::inRandomOrder()->first()->id,
-
+                'kelompok' => Kelas::$kelompok[array_rand(Kelas::$kelompok)],
             ],
             [
-                'kode' => 'Kelas III',
+                'kode' => 'Kelas IIB',
+                'jenjang' => '2',
+                'kelompok' => Kelas::$kelompok[array_rand(Kelas::$kelompok)],
+            ],
+            [
+                'kode' => 'Kelas IIC',
+                'jenjang' => '2',
+                'kelompok' => Kelas::$kelompok[array_rand(Kelas::$kelompok)],
+            ],
+            [
+                'kode' => 'Kelas IID',
+                'jenjang' => '2',
+                'kelompok' => Kelas::$kelompok[array_rand(Kelas::$kelompok)],
+            ],
+            [
+                'kode' => 'Kelas IIIA',
                 'jenjang' => '3',
-                // WaliKelas::inRandomOrder()->first()->id,
-
+                'kelompok' => Kelas::$kelompok[array_rand(Kelas::$kelompok)],
             ],
             [
-                'kode' => 'Kelas IV',
-                'jenjang' => '4',
-                // WaliKelas::inRandomOrder()->first()->id,
-
+                'kode' => 'Kelas IIIB',
+                'jenjang' => '3',
+                'kelompok' => Kelas::$kelompok[array_rand(Kelas::$kelompok)],
             ],
             [
-                'kode' => 'Kelas V',
-                'jenjang' => '5',
-                // WaliKelas::inRandomOrder()->first()->id,
-
+                'kode' => 'Kelas IIIC',
+                'jenjang' => '3',
+                'kelompok' => Kelas::$kelompok[array_rand(Kelas::$kelompok)],
             ],
             [
-                'kode' => 'Kelas VI',
-                'jenjang' => '6',
-                // WaliKelas::inRandomOrder()->first()->id,
-
-
+                'kode' => 'Kelas IIID',
+                'jenjang' => '3',
+                'kelompok' => Kelas::$kelompok[array_rand(Kelas::$kelompok)],
             ],
         ];
         foreach ($kelas as $data) {

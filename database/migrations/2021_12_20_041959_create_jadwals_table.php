@@ -18,6 +18,7 @@ class CreateJadwalsTable extends Migration
             $table->unsignedBigInteger('id_guru');
             $table->unsignedBigInteger('id_kelas');
             $table->unsignedBigInteger('id_mapel');
+            $table->unsignedBigInteger('id_ruangan');
             $table->unsignedBigInteger('id_tahun_ajar');
             $table->time('jam_mulai');
             $table->time('jam_selesai');
@@ -30,6 +31,7 @@ class CreateJadwalsTable extends Migration
             $table->foreign('id_kelas')->references('id')->on('kelas')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_mapel')->references('id')->on('mapel')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_tahun_ajar')->references('id')->on('tahun_ajar')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_ruangan')->references('id')->on('ruangan')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

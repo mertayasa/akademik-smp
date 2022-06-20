@@ -33,16 +33,16 @@ class UserRequest extends FormRequest
             'alamat' => ['required', 'max:100'],
             'tempat_lahir' => ['required', 'max:100'],
             'tgl_lahir' => ['required', 'date', 'before:'.$today],
-            'no_tlp' => ['required', 'string', 'max:13'],
+            'no_tlp' => ['required', 'string', 'max:16'],
             'jenis_kelamin' => ['required', Rule::in(['Laki-laki', 'Perempuan'])],
         ];
 
         if($this->method() == 'PATCH'){
             $rules += ['email' => ['required', 'unique:users,email,'.$this->route('user')->id]];
             if(str_contains($referer, 'guru')){
-                $rules += ['nip' => ['required', 'numeric', 'unique:users,nip,'.$this->route('user')->id]];
+                $rules += ['nip' => ['required', 'max:18', 'min:18', 'unique:users,nip,'.$this->route('user')->id]];
             }
-            $rules += ['status' => ['required', Rule::in(['aktif', 'nonaktif'])]];
+            // $rules += ['status' => ['required', Rule::in(['aktif', 'nonaktif'])]];
             if($this->password != null){
                 $rules += ['password' => ['required', 'min:6', 'confirmed']];
             };
@@ -50,20 +50,21 @@ class UserRequest extends FormRequest
             $rules += ['email' => ['required', 'unique:users,email']];
             $rules += ['password' => ['required', 'min:6', 'confirmed']];
             if(str_contains($referer, 'guru')){
-                $rules += ['nip' => ['required', 'numeric', 'unique:users,nip']];
+                $rules += ['nip' => ['required', 'max:18', 'min:18', 'unique:users,nip']];
             }
         };
         
         if(str_contains($referer, 'guru') || str_contains($referer, 'ortu')){
             if(str_contains($referer, 'guru')){
-                $rules += ['status_guru' => ['required', Rule::in(['tetap', 'honorer', 'bukan_guru'])]];
+                $rules += ['id_card' => ['required', 'max:50']];
+                // $rules += ['status_guru' => ['required', Rule::in(['tetap', 'honorer', 'bukan_guru'])]];
             }
     
-            if(str_contains($referer, 'ortu')){
-                $rules += ['pekerjaan' => ['required', 'max:50', 'min:5']];
-                $rules += ['nama_ibu' => ['nullable']];
-                $rules += ['pekerjaan_ibu' => ['nullable']];
-            }
+            // if(str_contains($referer, 'ortu')){
+            //     $rules += ['pekerjaan' => ['required', 'max:50', 'min:5']];
+            //     $rules += ['nama_ibu' => ['nullable']];
+            //     $rules += ['pekerjaan_ibu' => ['nullable']];
+            // }
         }else{
             abort(403);
         }

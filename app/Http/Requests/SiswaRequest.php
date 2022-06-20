@@ -28,22 +28,17 @@ class SiswaRequest extends FormRequest
         $today = Carbon::now()->format('Y-m-d');
         $rules = [
             'nama' => ['required', 'max:50', 'min:5'],
-            'email' => ['required'],
             'alamat' => ['required', 'max:100'],
             'tempat_lahir' => ['required', 'max:50'],
             'tgl_lahir' => ['required', 'date', 'before:'.$today],
             'jenis_kelamin' => ['required', Rule::in(['Laki-laki', 'Perempuan'])],
             'id_user' => ['required', 'exists:users,id'],
-            'agama' => ['required'],
-            'sikap_spiritual' => ['nullable'],
-            'sikap_sosial' => ['nullable'],
-            'saran' => ['nullable'],
-
+            'agama' => ['required']
         ];
         
         if($this->method() == 'PATCH'){
             $rules += ['nis' => ['required', 'numeric', 'digits_between:10,10', 'unique:siswa,nis,'.$this->route('siswa')->id]];
-            $rules += ['status' => ['required', Rule::in(['aktif', 'nonaktif'])]];
+            // $rules += ['status' => ['required', Rule::in(['aktif', 'nonaktif'])]];
         }else{
             $rules += ['nis' => ['required', 'numeric', 'digits_between:10,10', 'unique:siswa,nis']];
         };

@@ -6,8 +6,7 @@
         <th>Foto</th>
         <th>Nama</th>
         <th>NIP</th>
-        <th>Pekerjaan</th>
-        <th>Status Guru</th>
+        <th>ID Card</th>
         <th>No Handphone</th>
         <th>Aksi</th>
         </tr>
@@ -58,13 +57,8 @@
                     className:"text-center align-middle"
                 },
                 {
-                    data: 'pekerjaan', 
-                    name: 'pekerjaan',
-                    // className:"text-center align-middle"
-                },
-                {
-                    data: 'status_guru', 
-                    name: 'status_guru',
+                    data: 'id_card', 
+                    name: 'id_card',
                     className:"text-center align-middle"
                 },
                 {

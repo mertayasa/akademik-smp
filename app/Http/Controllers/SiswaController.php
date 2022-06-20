@@ -56,7 +56,9 @@ class SiswaController extends Controller
      */
     public function create(User $user)
     {
-        $user = User::where('level', 'ortu')->pluck('nama', 'id');
+        $user = User::where('level', 'ortu')->get()->pluck('nama_telp', 'id');
+        $user->prepend('Pilih Orang Tua', '');
+
         return view('siswa.create', compact('user'));
     }
 

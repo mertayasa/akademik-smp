@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Saran;
+use App\Models\Ruangan;
 use Illuminate\Http\Request;
 
-class SaranController extends Controller
+class RuanganController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class SaranController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Saran  $saran
+     * @param  \App\Models\Ruangan  $ruangan
      * @return \Illuminate\Http\Response
      */
-    public function show(Saran $saran)
+    public function show(Ruangan $ruangan)
     {
         //
     }
@@ -52,10 +52,10 @@ class SaranController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Saran  $saran
+     * @param  \App\Models\Ruangan  $ruangan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Saran $saran)
+    public function edit(Ruangan $ruangan)
     {
         //
     }
@@ -64,10 +64,10 @@ class SaranController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Saran  $saran
+     * @param  \App\Models\Ruangan  $ruangan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Saran $saran)
+    public function update(Request $request, Ruangan $ruangan)
     {
         //
     }
@@ -75,10 +75,10 @@ class SaranController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Saran  $saran
+     * @param  \App\Models\Ruangan  $ruangan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Saran $saran)
+    public function destroy(Ruangan $ruangan)
     {
         //
     }

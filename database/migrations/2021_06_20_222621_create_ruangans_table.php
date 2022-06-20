@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEkskulsTable extends Migration
+class CreateRuangansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateEkskulsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ekskul', function (Blueprint $table) {
+        Schema::create('ruangan', function (Blueprint $table) {
             $table->id();
-            $table->string('nama', 20);
-            $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');
+            $table->string('nama', 50);
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateEkskulsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ekskuls');
+        Schema::dropIfExists('ruangan');
     }
 }

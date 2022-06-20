@@ -29,8 +29,8 @@
     @include('layouts.error_message')
 </div>
 
-{{-- @push('scripts')
+@push('scripts')
     <script>
         $(".alert-block").fadeTo(5000, 500).slideUp(500);
     </script>
-@endpush --}}
+@endpush

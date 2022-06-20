@@ -66,16 +66,7 @@ class UserController extends Controller
             $user->tgl_lahir = $request->tgl_lahir;
             $user->no_tlp = $request->no_tlp;
             $user->pekerjaan = $request->pekerjaan ?? '-';
-            
-            if (FacadesRequest::is('*guru*')) {
-                $user->status_guru = $request->status_guru;
-            } else if (FacadesRequest::is('*ortu*')) {
-                $user->status_guru = 'bukan_guru';
-                $user->nama_ibu = $request->nama_ibu;
-                $user->pekerjaan_ibu = $request->pekerjaan_ibu;
-            } else {
-                throw new Exception('Error 500');
-            }
+            $user->id_card = $request->id_card ?? '-';
 
             if (FacadesRequest::is('*guru*')) {
                 $user->level = 'guru';
@@ -94,7 +85,7 @@ class UserController extends Controller
                 $user->foto = $upload_image;
             }
 
-            $user->status = 'aktif';
+            // $user->status = 'aktif';
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
 

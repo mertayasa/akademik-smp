@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Mapel;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,8 +17,8 @@ class CreateMapelsTable extends Migration
         Schema::create('mapel', function (Blueprint $table) {
             $table->id();
             $table->string('nama', 50);
-            $table->enum('is_lokal', ['true', 'false']);
-            $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');
+            $table->enum('paket', array_keys(Mapel::$paket))->default('Pelajaran Umum');
+            $table->enum('kelompok', array_keys(Mapel::$kelompok))->default('Pagi');
             $table->timestamps();
         });
     }

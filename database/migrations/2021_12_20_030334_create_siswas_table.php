@@ -17,7 +17,6 @@ class CreateSiswasTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('nis');
-            $table->string('email');
             $table->text('alamat');
             $table->text('tempat_lahir');
             $table->date('tgl_lahir');

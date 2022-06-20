@@ -1,43 +1,43 @@
 <div class="row mt-3">
     <div class="col-12  pb-3 pb-md-0">
-        {!! Form::label('announcetitle', 'Nama Siswa', ['class' => 'mb-1']) !!}
-        {!! Form::text('nama', null, ['class' => 'form-control', 'id' => 'announcetitle']) !!}
+        {!! Form::label('nama', 'Nama Siswa', ['class' => 'mb-1']) !!}
+        {!! Form::text('nama', null, ['class' => 'form-control', 'id' => 'nama']) !!}
     </div>
 </div>
 <div class="row mt-3">
     <div class="col-12  pb-3 pb-md-0">
-        {!! Form::label('announcetitle', 'NIS Siswa', ['class' => 'mb-1']) !!}
-        {!! Form::number('nis', null, ['class' => 'form-control', 'id' => 'announcetitle']) !!}
+        {!! Form::label('nis', 'NIS Siswa', ['class' => 'mb-1']) !!}
+        {!! Form::number('nis', null, ['class' => 'form-control', 'id' => 'nis']) !!}
+    </div>
+</div>
+{{-- <div class="row mt-3">
+    <div class="col-12  pb-3 pb-md-0">
+        {!! Form::label('email', 'Email', ['class' => 'mb-1']) !!}
+        {!! Form::email('email', null, ['class' => 'form-control', 'id' => 'email']) !!}
+    </div>
+</div> --}}
+<div class="row mt-3">
+    <div class="col-12  pb-3 pb-md-0">
+        {!! Form::label('tempat_lahir', 'Tempat Lahir', ['class' => 'mb-1']) !!}
+        {!! Form::text('tempat_lahir', null, ['class' => 'form-control', 'id' => 'tempat_lahir']) !!}
     </div>
 </div>
 <div class="row mt-3">
     <div class="col-12  pb-3 pb-md-0">
-        {!! Form::label('announcetitle', 'Email', ['class' => 'mb-1']) !!}
-        {!! Form::email('email', null, ['class' => 'form-control', 'id' => 'announcetitle']) !!}
+        {!! Form::label('tgl_lahir', 'Tanggal Lahir', ['class' => 'mb-1']) !!}
+        {!! Form::date('tgl_lahir', null, ['class' => 'form-control', 'id' => 'tgl_lahir']) !!}
     </div>
 </div>
 <div class="row mt-3">
     <div class="col-12  pb-3 pb-md-0">
-        {!! Form::label('announcetitle', 'Tempat Lahir', ['class' => 'mb-1']) !!}
-        {!! Form::text('tempat_lahir', null, ['class' => 'form-control', 'id' => 'announcetitle']) !!}
+        {!! Form::label('alamat', 'Alamat', ['class' => 'mb-1']) !!}
+        {!! Form::textarea('alamat', null, ['class' => 'form-control', 'id' => 'alamat', 'style' => 'height:150px']) !!}
     </div>
 </div>
 <div class="row mt-3">
     <div class="col-12  pb-3 pb-md-0">
-        {!! Form::label('announcetitle', 'Tanggal Lahir', ['class' => 'mb-1']) !!}
-        {!! Form::date('tgl_lahir', null, ['class' => 'form-control', 'id' => 'announcetitle']) !!}
-    </div>
-</div>
-<div class="row mt-3">
-    <div class="col-12  pb-3 pb-md-0">
-        {!! Form::label('description', 'Alamat', ['class' => 'mb-1']) !!}
-        {!! Form::textarea('alamat', null, ['class' => 'form-control', 'id' => 'description', 'style' => 'height:150px']) !!}
-    </div>
-</div>
-<div class="row mt-3">
-    <div class="col-12  pb-3 pb-md-0">
-        {!! Form::label('description', 'Jenis Kelamin', ['class' => 'mb-1']) !!}
-        {!! Form::select('jenis_kelamin', ['Laki-laki' => 'Laki-laki', 'Perempuan' => 'Perempuan'], null, ['class' => 'form-control', 'id' => 'description']) !!}
+        {!! Form::label('kelamin', 'Jenis Kelamin', ['class' => 'mb-1']) !!}
+        {!! Form::select('jenis_kelamin', ['Laki-laki' => 'Laki-laki', 'Perempuan' => 'Perempuan'], null, ['class' => 'form-control', 'id' => 'kelamin']) !!}
     </div>
 </div>
 
@@ -48,36 +48,14 @@
     </div>
 </div>
 
-<div class="row mt-3">
-    <div class="col-12  pb-3 pb-md-0">
-        {!! Form::label('namaMapel', 'Sikap Spiritual', ['class' => 'mb-1 d-none d-md-block']) !!}
-        {!! Form::textarea('sikap_spiritual', null, ['class' => 'form-control', 'id' => 'description', 'style' => 'height:100px']) !!}
-    </div>
-</div>
-<div class="row mt-3">
-    <div class="col-12  pb-3 pb-md-0">
-        {!! Form::label('namaMapel', 'Sikap Sosial', ['class' => 'mb-1 d-none d-md-block']) !!}
-        {!! Form::textarea('sikap_sosial', null, ['class' => 'form-control', 'id' => 'description', 'style' => 'height:100px']) !!}
-    </div>
-</div>
-
-
-<div class="row mt-3">
-    <div class="col-12  pb-3 pb-md-0">
-        {!! Form::label('namaMapel', 'Saran Untuk Siswa', ['class' => 'mb-1 d-none d-md-block']) !!}
-        {!! Form::textarea('saran', null, ['class' => 'form-control', 'id' => 'description', 'style' => 'height:100px']) !!}
-    </div>
-</div>
-
-
-@if (str_contains(Route::currentRouteName(), 'edit'))
+{{-- @if (str_contains(Route::currentRouteName(), 'edit'))
     <div class="row mt-3">
         <div class="col-12  pb-3 pb-md-0">
             {!! Form::label('status', 'Status', ['class' => 'mb-1']) !!}
             {!! Form::select('status', ['aktif' => 'Aktif', 'nonaktif' => 'Tidak Aktif'], null, ['class' => 'form-control', 'id' => 'status']) !!}
         </div>
     </div>
-@endif
+@endif --}}
 
 <div class="row mt-3">
     <div class="col-12  pb-3 pb-md-0">

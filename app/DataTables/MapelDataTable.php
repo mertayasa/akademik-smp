@@ -11,10 +11,6 @@ class MapelDataTable
     {
         // 
         return Datatables::of($mapel)
-            ->editColumn('is_lokal', function ($mapel) {
-                return isLokal($mapel->is_lokal);
-            })
-
             ->addColumn('action', function ($mapel) {
                 $deleteUrl = "'" . route('mapel.destroy', $mapel->id) . "', 'MapelDataTable'";
                 return

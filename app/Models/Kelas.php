@@ -13,7 +13,13 @@ class Kelas extends Model
     protected $fillable = [
         'kode',
         'jenjang',
-        'status',
+        // 'paket'
+    ];
+
+    
+    static $kelompok = [
+        'Pagi' => 'Pagi', 
+        'Siang' => 'Siang'
     ];
 
     public function anggota_kelas()

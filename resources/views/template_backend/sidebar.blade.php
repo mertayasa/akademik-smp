@@ -64,6 +64,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('guru.index') }}" class="nav-link {{ isActive('guru') }}" id="DataOrangTua">
+                                <i class="fas fa-users nav-icon"></i>
+                                <p>Data Orang Tua</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('guru.index') }}" class="nav-link {{ isActive('guru') }}" id="DataAdmin">
+                                <i class="fas fa-users nav-icon"></i>
+                                <p>Data Admin</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('kelas.index') }}" class="nav-link {{ isActive('kelas') }}" id="DataKelas">
                                 <i class="fas fa-home nav-icon"></i>
                                 <p>Data Kelas</p>
