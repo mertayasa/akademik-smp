@@ -12,7 +12,7 @@
                         {!! Form::select('id_tahun_ajar', $tahun_ajar, $id_tahun_ajar, ['class' => 'form-control', 'id' => 'filterStatus']) !!}
                     </div>
                     <div class="col-12 col-md-3 pb-3 pb-md-0">
-                        <button type="submit" class="btn btn-primary">Filter</button>
+                        <button type="submit" class="btn btn-sm btn-primary">Filter</button>
                     </div>
                 </div>
                 {!! Form::close() !!}
@@ -38,7 +38,7 @@
                                 <p> Total Anggota : {{ count($data->getAnggotaKelas($id_tahun_ajar)) }}</p>
                                 <p> Wali Kelas : {{ $data->getWaliKelas($id_tahun_ajar)[0]->user->nama ?? '-' }} </p>
                                 <a href="{{ route('akademik.show', [$data->id, $id_tahun_ajar]) }}"
-                                    class="btn btn-primary stretched-link">Lihat Kelas</a>
+                                    class="btn btn-sm btn-primary stretched-link">Lihat Kelas</a>
                             </div>
                         </div>
                     </div>

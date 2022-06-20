@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('template_backend.app')
 
 @push('styles')
     <link rel="stylesheet" type="text/css" href="datatables/datatables.min.css" />
@@ -19,75 +19,6 @@
                     </ol>
                 </nav>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12 d-flex">
-                <div class="w-100">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="card bg-primary text-white">
-                                <div class="card-body ">
-                                    <h5 class="card-title text-white mb-4">Total Siswa</h5>
-                                    <h1 class="mt-1 mb-3 text-white">{{ $dashboard_data['siswa_count'] }} </h1>
-                                    <div class="mb-1 detail justify-content-end">
-                                        <a href="{{ route('siswa.index') }}">Lihat Detail <i
-                                                class="fas fa-angle-double-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="card bg-danger text-white">
-                                <div class="card-body">
-                                    <h5 class="card-title  text-white mb-4">Total Guru</h5>
-                                    <h1 class="mt-1 mb-3 text-white">{{ $dashboard_data['guru_count'] }}</h1>
-                                    <div class="mb-1 detail justify-content-end">
-                                        <a href="{{ route('guru.index') }}">Lihat Detail <i
-                                                class="fas fa-angle-double-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="card bg-warning text-white">
-                                <div class="card-body">
-                                    <h5 class="card-title  text-white mb-4">Total Orang Tua</h5>
-                                    <h1 class="mt-1 mb-3 text-white">{{ $dashboard_data['ortu_count'] }}</h1>
-                                    <div class="mb-1 detail justify-content-end">
-                                        <a href="{{ route('ortu.index') }}">Lihat Detail <i
-                                                class="fas fa-angle-double-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="card bg-info text-white">
-                                <div class="card-body">
-                                    <h5 class="card-title  text-white mb-4">Total Mata Pelajaran</h5>
-                                    <h1 class="mt-1 mb-3 text-white">{{ $dashboard_data['mapel_count'] }}</h1>
-                                    <div class="mb-1 detail justify-content-end">
-                                        <a href="{{ route('mapel.index') }}">Lihat Detail <i
-                                                class="fas fa-angle-double-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="card bg-success text-white">
-                                <div class="card-body">
-                                    <h5 class="card-title  text-white mb-4">Total Ekstrakulikuler</h5>
-                                    <h1 class="mt-1 mb-3 text-white">{{ $dashboard_data['ekskul_count'] }}</h1>
-                                    <div class="mb-1 detail justify-content-end">
-                                        <a href="{{ route('ekskul.index') }}">Lihat Detail <i
-                                                class="fas fa-angle-double-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
         @if (Auth::user()->isGuru())

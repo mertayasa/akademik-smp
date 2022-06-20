@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <h4>Edit Profil</h4>
-                        {{-- <a href="{{route('patient.create')}}" class="btn btn-primary">Tambah Registrasi</a> --}}
+                        {{-- <a href="{{route('patient.create')}}" class="btn btn-sm btn-primary">Tambah Registrasi</a> --}}
                     </div>
                     <div class="card-body">
                         @include('layouts.flash')
@@ -16,8 +16,8 @@
                         @include('profile.form')
                         <div class="row mt-3">
                             <div class="col-12">
-                                <a href="{{ route('dashboard.index') }}" class="btn btn-danger">Kembali</a>
-                                <button class="btn btn-primary ml-3" type="submit">Simpan</button>
+                                <a href="{{ route('dashboard.index') }}" class="btn btn-sm btn-danger">Kembali</a>
+                                <button class="btn btn-sm btn-primary ml-3" type="submit">Simpan</button>
                             </div>
                         </div>
                         {!! Form::close() !!}

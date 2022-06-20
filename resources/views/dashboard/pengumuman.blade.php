@@ -24,7 +24,7 @@
                                    <p class="">{{ $data->konten }}</p>
                               </div>
                               @if ($data->lampiran)
-                                <a href="{{ $data->getLampiran() }}" target="_blank" class="btn btn-primary">Lihat Lampiran</a>
+                                <a href="{{ $data->getLampiran() }}" target="_blank" class="btn btn-sm btn-primary">Lihat Lampiran</a>
                               @endif
                           </div>
                       </div>

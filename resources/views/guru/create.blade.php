@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('template_backend.app')
 
 @section('content')
 <div class="container-fluid p-0">
@@ -11,14 +11,13 @@
                     <h5 class="card-title mb-0">Guru Baru</h5>
                 </div>
                 <div class="card-body pt-0">
-                    @include('layouts.flash')
-                        @include('layouts.error_message')
+                        @include('layouts.flash')
                         {!! Form::open(['route' => 'guru.store']) !!}
                         @include('guru.form')
                         <div class="row mt-3">
                             <div class="col-12">
-                                <a href="{{ route('guru.index') }}" class="btn btn-danger">Kembali</a>
-                                <button class="btn btn-primary ml-3" type="submit">Simpan</button>
+                                <a href="{{ route('guru.index') }}" class="btn btn-sm btn-danger">Kembali</a>
+                                <button class="btn btn-sm btn-primary ml-3" type="submit">Simpan</button>
                             </div>
                         </div>
                         {!! Form::close() !!}

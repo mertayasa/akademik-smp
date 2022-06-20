@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('template_backend.app')
 
 @section('content')
 <div class="container-fluid p-0">
@@ -15,7 +15,7 @@
                         @include('siswa.form-show')
                         <div class="row mt-3">
                             <div class="col-12">
-                                <a href="{{ Auth::user()->isOrtu() ? route('siswa.index_ortu') : route('siswa.index') }}" class="btn btn-danger">Kembali</a>
+                                <a href="{{ Auth::user()->isOrtu() ? route('siswa.index_ortu') : route('siswa.index') }}" class="btn btn-sm btn-danger">Kembali</a>
                             </div>
                         </div>
                 </div>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('template_backend.app')
 
 @section('content')
 <div class="container-fluid p-0">
@@ -11,14 +11,13 @@
                     <h5 class="card-title mb-0">Pengumuman Baru</h5>
                 </div>
                 <div class="card-body pt-0">
-                    @include('layouts.flash')
-                        @include('layouts.error_message')
+                        @include('layouts.flash')
                         {!! Form::open(['route' => 'pengumuman.store']) !!}
                         @include('pengumuman.form')
                         <div class="row mt-3">
                             <div class="col-12">
-                                <a href="{{ route('pengumuman.index') }}" class="btn btn-danger">Kembali</a>
-                                <button class="btn btn-primary ml-3" type="submit">Simpan</button>
+                                <a href="{{ route('pengumuman.index') }}" class="btn btn-sm btn-danger">Kembali</a>
+                                <button class="btn btn-sm btn-primary ml-3" type="submit">Simpan</button>
                             </div>
                         </div>
                         {!! Form::close() !!}

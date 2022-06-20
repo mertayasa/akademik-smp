@@ -7,7 +7,7 @@
                     <div class="input-group mb-3">
                         {!! Form::date('tgl_absensi', null, ['class' => 'form-control', 'id' => 'absensiDate']) !!}
                         <div class="input-group-append ml-2">
-                            <button class="btn btn-outline-primary"
+                            <button class="btn btn-sm btn-outline-primary"
                                 data-url="{{ route('absensi.generate_form', [$id_kelas, $id_tahun_ajar]) }}"
                                 onclick="generateForm(this)" type="button">Generate Form</button>
                         </div>

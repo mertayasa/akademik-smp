@@ -16,7 +16,7 @@
                                     {!! Form::select('id_anggota_kelas', $anggota_kelas, $id_anggota_kelas, ['class' => 'form-control', 'id' => 'filterSiswa']) !!}
                                 </div>
                                 <div class="col-12 col-md-6 pb-3 pb-md-0">
-                                    <button type="submit" class="btn btn-primary">Pilih</button>
+                                    <button type="submit" class="btn btn-sm btn-primary">Pilih</button>
                                 </div>
                             </div>
                             {!! Form::close() !!}

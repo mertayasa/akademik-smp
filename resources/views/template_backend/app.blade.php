@@ -110,20 +110,7 @@
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0 text-dark">@yield('heading')</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="nav-icon fas fa-home"></i> &nbsp; Home</a></li>
-                @yield('page')
-                </ol>
-            </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+        <div class="content-header pb-0">
         </div>
         <!-- /.content-header -->
         
@@ -198,7 +185,7 @@
 <!-- Bootstrap Switch -->
 <script src="{{ asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+{{-- <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script> --}}
 <!-- fullCalendar 2.2.5 -->
 <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
 <script src="{{ asset('plugins/fullcalendar/main.min.js') }}"></script>

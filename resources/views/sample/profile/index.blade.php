@@ -22,8 +22,8 @@
                         <div class="text-muted mb-2">Lead Developer</div>
 
                         <div>
-                            <a class="btn btn-primary btn-sm" href="#">Follow</a>
-                            <a class="btn btn-primary btn-sm" href="#"><span
+                            <a class="btn btn-sm btn-primary btn-sm" href="#">Follow</a>
+                            <a class="btn btn-sm btn-primary btn-sm" href="#"><span
                                     data-feather="message-square"></span> Message</a>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                                     ante.
                                 </div>
 
-                                <a href="#" class="btn btn-sm btn-danger mt-1"><i class="feather-sm"
+                                <a href="#" class="btn btn-sm btn-sm btn-danger mt-1"><i class="feather-sm"
                                         data-feather="heart"></i> Like</a>
                             </div>
                         </div>
@@ -145,7 +145,7 @@
                                     </div>
                                 </div>
 
-                                <a href="#" class="btn btn-sm btn-danger mt-1"><i class="feather-sm"
+                                <a href="#" class="btn btn-sm btn-sm btn-danger mt-1"><i class="feather-sm"
                                         data-feather="heart"></i> Like</a>
                             </div>
                         </div>
@@ -200,7 +200,7 @@
 
                         <hr />
                         <div class="d-grid">
-                            <a href="#" class="btn btn-primary">Load more</a>
+                            <a href="#" class="btn btn-sm btn-primary">Load more</a>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('template_backend.app')
 
 @section('content')
 <div class="container-fluid p-0">
@@ -17,8 +17,8 @@
                         @include('kelas.form')
                         <div class="row mt-3">
                             <div class="col-12">
-                                <a href="{{ route('kelas.index') }}" class="btn btn-danger">Kembali</a>
-                                <button class="btn btn-primary ml-3" type="submit">Simpan</button>
+                                <a href="{{ route('kelas.index') }}" class="btn btn-sm btn-danger">Kembali</a>
+                                <button class="btn btn-sm btn-primary ml-3" type="submit">Simpan</button>
                             </div>
                         </div>
                         {!! Form::close() !!}

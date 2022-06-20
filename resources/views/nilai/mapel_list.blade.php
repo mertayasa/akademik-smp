@@ -3,7 +3,7 @@
         <div class="card">
             {{-- <div class="card-header d-flex justify-content-end">
                 @if (Auth::user()->isAdmin())
-                    <button data-bs-toggle="modal" data-bs-target="#mapelNilaiModal" class="btn btn-primary add"
+                    <button data-bs-toggle="modal" data-bs-target="#mapelNilaiModal" class="btn btn-sm btn-primary add"
                         data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tambah Mata Pelajaran">
                         <i class="fas fa-folder-plus"></i> Tambah Mata Pelajaran</button>
                 @endif

@@ -17,8 +17,8 @@
                         @include('nilai_sikap.form')
                         <div class="row mt-3">
                             <div class="col-12">
-                                <a href="{{ route('nilai_sikap.index') }}" class="btn btn-danger">Kembali</a>
-                                <button class="btn btn-primary ml-3" type="submit">Simpan</button>
+                                <a href="{{ route('nilai_sikap.index') }}" class="btn btn-sm btn-danger">Kembali</a>
+                                <button class="btn btn-sm btn-primary ml-3" type="submit">Simpan</button>
                             </div>
                         </div>
                         {!! Form::close() !!}

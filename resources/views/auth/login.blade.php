@@ -53,12 +53,12 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-sm btn-primary">
                                     {{ __('Login') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-sm btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
@@ -129,8 +129,8 @@
                                         </label>
                                     </div>
                                     <div class="text-center mt-3">
-                                        {{-- <a href="index.html" class="btn btn-lg btn-primary">Sign in</a> --}}
-                                        <button type="submit" class="btn btn-lg btn-primary">Masuk</button>
+                                        {{-- <a href="index.html" class="btn btn-sm btn-lg btn-primary">Sign in</a> --}}
+                                        <button type="submit" class="btn btn-sm btn-lg btn-primary">Masuk</button>
                                     </div>
                                 </form>
                             </div>

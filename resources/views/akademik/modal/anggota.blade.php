@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="studentModalLabel">Anggota Kelas</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn btn-sm-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 {!! Form::open(['route' => 'anggota_kelas.store', 'id' => 'formAddStudent']) !!}
@@ -21,8 +21,8 @@
                 {{ Form::close() }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                <button type="button" class="btn btn-primary" id="btnStoreStudent">Simpan</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-sm btn-primary" id="btnStoreStudent">Simpan</button>
             </div>
         </div>
     </div>

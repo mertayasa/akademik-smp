@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class=" mb-0 ">Data Orang Tua</h4>
-                    <a href="{{ route('ortu.create') }}" class="btn btn-primary add" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tambah ortu"> <i class="fas fa-folder-plus"></i> ortu Baru</a>
+                    <a href="{{ route('ortu.create') }}" class="btn btn-sm btn-primary add" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tambah ortu"> <i class="fas fa-folder-plus"></i> ortu Baru</a>
                 </div>
                 <div class="px-3">
                     @include('layouts.flash')

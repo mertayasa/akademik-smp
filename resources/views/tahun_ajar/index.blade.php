@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class=" mb-0 ">Data Tahun Ajaran</h4>
-                        <a href="{{ route('tahun_ajar.create') }}" class="btn btn-primary add" data-bs-toggle="tooltip"
+                        <a href="{{ route('tahun_ajar.create') }}" class="btn btn-sm btn-primary add" data-bs-toggle="tooltip"
                             data-bs-placement="bottom" title="Tambah tahun_ajar"> <i class="fas fa-folder-plus"></i>
                             tahun_ajar Baru</a>
                     </div>

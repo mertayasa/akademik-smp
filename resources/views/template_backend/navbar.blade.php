@@ -8,7 +8,7 @@
     </ul>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <div class="btn-group" role="group">
+            <div class="btn btn-sm-group" role="group">
                 <a id="btnGroupDrop1" style="color: #fff; margin-right: 40px;" type="button" class="dropdown-toggle text-capitalize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="nav-icon fas fa-user-circle"></i> &nbsp; {{ Auth::user()->name }}
                 </a>

@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class=" mb-0 ">Data Wali Kelas</h4>
-                    <a href="{{ route('wali_kelas.create') }}" class="btn btn-primary add" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tambah wali_kelas"> <i class="fas fa-folder-plus"></i> wali_kelas Baru</a>
+                    <a href="{{ route('wali_kelas.create') }}" class="btn btn-sm btn-primary add" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tambah wali_kelas"> <i class="fas fa-folder-plus"></i> wali_kelas Baru</a>
                 </div>
                 <div class="px-3">
                     @include('layouts.flash')

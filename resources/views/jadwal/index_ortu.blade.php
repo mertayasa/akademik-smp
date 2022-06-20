@@ -15,7 +15,7 @@
                                 {!! Form::select('id_siswa', ['' => 'Pilih Siswa'] + $siswa->toArray(), $id_siswa ?? null, ['class' => 'form-control', 'id' => 'filterSiswa', 'autocomplete' => 'off']) !!}
                             </div>
                             <div class="col-12 col-md-6 pb-3 pb-md-0">
-                                <button type="submit" class="btn btn-primary">Pilih</button>
+                                <button type="submit" class="btn btn-sm btn-primary">Pilih</button>
                             </div>
                         </div>
                         {!! Form::close() !!}

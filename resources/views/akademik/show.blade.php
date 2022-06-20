@@ -43,7 +43,7 @@
                                         @if (Auth::user()->isAdmin())
                                             <div class="card-header d-flex justify-content-end px-0 pt-0">
                                                 <a href="#" data-bs-toggle="modal" onclick="createAnggota(this)" data-bs-target="#studentModal"
-                                                    class="btn btn-primary add" data-bs-toggle="tooltip"
+                                                    class="btn btn-sm btn-primary add" data-bs-toggle="tooltip"
                                                     data-bs-placement="bottom" title="Tambah Anggota Kelas"> <i
                                                         class="fas fa-folder-plus"></i> Anggota Kelas Baru</a>
                                             </div>
@@ -57,7 +57,7 @@
                                         @if (Auth::user()->isAdmin())
                                             <div class="card-header d-flex justify-content-end px-0 pt-0">
                                                 <a href="#" onclick="createJadwal(this)" 
-                                                    class="btn btn-primary add"
+                                                    class="btn btn-sm btn-primary add"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#jadwalModal" 
                                                     data-bs-toggle="tooltip" 
@@ -72,7 +72,7 @@
                                 <div class="tab-pane fade" id="absensi">
                                     <div class="card-body px-0">
                                         <div class="card-header d-flex justify-content-end px-0 pt-0">
-                                            <button onclick="showAbsensiForm(this)" class="btn btn-primary add"
+                                            <button onclick="showAbsensiForm(this)" class="btn btn-sm btn-primary add"
                                                 data-bs-toggle="tooltip" 
                                                 data-bs-placement="bottom"
                                                 title="Management Absensi">
@@ -99,7 +99,7 @@
                                             <div class="card-header d-flex justify-content-end px-0 pt-0 pb-0">
                                                 <a href="#"
                                                     onclick="showWaliKelasForm(this)"
-                                                    class="btn btn-primary add"
+                                                    class="btn btn-sm btn-primary add"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#waliKelasModal" 
                                                     data-bs-toggle="tooltip" 
@@ -110,7 +110,7 @@
                                                 </a>
                                                 <a href="#"
                                                     onclick="deleteWaliKelas(this)"
-                                                    class="btn btn-danger add ml-2 {{ !isset($wali_kelas) ? 'd-none' : '' }}"
+                                                    class="btn btn-sm btn-danger add ml-2 {{ !isset($wali_kelas) ? 'd-none' : '' }}"
                                                     data-bs-toggle="tooltip" 
                                                     data-bs-placement="bottom"
                                                     data-id="{{ $wali_kelas->id ?? '' }}"
@@ -144,7 +144,7 @@
                             
                             </div>
                         </div>
-                        <a href="#" onclick="history.back()" class="btn btn-danger">Kembali</a>
+                        <a href="#" onclick="history.back()" class="btn btn-sm btn-danger">Kembali</a>
                     </div>
                 </div>
 

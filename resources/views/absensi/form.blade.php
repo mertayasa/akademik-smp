@@ -35,4 +35,4 @@
 {!! Form::close() !!}
 
 
-<button class="btn btn-primary" onclick="updateAbsensi()">Simpan</button>
+<button class="btn btn-sm btn-primary" onclick="updateAbsensi()">Simpan</button>
