@@ -60,11 +60,11 @@ class UserRequest extends FormRequest
                 // $rules += ['status_guru' => ['required', Rule::in(['tetap', 'honorer', 'bukan_guru'])]];
             }
     
-            // if(str_contains($referer, 'ortu')){
-            //     $rules += ['pekerjaan' => ['required', 'max:50', 'min:5']];
+            if(str_contains($referer, 'ortu')){
+                $rules += ['pekerjaan' => ['required', 'max:50', 'min:5']];
             //     $rules += ['nama_ibu' => ['nullable']];
             //     $rules += ['pekerjaan_ibu' => ['nullable']];
-            // }
+            }
         }else{
             abort(403);
         }

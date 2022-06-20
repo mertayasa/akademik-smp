@@ -44,6 +44,7 @@
                     $is_open_master = isActive([
                         'kelas',
                         'guru',
+                        'ortu',
                         'siswa',
                         'mapel',
                     ]);
@@ -64,7 +65,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('guru.index') }}" class="nav-link {{ isActive('guru') }}" id="DataOrangTua">
+                            <a href="{{ route('ortu.index') }}" class="nav-link {{ isActive('ortu') }}" id="DataOrangTua">
                                 <i class="fas fa-users nav-icon"></i>
                                 <p>Data Orang Tua</p>
                             </a>

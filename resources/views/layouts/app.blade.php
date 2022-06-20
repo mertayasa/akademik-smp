@@ -220,7 +220,7 @@
               $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust().responsive.recalc().ajax.reload();
           });
         })
-      </script>
+    </script>
 
     @stack('scripts')
 </body>

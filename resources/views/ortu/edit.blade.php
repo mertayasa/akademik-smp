@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('template_backend.app')
 
 @section('content')
 <div class="container-fluid p-0">
@@ -12,8 +12,7 @@
                     <h4 class=" mb-0 ">Edit Orang Tua</h4>
                 </div>
                 <div class="card-body pt-0">
-                    @include('layouts.flash')
-                        @include('layouts.error_message')
+                        @include('layouts.flash')
                          {!! Form::model($user, ['route' => ['ortu.update', $user->id], 'method' => 'patch']) !!}
                         @include('ortu.form')
                         <div class="row mt-3">

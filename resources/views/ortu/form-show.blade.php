@@ -5,20 +5,12 @@
                 <td>: {{$user->nama}}</td>
             </tr>
             <tr>
-                <td style="width: 150px">Nama Ibu</td>
-                <td>: {{$user->nama_ibu}}</td>
-            </tr>
-            <tr>
                 <td>No Handphone</td>
                 <td>: {{$user->no_tlp}}</td>
             </tr>
             <tr>
                 <td>Pekerjaan</td>
                 <td>: {{$user->pekerjaan}}</td>
-            </tr>
-            <tr>
-                <td>Pekerjaan Ibu</td>
-                <td>: {{$user->pekerjaan_ibu}}</td>
             </tr>
             <tr>
                 <td>Email</td>
@@ -40,10 +32,9 @@
                 <td>Jenis Kelamin</td>
                 <td>: {{$user->jenis_kelamin}}</td>
             </tr>
-            <tr>
+            {{-- <tr>
                 <td>Status</td>
                 <td>: {{$user->status}}</td>
-            </tr>
-
+            </tr> --}}
     </table>
 </div>

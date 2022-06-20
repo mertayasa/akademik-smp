@@ -224,6 +224,143 @@ function sikap(e) {
 }
 </script>
 
+<script>
+    const baseUrl = "{{ url('/') }}"
+    function deleteModel(deleteUrl, tableId, additionalMethod = null) {
+        Swal.fire({
+            title: "Warning",
+            text: "Yakin menghapus data?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#169b6b',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Tidak'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: deleteUrl,
+                    dataType: "Json",
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    method: "delete",
+                    success: function(data) {
+                        if (data.code == 1) {
+                            Swal.fire(
+                                'Berhasil',
+                                data.message,
+                                'success'
+                            )
+
+                            if (additionalMethod != null) {
+                                additionalMethod.apply(this, [data.args])
+                            }
+
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: data.message
+                            })
+                        }
+
+                        $('#' + tableId).DataTable().ajax.reload();
+                    }
+                })
+            }
+        })
+    }
+
+    function showPassword(id) {
+        var passWordEl = document.getElementById(id);
+        if (passWordEl.type === "password") {
+            passWordEl.type = "text";
+        } else {
+            passWordEl.type = "password";
+        }
+    }
+
+    const numberOnlyInput = document.getElementsByClassName('number-only')
+    for (let index = 0; index < numberOnlyInput.length; index++) {
+        const numberOnly = numberOnlyInput[index];
+        numberOnly.addEventListener('input', function(element){
+            element.target.value = element.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
+        })
+    }
+
+    $(document).ready(function() {
+        $('select:not(.custom-select)').select2({
+            theme: 'bootstrap4',
+        });
+    })
+
+    function showToast(code, text) {
+        if (code == 1) {
+            toastr.success(text)
+        }
+
+        if (code == 0) {
+            toastr.error(text)
+        }
+    }
+
+    function clearErrorMessage(){
+        const invalidFeedback = document.getElementsByClassName('invalid-feedback')
+
+        for (let invalid = 0; invalid < invalidFeedback.length; invalid++) {
+            const element = invalidFeedback[invalid]
+            const targetField = element.getAttribute('error-name')
+            const inputElement = document.querySelectorAll(`[name="${targetField}"]`)
+            element.innerHTML = ''
+            for (let inputEl = 0; inputEl < inputElement.length; inputEl++) {
+                if(inputElement[inputEl] != undefined){
+                    inputElement[inputEl].classList.remove('is-invalid')
+                }
+            }
+
+        }
+    }
+
+    function showValidationMessage(errors){
+        Object.keys(errors).forEach(function(key) {
+            let errorSpan = document.querySelectorAll(`[error-name="${key}"]`)
+            let errorInput = document.querySelectorAll(`[name="${key}"]`)
+            
+            for (let eInput = 0; eInput < errorInput.length; eInput++) {
+                const selectedErrorInput = errorInput[eInput];
+                selectedErrorInput.classList.add('is-invalid')
+            }
+
+            for (let eSpan = 0; eSpan < errorSpan.length; eSpan++) {
+                const selectedErrorSpan = errorSpan[eSpan];
+                if (selectedErrorSpan != undefined) {
+                    selectedErrorSpan.innerHTML = errors[key][0]
+                }else{
+                    showToast(0, 'Terjadi kesalahan pada sistem')
+                }
+            }
+
+        })
+    }
+
+    function isNull(value){
+        if(value == '' || value == undefined || value == null){
+            return true
+        }
+
+        return false;
+    }
+    
+</script>
+<script>
+    $(document).ready(function() {
+      $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
+          $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust().responsive.recalc().ajax.reload();
+      });
+    })
+</script>
+
 @stack('scripts')
 
 </body>

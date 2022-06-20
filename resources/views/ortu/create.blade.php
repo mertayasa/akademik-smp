@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('template_backend.app')
 
 @section('content')
 <div class="container-fluid p-0">
@@ -11,8 +11,7 @@
                     <h5 class="card-title mb-0">Orang Tua Baru</h5>
                 </div>
                 <div class="card-body pt-0">
-                    @include('layouts.flash')
-                        @include('layouts.error_message')
+                        @include('layouts.flash')
                         {!! Form::open(['route' => 'ortu.store']) !!}
                         @include('ortu.form')
                         <div class="row mt-3">
