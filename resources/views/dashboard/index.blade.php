@@ -33,7 +33,7 @@
         @endif
 
         <div class="row">
-            @include('dashboard.pengumuman')
+            {{-- @include('dashboard.pengumuman') --}}
         </div>
 
 

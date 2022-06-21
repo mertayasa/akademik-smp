@@ -13,9 +13,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        // $dashboard_data = $this->generateDashboardData();
+        // return view('dashboard.index', compact('dashboard_data'));
 
-        $dashboard_data = $this->generateDashboardData();
-        return view('dashboard.index', compact('dashboard_data'));
+        return view('dashboard.index');
     }
 
     public function generateDashboardData()
