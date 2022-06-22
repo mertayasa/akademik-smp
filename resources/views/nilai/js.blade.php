@@ -94,17 +94,34 @@
         }
 
         function hideFormNilai(){
+            const cardNilai = document.getElementById('cardNilai')
             const nilaiContainer = document.getElementById('nilaiContainer')
+            const raportContainer = document.getElementById('raportContainer')
+            
+            if(cardNilai != undefined){
+                cardNilai.classList.remove('d-none')
+            }
+
             if(nilaiContainer != undefined){
                 nilaiContainer.classList.remove('d-none')
                 nilaiContainer.innerHTML = ''
+            }
+
+            if(raportContainer != undefined){
+                raportContainer.classList.remove('d-none')
+                raportContainer.innerHTML = ''
             }
         }
 
         function showNilaiRaport(showNilaiUrl){
             // console.log(showNilaiUrl);
+            const cardNilai = document.getElementById('cardNilai')
+            const raportContainer = document.getElementById('raportContainer')
+            raportContainer.classList.remove('d-none')
+
             const nilaiContainer = document.getElementById('nilaiContainer')
             nilaiContainer.classList.remove('d-none')
+            cardNilai.classList.remove('d-none')
 
             fetch(showNilaiUrl, {
                 headers: {
@@ -119,7 +136,10 @@
                 if (data.code == 1) {
                     nilaiContainer.innerHTML = ''
                     nilaiContainer.insertAdjacentHTML('beforeend', data.form_raport)
-                    nilaiContainer.scrollIntoView()
+
+                    raportContainer.innerHTML = ''
+                    raportContainer.insertAdjacentHTML('beforeend', data.raport_detail)
+                    cardNilai.scrollIntoView()
                 }else{
                     showToast(data.code, data.message)
                 }
@@ -160,6 +180,12 @@
                 return data
             })
             .then(data => {
+                const raportContainer = document.getElementById('raportContainer')
+                raportContainer.classList.remove('d-none')
+                
+                raportContainer.innerHTML = ''
+                raportContainer.insertAdjacentHTML('beforeend', data.raport_detail)
+
                 showToast(data.code, data.message)
             })
             .catch((error) => {

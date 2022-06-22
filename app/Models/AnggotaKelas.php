@@ -155,7 +155,8 @@ class AnggotaKelas extends Model
     {
         $nilai = $this->nilai->where('semester', $semester)->where('id_mapel', $id_mapel)->first();
         if($nilai){
-            return round(($nilai->tm1_p + $nilai->tm2_p + $nilai->tm3_p + $nilai->tm4_p + $nilai->pts + $nilai->pas)/6, 2);
+            // return round(($nilai->ulha1_p + $nilai->ulha2_p + $nilai->ulha3_p + $nilai->ulha4_p + $nilai->pts + $nilai->pas)/6, 2);
+            return round(($nilai->ulha1_p + $nilai->ulha2_p + $nilai->ulha3_p + $nilai->pts + $nilai->pas)/5, 2);
         }
 
         return 0;
@@ -165,7 +166,8 @@ class AnggotaKelas extends Model
     {
         $nilai = $this->nilai->where('semester', $semester)->where('id_mapel', $id_mapel)->first();
         if($nilai){
-            return round(($nilai->tm1_k + $nilai->tm2_k + $nilai->tm3_k + $nilai->tm4_k)/4, 2);
+            return round(($nilai->ulha1_k + $nilai->ulha2_k + $nilai->ulha3_k)/3, 2);
+            // return round(($nilai->ulha1_k + $nilai->ulha2_k + $nilai->ulha3_k + $nilai->ulha4_k)/4, 2);
         }
 
         return 0;

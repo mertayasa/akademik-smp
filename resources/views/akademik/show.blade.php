@@ -17,23 +17,23 @@
                         <div class="bs-example">
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
-                                    <a href="#siswa" class="nav-link active" data-toggle="tab">Data Siswa</a>
+                                    <a href="#siswa" class="nav-link tab-refresh active" data-toggle="tab">Data Siswa</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#jadwal" class="nav-link" data-toggle="tab">Jadwal Pelajaran</a>
+                                    <a href="#jadwal" class="nav-link tab-refresh" data-toggle="tab">Jadwal Pelajaran</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#absensi" class="nav-link" data-toggle="tab">Absensi</a>
+                                    <a href="#absensi" class="nav-link tab-refresh" data-toggle="tab">Absensi</a>
                                 </li>
                                 
                                 @if (Auth::user()->isAdmin())
                                     <li class="nav-item">
-                                        <a href="#wali" class="nav-link" data-toggle="tab">Wali Kelas</a>
+                                        <a href="#wali" class="nav-link tab-refresh" data-toggle="tab">Wali Kelas</a>
                                     </li>
                                 @endif
                                 
                                 <li class="nav-item">
-                                    <a href="#tabNilai" class="nav-link" data-toggle="tab">Nilai</a>
+                                    <a href="#tabNilai" class="nav-link tab-refresh" data-toggle="tab">Nilai</a>
                                 </li>
                             </ul>
 
@@ -149,7 +149,33 @@
 
                 @include('absensi.crud')
                 @include('nilai.mapel_list')
-                <div id="nilaiContainer" class="d-none"></div>
+                <div class="card d-none" id="cardNilai">
+                    <div class="card-body">
+                        <div class="bs-example">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a href="#raport" class="nav-link tab-nilai active" data-toggle="tab">Raport</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#editNilai" class="nav-link tab-nilai" data-toggle="tab">Edit Nilai</a>
+                                </li>
+                            </ul>
+        
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="raport">
+                                    <div class="card-body px-0">
+                                        <div id="raportContainer" class="d-none"></div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="editNilai">
+                                    <div class="card-body px-0">
+                                        <div id="nilaiContainer" class="d-none"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row bottom-hint" data-href="#siswa">
                     <div class="col-12">
@@ -233,14 +259,14 @@
             }
 
             const mapelListCon = document.getElementById('mapelListContainer')
-            if (rawHrefValue != '#tabNilai') {
+            if (rawHrefValue != '#tabNilai' && (rawHrefValue != '#editNilai' && rawHrefValue != '#raport')) {
                 mapelListCon.classList.add('d-none')
             }else{
                 mapelListCon.classList.remove('d-none')
             }
 
             const formnilaiContainer = document.getElementById('formnilaiContainer')
-            if (rawHrefValue != '#tabNilai') {
+            if (rawHrefValue != '#tabNilai' && (rawHrefValue != '#editNilai' && rawHrefValue != '#raport')) {
                 hideFormNilai()
             }
 

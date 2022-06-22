@@ -57,12 +57,7 @@ class NilaiController extends Controller
             $tahun_ajar_active = TahunAjar::where('status', 'aktif')->first();
             $anggota_kelas = AnggotaKelas::where('id_siswa', $id_siswa)->where('id_tahun_ajar', $tahun_ajar_active->id)->first();
             if($anggota_kelas){
-                $ekskul = Ekskul::all();
-                // $mapel_of_jadwal = Nilai::getUniqueMapel(Nilai::query(), [$anggota_kelas->id]);
                 $mapel_of_jadwal = Jadwal::geetUniqueMapel($tahun_ajar_active->id, $anggota_kelas->id_kelas);
-                $prestasi_ganjil = Prestasi::where('id_anggota_kelas', $anggota_kelas->id)->where('semester', 'ganjil')->get();
-                $prestasi_genap = Prestasi::where('id_anggota_kelas', $anggota_kelas->id)->where('semester', 'genap')->get();
-                
                 $nilai = [
                     'mapel_of_jadwal' => $mapel_of_jadwal ?? [],
                     'ekskul' => $ekskul ?? [],
@@ -195,7 +190,6 @@ class NilaiController extends Controller
 
     private function renderNilaiMapelTable($id_kelas, $id_tahun_ajar, $anggota_kelas_raw)
     {
-        // $mapel_of_jadwal = Nilai::getUniqueMapel(Nilai::query(), $anggota_kelas_raw->pluck('id')->toArray());
         $mapel_of_jadwal = Jadwal::geetUniqueMapel($id_tahun_ajar, $id_kelas);
         $data = [
             'id_kelas' => $id_kelas,
@@ -252,40 +246,37 @@ class NilaiController extends Controller
     public function editRaport(AnggotaKelas $anggota_kelas, $semester)
     {
         try{
-            // $mapel_of_jadwal = Nilai::getUniqueMapel(Nilai::query(), $anggota_kelas->pluck('id')->toArray());
             $mapel_of_jadwal = Jadwal::geetUniqueMapel($anggota_kelas->id_tahun_ajar, $anggota_kelas->id_kelas);
-            $ekskul = Ekskul::all();
     
             $data = [
                 'anggota_kelas' => $anggota_kelas,
                 'semester' => $semester,
-                'ekskul' => $ekskul,
                 'mapel_of_jadwal' => $mapel_of_jadwal,
             ];
     
             $form_raport = view('nilai.edit_raport', $data)->render();
+            $raport_detail = view('nilai.raport_detail', $data)->render();
         }catch(Exception $e){
             Log::info($e->getMessage());
             return response(['code' => 0, 'message' => 'Gagal mengambil data nilai']);
         }
 
-        return response(['code' => 1, 'form_raport' => $form_raport]);
+        return response([
+            'code' => 1, 
+            'form_raport' => $form_raport,
+            'raport_detail' => $raport_detail,
+        ]);
     }
 
     public function showRaport(AnggotaKelas $anggota_kelas, $semester)
     {
         try{
-            // $mapel_of_jadwal = Nilai::getUniqueMapel(Nilai::query(), $anggota_kelas->pluck('id')->toArray());
             $mapel_of_jadwal = Jadwal::geetUniqueMapel($anggota_kelas->id_tahun_ajar, $anggota_kelas->id_kelas);
-            $ekskul = Ekskul::all();
-            $prestasi = Prestasi::where('id_anggota_kelas', $anggota_kelas->id)->where('semester', $semester)->get();
     
             $data = [
                 'anggota_kelas' => $anggota_kelas,
                 'semester' => $semester,
-                'ekskul' => $ekskul,
                 'mapel_of_jadwal' => $mapel_of_jadwal,
-                'prestasi' => $prestasi
             ];
     
             $form_raport = view('nilai.show_raport', $data)->render();
@@ -303,12 +294,7 @@ class NilaiController extends Controller
             DB::transaction(function () use($request, $anggota_kelas, $semester){
                 $data_pengetahuan = $request->input('pengetahuan', []);
                 $data_keterampilan = $request->input('keterampilan', []);
-                $data_ekskul = $request->input('ekskul', []);
-                $data_proporsi = $request->input('proporsi', []);
-                $data_kesehatan = $request->input('kesehatan', []);
-                $data_sikap = $request->input('sikap', []);
-                $data_saran = $request->input('saran', []);
-    
+
                 foreach($data_pengetahuan as $key => $pengetahuan){
                     Nilai::updateOrCreate([
                         'id_anggota_kelas' => $anggota_kelas->id,
@@ -318,10 +304,10 @@ class NilaiController extends Controller
                         'id_anggota_kelas' => $anggota_kelas->id,
                         'semester' => $semester,
                         'id_mapel' => $key,
-                        'tm1_p' => $pengetahuan['tm1_p'] ?? 0,
-                        'tm2_p' => $pengetahuan['tm2_p'] ?? 0,
-                        'tm3_p' => $pengetahuan['tm3_p'] ?? 0,
-                        'tm4_p' => $pengetahuan['tm4_p'] ?? 0,
+                        'ulha1_p' => $pengetahuan['ulha1_p'] ?? 0,
+                        'ulha2_p' => $pengetahuan['ulha2_p'] ?? 0,
+                        'ulha3_p' => $pengetahuan['ulha3_p'] ?? 0,
+                        // 'ulha4_p' => $pengetahuan['ulha4_p'] ?? 0,
                         'pts' => $pengetahuan['pts'] ?? 0,
                         'pas' => $pengetahuan['pas'] ?? 0,
                         'desk_pengetahuan' => $pengetahuan['keterangan'] ?? '-',
@@ -337,81 +323,28 @@ class NilaiController extends Controller
                         'id_anggota_kelas' => $anggota_kelas->id,
                         'semester' => $semester,
                         'id_mapel' => $key,
-                        'tm1_k' => $keterampilan['tm1_k'] ?? 0,
-                        'tm2_k' => $keterampilan['tm2_k'] ?? 0,
-                        'tm3_k' => $keterampilan['tm3_k'] ?? 0,
-                        'tm4_k' => $keterampilan['tm4_k'] ?? 0,
+                        'ulha1_k' => $keterampilan['ulha1_k'] ?? 0,
+                        'ulha2_k' => $keterampilan['ulha2_k'] ?? 0,
+                        'ulha3_k' => $keterampilan['ulha3_k'] ?? 0,
+                        // 'ulha4_k' => $keterampilan['ulha4_k'] ?? 0,
                         'desk_keterampilan' => $keterampilan['keterangan'] ?? '-',
                     ]);
                 }
-        
-                foreach($data_ekskul as $key => $ekskul){
-                    NilaiEkskul::updateOrCreate([
-                        'id_anggota_kelas' => $anggota_kelas->id,
-                        'id_ekskul' => $key,
-                        'semester' => $semester,
-                    ],[
-                        'id_anggota_kelas' => $anggota_kelas->id,
-                        'id_ekskul' => $key,
-                        'semester' => $semester,
-                        'keterangan' => $ekskul['keterangan'] ?? '-',
-                    ]);
-                }
-        
-                foreach($data_proporsi as $key => $proporsi){
-                    NilaiProporsi::updateOrCreate([
-                        'id_anggota_kelas' => $anggota_kelas->id,
-                        'jenis_proporsi' => $key,
-                        'semester' => $semester,
-                    ],[
-                        'id_anggota_kelas' => $anggota_kelas->id,
-                        'semester' => $semester,
-                        'jenis_proporsi' => $key,
-                        'keterangan' => $proporsi ?? '',
-                    ]);
-                }
-        
-                foreach($data_kesehatan as $key => $kesehatan){
-                    NilaiKesehatan::updateOrCreate([
-                        'id_anggota_kelas' => $anggota_kelas->id,
-                        'jenis_kesehatan' => $key,
-                        'semester' => $semester,
-                    ],[
-                        'id_anggota_kelas' => $anggota_kelas->id,
-                        'semester' => $semester,
-                        'jenis_kesehatan' => $key,
-                        'keterangan' => $kesehatan ?? '-',
-                    ]);
-                }
-        
-                foreach($data_sikap as $key => $sikap){
-                    NilaiSikap::updateOrCreate([
-                        'id_anggota_kelas' => $anggota_kelas->id,
-                        'jenis_sikap' => $key,
-                        'semester' => $semester,
-                    ],[
-                        'id_anggota_kelas' => $anggota_kelas->id,
-                        'semester' => $semester,
-                        'jenis_sikap' => $key,
-                        'keterangan' => $sikap ?? '-',
-                    ]);
-                }
-        
-                Saran::updateOrCreate([
-                    'id_anggota_kelas' => $anggota_kelas->id,
-                    'semester' => $semester,
-                ],[
-                    'id_anggota_kelas' => $anggota_kelas->id,
-                    'semester' => $semester,
-                    'keterangan' => $data_saran ?? '-',
-                ]);
             }, 3);
+
+            $mapel_of_jadwal = Jadwal::geetUniqueMapel($anggota_kelas->id_tahun_ajar, $anggota_kelas->id_kelas);
+            $raport_detail = view('nilai.raport_detail', [
+                'anggota_kelas' => $anggota_kelas,
+                'semester' => $semester,
+                'mapel_of_jadwal' => $mapel_of_jadwal,
+            ])->render();
+
         }catch(Exception $e){
             Log::info($e->getMessage());
             return response(['code' => 0, 'message' => 'Gagal menyimpan data nilai']);
         }
 
-        return response(['code' => 1, 'message' => 'Berhasil menyimpan data nilai']);
+        return response(['code' => 1, 'message' => 'Berhasil menyimpan data nilai', 'raport_detail' => $raport_detail]);
     }
 
     /**
@@ -444,28 +377,13 @@ class NilaiController extends Controller
             'saran',
         );
 
-        $mapel=Mapel::pluck('id');
-        $ekskul = Ekskul::all();
-        $prestasi = Prestasi::where('id_anggota_kelas', $anggota_kelas->id)->where('semester', $semester)->get();
-	//dd($prestasi);
-
-        // Contoh mengambil rata-rata nilai dan predikatnya
-        // $nilai = $anggota_kelas->rataNilaiPengetahuan($semester, $mapel);
-            // dd($nilai);
-        // dd(getPredikatNilai($nilai));
-
-        //  $mapel_of_jadwal = Nilai::getUniqueMapel(Nilai::query(), $anggota_kelas->pluck('id')->toArray());
         $mapel_of_jadwal = Jadwal::geetUniqueMapel($anggota_kelas->id_tahun_ajar, $anggota_kelas->id_kelas);
 
          $data = [
             'anggota_kelas' => $anggota_kelas,
             'semester' => $semester,
             'mapel_of_jadwal' => $mapel_of_jadwal,
-            'ekskul' => $ekskul,
-            'prestasi' => $prestasi
         ];
-
-        // return view('nilai.export_raport', compact('anggota_kelas', 'semester'));
 
         $pdf = PDF::loadview('nilai.export_raport', $data)->setPaper('a4', 'potrait');;
 

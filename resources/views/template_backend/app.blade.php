@@ -98,6 +98,11 @@
                 margin-top: 175px !important;
             }
         }
+
+        .col-md-16-6{
+            flex: 0 0 auto;
+            width: 19.9%;
+        }
     </style>
     @stack('styles')
 </head>
@@ -357,7 +362,7 @@ function sikap(e) {
 </script>
 <script>
     $(document).ready(function() {
-      $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
+      $('.tab-refresh').on( 'shown.bs.tab', function (e) {
           $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust().responsive.recalc().ajax.reload();
       });
     })
