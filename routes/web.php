@@ -20,6 +20,7 @@ use App\Http\Controllers\NilaiSikapController;
 use App\Http\Controllers\NilaiKesehatanController;
 use App\Http\Controllers\NilaiProporsiController;
 use App\Http\Controllers\PrestasiController;
+use App\Http\Controllers\DataAdminController;
 
 use App\Http\Controllers\AkademikController;
 
@@ -223,4 +224,29 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('destroy/{akademik}', [AkademikController::class, 'destroy'])->name('destroy');
         Route::get('datatable', [AkademikController::class, 'datatable'])->name('datatable');
     });
+
+    
+        Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+        Route::get('/', [AdminController::class, 'index'])->name('index');
+        Route::get('create', [AdminController::class, 'create'])->name('create');
+        Route::post('store', [AdminController::class, 'store'])->name('store');
+        Route::get('edit/{user}', [AdminController::class, 'edit'])->name('edit');
+        Route::get('show/{user}', [AdminController::class, 'show'])->name('show');
+        Route::patch('update/{user}', [AdminController::class, 'update'])->name('update');
+        Route::delete('destroy/{user}', [AdminController::class, 'destroy'])->name('destroy');
+        Route::get('datatable/{level}', [AdminController::class, 'datatable'])->name('datatable');
+    });
+
+            Route::group(['prefix' => 'dataAdmin', 'as' => 'dataAdmin.'], function () {
+        Route::get('/', [DataAdminController::class, 'index'])->name('index');
+        Route::get('create', [DataAdminController::class, 'create'])->name('create');
+        Route::post('store', [DataAdminController::class, 'store'])->name('store');
+        Route::get('edit/{user}', [DataAdminController::class, 'edit'])->name('edit');
+        Route::get('show/{user}', [DataAdminController::class, 'show'])->name('show');
+        Route::patch('update/{user}', [DataAdminController::class, 'update'])->name('update');
+        Route::delete('destroy/{user}', [DataAdminController::class, 'destroy'])->name('destroy');
+        Route::get('datatable/{level}', [DataAdminController::class, 'datatable'])->name('datatable');
+    });
+
+
 });

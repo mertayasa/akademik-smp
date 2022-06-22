@@ -2,20 +2,21 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="" class="brand-link" style="">
-        <img src="{{ asset('images/default/favicon.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+        <img src="{{ asset('images/default/favicon.png') }}" alt="AdminLTE Logo"
+            class="brand-image img-circle elevation-3">
         <span class="brand-text font-weight-light">SIAKAD</span>
     </a>
     <div class="sidebar">
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                data-accordion="false">
 
                 {{-- Dashboard --}}
                 @php
-                    $is_open_dashboard = isActive([
-                        'dashboard',
-                    ]);
+                    $is_open_dashboard = isActive(['dashboard']);
                 @endphp
-                <li class="nav-item has-treeview {{ $is_open_dashboard == 'active' ? 'menu-open' : '' }}" id="liDashboard">
+                <li class="nav-item has-treeview {{ $is_open_dashboard == 'active' ? 'menu-open' : '' }}"
+                    id="liDashboard">
                     <a href="#" class="nav-link" id="Dashboard">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
@@ -25,13 +26,15 @@
                     </a>
                     <ul class="nav nav-treeview ml-4">
                         <li class="nav-item">
-                            <a href="{{ route('dashboard.index') }}" class="nav-link {{ isActive('dashboard') }}" id="Home">
+                            <a href="{{ route('dashboard.index') }}" class="nav-link {{ isActive('dashboard') }}"
+                                id="Home">
                                 <i class="fas fa-home nav-icon"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('dashboard.index') }}" class="nav-link {{ isActive('dashboard') }}" id="AdminHome">
+                            <a href="{{ route('dashboard.index') }}" class="nav-link {{ isActive('dashboard') }}"
+                                id="AdminHome">
                                 <i class="fas fa-home nav-icon"></i>
                                 <p>Dashboard Admin</p>
                             </a>
@@ -41,15 +44,10 @@
 
                 {{-- Master Data --}}
                 @php
-                    $is_open_master = isActive([
-                        'kelas',
-                        'guru',
-                        'ortu',
-                        'siswa',
-                        'mapel',
-                    ]);
+                    $is_open_master = isActive(['kelas', 'guru', 'ortu', 'siswa', 'mapel', 'admin']);
                 @endphp
-                <li class="nav-item has-treeview {{ $is_open_master == 'active' ? 'menu-open' : ''  }}" id="liMasterData">
+                <li class="nav-item has-treeview {{ $is_open_master == 'active' ? 'menu-open' : '' }}"
+                    id="liMasterData">
                     <a href="#" class="nav-link" id="MasterData">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
@@ -59,37 +57,43 @@
                     </a>
                     <ul class="nav nav-treeview ml-4">
                         <li class="nav-item">
-                            <a href="{{ route('guru.index') }}" class="nav-link {{ isActive('guru') }}" id="DataGuru">
+                            <a href="{{ route('guru.index') }}" class="nav-link {{ isActive('guru') }}"
+                                id="DataGuru">
                                 <i class="fas fa-users nav-icon"></i>
                                 <p>Data Guru</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('ortu.index') }}" class="nav-link {{ isActive('ortu') }}" id="DataOrangTua">
+                            <a href="{{ route('ortu.index') }}" class="nav-link {{ isActive('ortu') }}"
+                                id="DataOrangTua">
                                 <i class="fas fa-users nav-icon"></i>
                                 <p>Data Orang Tua</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('guru.index') }}" class="nav-link {{ isActive('guru') }}" id="DataAdmin">
+                            <a href="{{ route('dataAdmin.index') }}" class="nav-link {{ isActive('dataAdmin') }}"
+                                id="DatadataAdmin">
                                 <i class="fas fa-users nav-icon"></i>
-                                <p>Data Admin</p>
+                                <p>Data dataAdmin</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('kelas.index') }}" class="nav-link {{ isActive('kelas') }}" id="DataKelas">
+                            <a href="{{ route('kelas.index') }}" class="nav-link {{ isActive('kelas') }}"
+                                id="DataKelas">
                                 <i class="fas fa-home nav-icon"></i>
                                 <p>Data Kelas</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('siswa.index') }}" class="nav-link {{ isActive('siswa') }}" id="DataSiswa">
+                            <a href="{{ route('siswa.index') }}" class="nav-link {{ isActive('siswa') }}"
+                                id="DataSiswa">
                                 <i class="fas fa-users nav-icon"></i>
                                 <p>Data Siswa</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('mapel.index') }}" class="nav-link {{ isActive('mapel') }}" id="DataMapel">
+                            <a href="{{ route('mapel.index') }}" class="nav-link {{ isActive('mapel') }}"
+                                id="DataMapel">
                                 <i class="fas fa-book nav-icon"></i>
                                 <p>Data Mata Pelajaran</p>
                             </a>
@@ -105,7 +109,8 @@
 
                 {{-- Pengumuman --}}
                 <li class="nav-item">
-                    <a href="{{ route('pengumuman.index') }}" class="nav-link {{ isActive('pengumuman') }}" id="Home">
+                    <a href="{{ route('pengumuman.index') }}" class="nav-link {{ isActive('pengumuman') }}"
+                        id="Home">
                         <i class="nav-icon fas fa-bullhorn"></i>
                         <p>Pengumuman</p>
                     </a>

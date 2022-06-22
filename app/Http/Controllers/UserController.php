@@ -22,6 +22,9 @@ class UserController extends Controller
         if (FacadesRequest::is('*ortu*')) {
             return view('ortu.index');
         }
+        if (FacadesRequest::is('*admin*')) {
+            return view('petugas.index');
+        }
     }
 
     public function datatable($level)
