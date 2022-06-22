@@ -73,7 +73,7 @@ class JadwalController extends Controller
     public function datatableGuru()
     {
         $tahun_ajar_active = TahunAjar::where('status', 'aktif')->first();
-        $jadwal = Jadwal::where('id_guru', Auth::id())->where('status', 'aktif')->where('id_tahun_ajar', $tahun_ajar_active->id)->get();
+        $jadwal = Jadwal::with('ruangan')->where('id_guru', Auth::id())->where('status', 'aktif')->where('id_tahun_ajar', $tahun_ajar_active->id)->get();
         return JadwalDataTable::set($jadwal);
     }
 

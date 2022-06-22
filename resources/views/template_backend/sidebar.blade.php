@@ -11,6 +11,18 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
 
+            @if (Auth::user()->isOrtu() || Auth::user()->isGuru())
+                {{-- Dashboard --}}
+                <li class="nav-item">
+                    <a href="{{ route('dashboard.index') }}" class="nav-link {{ isActive('dashboard') }}"
+                        id="Home">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+            @endif
+
+            @if (Auth::user()->isAdmin())
                 {{-- Dashboard --}}
                 @php
                     $is_open_dashboard = isActive(['dashboard']);
@@ -41,10 +53,12 @@
                         </li>
                     </ul>
                 </li>
+            @endif
 
+            @if (Auth::user()->isAdmin())
                 {{-- Master Data --}}
                 @php
-                    $is_open_master = isActive(['kelas', 'guru', 'ortu', 'siswa', 'mapel', 'admin']);
+                    $is_open_master = isActive(['kelas', 'guru', 'ortu', 'siswa', 'mapel', 'dataAdmin', 'ruangan']);
                 @endphp
                 <li class="nav-item has-treeview {{ $is_open_master == 'active' ? 'menu-open' : '' }}"
                     id="liMasterData">
@@ -56,6 +70,13 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview ml-4">
+                        <li class="nav-item">
+                            <a href="{{ route('siswa.index') }}" class="nav-link {{ isActive('siswa') }}"
+                                id="DataSiswa">
+                                <i class="fas fa-users nav-icon"></i>
+                                <p>Data Siswa</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="{{ route('guru.index') }}" class="nav-link {{ isActive('guru') }}"
                                 id="DataGuru">
@@ -74,7 +95,7 @@
                             <a href="{{ route('dataAdmin.index') }}" class="nav-link {{ isActive('dataAdmin') }}"
                                 id="DatadataAdmin">
                                 <i class="fas fa-users nav-icon"></i>
-                                <p>Data dataAdmin</p>
+                                <p>Data Admin</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -85,10 +106,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('siswa.index') }}" class="nav-link {{ isActive('siswa') }}"
-                                id="DataSiswa">
-                                <i class="fas fa-users nav-icon"></i>
-                                <p>Data Siswa</p>
+                            <a href="{{ route('ruangan.index') }}" class="nav-link {{ isActive('ruangan') }}" id="DataRuangan">
+                                <i class="fas fa-door-open nav-icon"></i>
+                                <p>Data Ruangan</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -96,18 +116,6 @@
                                 id="DataMapel">
                                 <i class="fas fa-book nav-icon"></i>
                                 <p>Data Mata Pelajaran</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link" id="DataUser">
-                                <i class="fas fa-user-plus nav-icon"></i>
-                                <p>Data User</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('ruangan.index') }}" class="nav-link" id="DataRuangan">
-                                <i class="fas fa-user-plus nav-icon"></i>
-                                <p>Data Ruangan</p>
                             </a>
                         </li>
                     </ul>
@@ -121,10 +129,11 @@
                         <p>Pengumuman</p>
                     </a>
                 </li>
+            @endif
 
                 {{-- Akademik --}}
                 <li class="nav-item has-treeview">
-                    <a href="{{ route('akademik.index') }}" class="nav-link" id="Home">
+                    <a href="{{ route('akademik.index') }}" class="nav-link {{ isActive('akademik') }}" id="Home">
                         <i class="nav-icon fas fa-book-reader"></i>
                         <p>Akademik</p>
                     </a>
@@ -138,6 +147,7 @@
                     </a>
                 </li>
 
+            @if (Auth::user()->isAdmin())
                 {{-- Trash --}}
                 <li class="nav-item has-treeview" id="liViewTrash">
                     <a href="#" class="nav-link" id="ViewTrash">
@@ -186,6 +196,7 @@
                         </li>
                     </ul>
                 </li>
+            @endif
 
             </ul>
         </nav>

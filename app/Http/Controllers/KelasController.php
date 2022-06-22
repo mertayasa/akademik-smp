@@ -49,10 +49,10 @@ class KelasController extends Controller
             Kelas::create($request->all());
         } catch (Exception $e) {
             Log::info($e->getMessage());
-            return redirect()->back()->withInput()->with('error', 'Data kelasn Gagal Ditambahkan');
+            return redirect()->back()->withInput()->with('error', 'Data kelas Gagal Ditambahkan');
         }
 
-        return redirect('kelas')->with('success', 'Data kelasn Berhasil Ditambahkan');
+        return redirect('kelas')->with('success', 'Data kelas Berhasil Ditambahkan');
     }
 
     /**

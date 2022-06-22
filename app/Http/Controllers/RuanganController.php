@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\RuanganDataTable;
+use App\Http\Requests\RuanganRequest;
 use App\Models\Ruangan;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class RuanganController extends Controller
 {
@@ -14,7 +18,14 @@ class RuanganController extends Controller
      */
     public function index()
     {
-        //
+        return view('ruangan.index');
+    }
+
+    public function datatable()
+    {
+        $ruangan = Ruangan::all();
+
+        return RuanganDataTable::set($ruangan);
     }
 
     /**
@@ -24,7 +35,7 @@ class RuanganController extends Controller
      */
     public function create()
     {
-        //
+        return view('ruangan.create');
     }
 
     /**
@@ -33,9 +44,16 @@ class RuanganController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RuanganRequest $request)
     {
-        //
+        try {
+            Ruangan::create($request->validated());
+        } catch (Exception $e) {
+            Log::info($e->getMessage());
+            return redirect()->back()->withInput()->with('error', 'Data ruangan Gagal Ditambahkan');
+        }
+
+        return redirect('ruangan')->with('success', 'Data ruangan Berhasil Ditambahkan');
     }
 
     /**
@@ -57,7 +75,7 @@ class RuanganController extends Controller
      */
     public function edit(Ruangan $ruangan)
     {
-        //
+        return view('ruangan.edit', compact('ruangan'));
     }
 
     /**
@@ -67,9 +85,16 @@ class RuanganController extends Controller
      * @param  \App\Models\Ruangan  $ruangan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ruangan $ruangan)
+    public function update(RuanganRequest $request, Ruangan $ruangan)
     {
-        //
+        try {
+            $ruangan->update($request->validated());
+        } catch (Exception $e) {
+            Log::info($e->getMessage());
+            return redirect()->back()->withInput()->with('error', 'Data ruangan Gagal Di Edit');
+        }
+
+        return redirect('ruangan')->with('info', 'Data ruangan Berhasil Diedit  ');
     }
 
     /**
@@ -80,6 +105,13 @@ class RuanganController extends Controller
      */
     public function destroy(Ruangan $ruangan)
     {
-        //
+        try {
+            $ruangan->delete();
+        } catch (Exception $e) {
+            Log::info($e->getMessage());
+            return response(['code' => 0, 'message' => 'Gagal menghapus data ruangan']);
+        }
+
+        return response(['code' => 1, 'message' => 'Berhasil menghapus data ruangan']);
     }
 }

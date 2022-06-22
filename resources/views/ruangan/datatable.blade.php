@@ -1,10 +1,9 @@
-<table class="table table-hover table-striped" width="100%" id="EkskulDataTable">
+<table class="table table-hover table-striped" width="100%" id="RuanganDataTable">
     <thead>
         <tr>
         <th style="width: 30px">No</th>
         <th></th>
-        <th>Nama Ekstrakulikuler </th>
-        <th>Status </th>
+        <th>Nama Ruangan</th>
         <th>Aksi</th>
         </tr>
     </thead>
@@ -16,12 +15,12 @@
 <script>
 
     let table
-    let url = "{{ route('ekskul.datatable') }}"
+    let url = "{{ route('ruangan.datatable') }}"
 
     datatable(url)
     function datatable (url){
 
-        table = $('#EkskulDataTable').DataTable({
+        table = $('#RuanganDataTable').DataTable({
             processing: true,
             serverSide: true,
             responsive: true,
@@ -43,11 +42,6 @@
                 {
                     data: 'nama', 
                     name: 'nama',
-                },
-                {
-                    data: 'status', 
-                    name: 'status',
-                    className: "text-center"
                 },
                 {
                     data: 'action',

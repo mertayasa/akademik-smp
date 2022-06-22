@@ -1,24 +1,22 @@
-
-@extends('layouts.app')
+@extends('template_backend.app')
 
 @section('content')
 <div class="container-fluid p-0">
-    <h1 class=" mb-3">Ekstrakulikuler</h1>
+    <h1 class="h3 mb-3">Ruangan</h1>
 
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class=" mb-0 ">Edit Ekstrakulikuler</h4>
+                    <h5 class="card-title mb-0">Ruangan Baru</h5>
                 </div>
                 <div class="card-body pt-0">
-                    @include('layouts.flash')
-                        @include('layouts.error_message')
-                        {!! Form::model($ekskul, ['route' => ['ekskul.update', $ekskul->id], 'method' => 'patch']) !!}
-                        @include('ekskul.form')
+                        @include('layouts.flash')
+                        {!! Form::open(['route' => 'ruangan.store']) !!}
+                        @include('ruangan.form')
                         <div class="row mt-3">
                             <div class="col-12">
-                                <a href="{{ route('ekskul.index') }}" class="btn btn-sm btn-danger">Kembali</a>
+                                <a href="{{ route('ruangan.index') }}" class="btn btn-sm btn-danger">Kembali</a>
                                 <button class="btn btn-sm btn-primary ml-3" type="submit">Simpan</button>
                             </div>
                         </div>
@@ -30,3 +28,4 @@
 
 </div>
 @endsection
+

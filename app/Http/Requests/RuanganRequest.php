@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class EkskulRequest extends FormRequest
+class RuanganRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,10 +27,9 @@ class EkskulRequest extends FormRequest
         $rules = [];
         
         if($this->method() == 'PATCH'){
-            $rules += ['nama' => ['required', 'max:50', 'unique:ekskul,nama,'.$this->route('ekskul')->id]];
-            $rules += ['status' => ['required', Rule::in(['aktif', 'nonaktif'])]];
+            $rules += ['nama' => ['required', 'max:50', 'unique:ruangan,nama,'.$this->route('ruangan')->id]];
         }else{
-            $rules += ['nama' => ['required', 'max:50', 'unique:ekskul,nama']];
+            $rules += ['nama' => ['required', 'max:50', 'unique:ruangan,nama']];
         };
 
         return $rules;

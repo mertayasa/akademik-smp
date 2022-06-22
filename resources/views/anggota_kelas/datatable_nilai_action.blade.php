@@ -1,8 +1,4 @@
-<div class="btn btn-sm-group text-left">
-    <a href="javascript:void(0)" onclick="showNilaiRaport(`{{ route('nilai.show_raport', [$anggota_kelas->id, 'ganjil']) }}`)" class="btn btn-sm btn-sm btn-warning" data-toggle="tooltip" data-placement="bottom" title="Ulangan Ganjil" style="margin-right: 5px"><b> Ulangan Ganjil</b></a>
-    <a href="javascript:void(0)" onclick="showNilaiRaport(`{{ route('nilai.show_raport', [$anggota_kelas->id, 'genap']) }}`)" class="btn btn-sm btn-sm btn-info" data-toggle="tooltip" data-placement="bottom" title="Ulangan Genap" style="margin-right: 5px"><b> Ulangan Genap</b></a>
-    <div class="mt-1">
-        <a href="javascript:void(0)" onclick="showNilaiRaport(`{{ route('nilai.show_raport', [$anggota_kelas->id, 'ganjil']) }}`)" class="btn btn-sm btn-sm btn-warning" data-toggle="tooltip" data-placement="bottom" title="Raport Ganjil" style="margin-right: 5px"><b> Raport Ganjil</b></a>
-        <a href="javascript:void(0)" onclick="showNilaiRaport(`{{ route('nilai.show_raport', [$anggota_kelas->id, 'genap']) }}`)" class="btn btn-sm btn-sm btn-info" data-toggle="tooltip" data-placement="bottom" title="Raport Genap" style="margin-right: 5px"><b> Raport Genap</b></a>
-    </div>
+<div class="btn btn-sm-group">
+    <a href="javascript:void(0)" onclick="showNilaiRaport(`{{ route('nilai.edit_raport', [$anggota_kelas->id, 'ganjil']) }}`)" class="btn btn-sm btn-sm btn-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nilai Smt Ganjil" style="margin-right: 5px"><b> Smt Ganjil</b></a>
+    <a href="javascript:void(0)" onclick="showNilaiRaport(`{{ route('nilai.edit_raport', [$anggota_kelas->id, 'genap']) }}`)" class="btn btn-sm btn-sm btn-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nilai Smt Genap" style="margin-right: 5px"><b> Smt Genap</b></a>
 </div>

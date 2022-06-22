@@ -144,11 +144,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [RuanganController::class, 'index'])->name('index');
         Route::get('create', [RuanganController::class, 'create'])->name('create');
         Route::post('store', [RuanganController::class, 'store'])->name('store');
-        Route::get('edit/{user}', [RuanganController::class, 'edit'])->name('edit');
-        Route::get('show/{user}', [RuanganController::class, 'show'])->name('show');
-        Route::patch('update/{user}', [RuanganController::class, 'update'])->name('update');
-        Route::delete('destroy/{user}', [RuanganController::class, 'destroy'])->name('destroy');
-        Route::get('datatable/{level}', [RuanganController::class, 'datatable'])->name('datatable');
+        Route::get('edit/{ruangan}', [RuanganController::class, 'edit'])->name('edit');
+        Route::get('show/{ruangan}', [RuanganController::class, 'show'])->name('show');
+        Route::patch('update/{ruangan}', [RuanganController::class, 'update'])->name('update');
+        Route::delete('destroy/{ruangan}', [RuanganController::class, 'destroy'])->name('destroy');
+        Route::get('datatable/', [RuanganController::class, 'datatable'])->name('datatable');
     });
 
     Route::group(['prefix' => 'wali_kelas', 'as' => 'wali_kelas.'], function () {
