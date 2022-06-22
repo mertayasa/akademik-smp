@@ -99,7 +99,7 @@
             const raportContainer = document.getElementById('raportContainer')
             
             if(cardNilai != undefined){
-                cardNilai.classList.remove('d-none')
+                cardNilai.classList.add('d-none')
             }
 
             if(nilaiContainer != undefined){

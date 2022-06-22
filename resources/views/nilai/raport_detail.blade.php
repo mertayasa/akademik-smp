@@ -1,5 +1,23 @@
 
-<p class="sub-title">PENGETAHUAN DAN KETERAMPILAN</p>
+<table class="mb-3">
+    <tr>
+        <td>Nama </td>
+        <td width="50px" class="text-center">:</td>
+        <td>{{ $anggota_kelas->siswa->nama }}</td>
+    </tr>
+    <tr>
+        <td>Kelas</td>
+        <td width="50px" class="text-center">:</td>
+        <td>{{ $anggota_kelas->kelas->kode }}</td>
+    </tr>
+    <tr>
+        <td>Semester</td>
+        <td width="50px" class="text-center">:</td>
+        <td>{{ ucfirst($semester) }}</td>
+    </tr>
+</table>
+
+{{-- <p class="sub-title">PENGETAHUAN DAN KETERAMPILAN</p> --}}
 {{-- <p style="margin-top:-15px;"><b>Kriteria Ketuntasan Minimal Satuan Pendidikan = 65 </b></p> --}}
 <table class="table table-bordered  ">
     <tr style="text-align:center;">
