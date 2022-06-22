@@ -11,7 +11,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <h4 class=" mb-0 ">{{ Auth::user()->isOrtu() ? 'Data Anak' : 'Data Siswa' }}</h4>
                         @if (Auth::user()->isAdmin())
-                            <a href="{{ route('siswa.create') }}" class="btn btn-sm btn-primary add" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tambah siswa"> <i class="fas fa-folder-plus"></i> siswa Baru</a>
+                            <a href="{{ route('siswa.create') }}" class="btn btn-sm btn-primary add" data-toggle="tooltip" data-placement="bottom" title="Tambah siswa"> <i class="fas fa-folder-plus"></i> siswa Baru</a>
                         @endif
                     </div>
                 </div>

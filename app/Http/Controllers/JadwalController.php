@@ -79,7 +79,7 @@ class JadwalController extends Controller
 
     public function datatable($id_kelas, $id_tahun_ajar)
     {
-        $jadwal = Jadwal::where('id_kelas', $id_kelas)->where('id_tahun_ajar', $id_tahun_ajar)->get();
+        $jadwal = Jadwal::with('ruangan')->where('id_kelas', $id_kelas)->where('id_tahun_ajar', $id_tahun_ajar)->get();
         return JadwalDataTable::set($jadwal);
     }
 
@@ -113,9 +113,11 @@ class JadwalController extends Controller
             }, 5);
         } catch (Exception $e) {
             Log::info($e->getMessage());
+            
             if($request->ajax()){
                 return response(['code' => 0, 'message' => 'Gagal menambahkan data jadwal']);
             }
+
             return redirect()->back()->withInput()->with('error', 'Data jadwaln Gagal Ditambahkan');
         }
 

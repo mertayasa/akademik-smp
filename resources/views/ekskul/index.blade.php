@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class=" mb-0 ">Data Ekstrakulikuler</h4>
-                    <a href="{{ route('ekskul.create') }}" class="btn btn-sm btn-primary add" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tambah ekskul"> <i class="fas fa-folder-plus"></i> Ekstrakurikuler Baru
+                    <a href="{{ route('ekskul.create') }}" class="btn btn-sm btn-primary add" data-toggle="tooltip" data-placement="bottom" title="Tambah ekskul"> <i class="fas fa-folder-plus"></i> Ekstrakurikuler Baru
                     </a>
                 </div>
                 <div class="px-3">

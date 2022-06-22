@@ -12,11 +12,11 @@
             </tr>
             <tr>
                 @foreach ($durasi_absensi_ganjil as $ganjil)
-                    <td class="text-center" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <td class="text-center" data-toggle="tooltip" data-placement="top"
                         title="{{ $ganjil }}">{{ $loop->iteration }}</td>
                 @endforeach
                 @foreach ($durasi_absensi_genap as $genap)
-                    <td class="text-center" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <td class="text-center" data-toggle="tooltip" data-placement="top"
                         title="{{ $genap }}">{{ $loop->iteration }}</td>
                 @endforeach
             </tr>

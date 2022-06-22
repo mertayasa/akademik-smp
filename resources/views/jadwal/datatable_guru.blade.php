@@ -13,6 +13,7 @@
             <th></th>
             <th>Pelajaran</th>
             <th>Kelas</th>
+            <th>Ruangan</th>
             <th>Jam Mulai</th>
             <th>Jam Selesai</th>
         </tr>
@@ -55,6 +56,11 @@
                         className: "text-center align-middle"
                     },
                     {
+                        data: 'ruangan.nama',
+                        name: 'ruangan.nama',
+                        className: "text-center align-middle"
+                    },
+                    {
                         data: 'jam_mulai',
                         name: 'jam_mulai',
                         className: "text-center align-middle"
@@ -74,7 +80,7 @@
                     api.column(groupColumn, {page:'current'} ).data().each( function ( group, i ) {
                         if ( last !== group ) {
                             $(rows).eq( i ).before(
-                                '<tr class="group"><td colspan="5"><b>'+group+'</b></td></tr>'
+                                '<tr class="group"><td colspan="6"><b>'+group+'</b></td></tr>'
                             );
         
                             last = group;

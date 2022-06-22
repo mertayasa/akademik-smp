@@ -36,10 +36,9 @@ class JadwalRequest extends FormRequest
             'hari' => ['required', Rule::in(['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'])],
             'jam_mulai' => ['required'],
             'jam_selesai' => ['required'],
-            // 'id_mapel' => ['required', 'exists:mapel,id', new UniqueJadwal($this->hari, $this->id_tahun_ajar, $this->id_kelas, $this->id_mapel, $this->jam_mulai)],
+            'id_ruangan' => ['required']
         ];
 
-        // Log::info($this->_method);
         if($this->_method == 'PATCH'){
             $id_jadwal = $this->route('jadwal')->id;
             $rules += ['id_mapel' => ['required', 'exists:mapel,id', new UniqueJadwal($this->hari, $this->id_tahun_ajar, $this->id_kelas, $this->id_mapel, $this->jam_mulai, $id_jadwal)]];

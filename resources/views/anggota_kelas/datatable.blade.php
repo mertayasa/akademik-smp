@@ -56,7 +56,7 @@
                     name: 'action',
                     orderable: false,
                     searchable: false,
-                    className: "text-center align-middle"
+                    className: "align-middle"
 
                 }
             ],

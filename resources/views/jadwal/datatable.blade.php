@@ -14,6 +14,7 @@
             <th>Jam Mulai</th>
             <th>Jam Selesai</th>
             <th>Guru</th>
+            <th>Ruangan</th>
             @if (Auth::user()->isAdmin())
                 <th>Aksi</th>
             @else
@@ -63,6 +64,11 @@
                         className: "text-center align-middle"
                     },
                     {
+                        data: 'ruangan.nama',
+                        name: 'ruangan.nama',
+                        className: "text-center align-middle"
+                    },
+                    {
                         data: 'action',
                         name: 'action',
                         orderable: false,
@@ -79,7 +85,7 @@
                     api.column(groupColumn, {page:'current'} ).data().each( function ( group, i ) {
                         if ( last !== group ) {
                             $(rows).eq( i ).before(
-                                '<tr class="group"><td colspan="5"><b>'+group+'</b></td></tr>'
+                                '<tr class="group"><td colspan="6"><b>'+group+'</b></td></tr>'
                             );
         
                             last = group;

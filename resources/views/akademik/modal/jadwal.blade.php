@@ -1,13 +1,12 @@
-<div class="modal fade" id="jadwalModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="jadwalModalLabel" aria-hidden="true">
+<div class="modal fade" id="jadwalModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="jadwalModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="jadwalModalLabel">Jadwal Kelas</h5>
-                <button type="button" class="btn btn-sm-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn btn-sm-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 {!! Form::open(['route' => 'jadwal.store', 'id' => 'formJadwal']) !!}
-                {{-- @method('patch') --}}
                 <div class="row">
                     {!! Form::hidden('id_kelas', $id_kelas, ['id' => 'idKelas']) !!}
                     {!! Form::hidden('id_tahun_ajar', $id_tahun_ajar, ['id' => 'idTahunAjar']) !!}
@@ -34,6 +33,13 @@
                     </div>
 
                     <div class="col-12 pb-3 pb-md-0 mb-2">
+                        {!! Form::label('ruangan', 'Ruangan', ['class' => 'mb-1']) !!}
+                        {!! Form::select('id_ruangan', $ruangan, null, ['class' => 'form-control select2Jadwal', 'id' => 'ruangan']) !!}
+                        <div class="invalid-feedback" error-name="ruangan">
+                        </div>
+                    </div>
+
+                    <div class="col-12 pb-3 pb-md-0 mb-2">
                         {!! Form::label('jamMulai', 'Jam Mulai', ['class' => 'mb-1']) !!}
                         {!! Form::time('jam_mulai', null, ['class' => 'form-control', 'id' => 'jamMulai']) !!}
                         <div class="invalid-feedback" error-name="jam_mulai">
@@ -50,7 +56,7 @@
                 {{ Form::close() }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Tutup</button>
                 <button type="button" class="btn btn-sm btn-primary d-none" id="btnStoreJadwal">Simpan</button>
                 <button type="button" class="btn btn-sm btn-primary d-none" id="btnUpdateJadwal">Update</button>
             </div>

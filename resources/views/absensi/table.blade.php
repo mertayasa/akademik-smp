@@ -6,7 +6,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th rowspan="2" width="5%" class="text-center align-middle">Induk</th>
+                            <th rowspan="2" width="5%" class="text-center align-middle">NIS</th>
                             <th rowspan="2" style="min-width:300px" class="text-center align-middle">Nama</th>
                             <th colspan="{{ $group_ganjil['count_absen'] }}" class="text-center">
                                 {{ $group_ganjil['month_name'] }}</th>
@@ -15,13 +15,13 @@
                         </tr>
                         <tr>
                             @if (count($period) == 0)
-                                <td class="text-center" data-bs-toggle="tooltip" data-bs-placement="top" title="">
+                                <td class="text-center" data-toggle="tooltip" data-placement="top" title="">
                                     Belum ada absensi</td>
                             @else
                                 @foreach ($period['absensi'] as $key_abs => $tgl_ganjil)
                                     @if (str_contains($tgl_ganjil['tanggal'], $group_key))
-                                        <td rowspan="2" class="text-center px-1" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" style="cursor: pointer;"
+                                        <td rowspan="2" class="text-center px-1" data-toggle="tooltip"
+                                            data-placement="top" style="cursor: pointer;"
                                             title="{{ $tgl_ganjil['tanggal'] }}">{{ $key_ganjil++ }}</td>
                                     @endif
                                 @endforeach

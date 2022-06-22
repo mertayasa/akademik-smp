@@ -1,9 +1,10 @@
-<div class="modal fade" id="studentModal" tabindex="-1" aria-labelledby="studentModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="studentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> --}}
+<div class="modal fade" id="studentModal" tabindex="-1" role="dialog" aria-labelledby="studentModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="studentModalLabel">Anggota Kelas</h5>
-                <button type="button" class="btn btn-sm-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn btn-sm-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 {!! Form::open(['route' => 'anggota_kelas.store', 'id' => 'formAddStudent']) !!}
@@ -21,7 +22,7 @@
                 {{ Form::close() }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Tutup</button>
                 <button type="button" class="btn btn-sm btn-primary" id="btnStoreStudent">Simpan</button>
             </div>
         </div>

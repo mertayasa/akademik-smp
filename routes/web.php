@@ -22,7 +22,7 @@ use App\Http\Controllers\NilaiProporsiController;
 use App\Http\Controllers\PrestasiController;
 
 use App\Http\Controllers\AkademikController;
-
+use App\Http\Controllers\RuanganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -137,6 +137,17 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('update/{user}', [UserController::class, 'update'])->name('update');
         Route::delete('destroy/{user}', [UserController::class, 'destroy'])->name('destroy');
         Route::get('datatable/{level}', [UserController::class, 'datatable'])->name('datatable');
+    });
+
+    Route::group(['prefix' => 'ruangan', 'as' => 'ruangan.'], function () {
+        Route::get('/', [RuanganController::class, 'index'])->name('index');
+        Route::get('create', [RuanganController::class, 'create'])->name('create');
+        Route::post('store', [RuanganController::class, 'store'])->name('store');
+        Route::get('edit/{user}', [RuanganController::class, 'edit'])->name('edit');
+        Route::get('show/{user}', [RuanganController::class, 'show'])->name('show');
+        Route::patch('update/{user}', [RuanganController::class, 'update'])->name('update');
+        Route::delete('destroy/{user}', [RuanganController::class, 'destroy'])->name('destroy');
+        Route::get('datatable/{level}', [RuanganController::class, 'datatable'])->name('datatable');
     });
 
     Route::group(['prefix' => 'wali_kelas', 'as' => 'wali_kelas.'], function () {

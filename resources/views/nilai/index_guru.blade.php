@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    <div id="raportContainer" class="d-none"></div>
+    <div id="nilaiContainer" class="d-none"></div>
 </div>
 @endsection
 

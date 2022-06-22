@@ -94,17 +94,17 @@
         }
 
         function hideFormNilai(){
-            const raportContainer = document.getElementById('raportContainer')
-            if(raportContainer != undefined){
-                raportContainer.classList.remove('d-none')
-                raportContainer.innerHTML = ''
+            const nilaiContainer = document.getElementById('nilaiContainer')
+            if(nilaiContainer != undefined){
+                nilaiContainer.classList.remove('d-none')
+                nilaiContainer.innerHTML = ''
             }
         }
 
         function showNilaiRaport(showNilaiUrl){
             // console.log(showNilaiUrl);
-            const raportContainer = document.getElementById('raportContainer')
-            raportContainer.classList.remove('d-none')
+            const nilaiContainer = document.getElementById('nilaiContainer')
+            nilaiContainer.classList.remove('d-none')
 
             fetch(showNilaiUrl, {
                 headers: {
@@ -117,9 +117,9 @@
             .then(data => {
                 // console.log(data);
                 if (data.code == 1) {
-                    raportContainer.innerHTML = ''
-                    raportContainer.insertAdjacentHTML('beforeend', data.form_raport)
-                    raportContainer.scrollIntoView()
+                    nilaiContainer.innerHTML = ''
+                    nilaiContainer.insertAdjacentHTML('beforeend', data.form_raport)
+                    nilaiContainer.scrollIntoView()
                 }else{
                     showToast(data.code, data.message)
                 }

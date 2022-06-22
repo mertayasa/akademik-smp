@@ -20,6 +20,7 @@ class Jadwal extends Model
         'hari',
         'kode_hari',
         'status',
+        'id_ruangan'
     ];
 
     public $with = [
@@ -51,6 +52,11 @@ class Jadwal extends Model
     public function mapel()
     {
         return $this->belongsTo('App\Models\Mapel', 'id_mapel');
+    }
+
+    public function ruangan()
+    {
+        return $this->belongsTo('App\Models\Ruangan', 'id_ruangan');
     }
 
     static function geetUniqueMapel($id_tahun_ajar, $id_kelas)

@@ -32,10 +32,5 @@
             <td>Email</td>
             <td>: {{ $wali_kelas->user->email }}</td>
         </tr>
-        <tr>
-            <td>Status</td>
-            <td>: {{ $wali_kelas->user->status_guru }}</td>
-        </tr>
-
     </table>
 </div>

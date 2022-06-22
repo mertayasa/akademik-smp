@@ -1,9 +1,9 @@
-<div class="modal fade" id="mapelNilaiModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="mapelNilaiModalLabel" aria-hidden="true">
+<div class="modal fade" id="mapelNilaiModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="mapelNilaiModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="mapelNilaiModalLabel">Anggota Kelas</h5>
-                <button type="button" class="btn btn-sm-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn btn-sm-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 {!! Form::open(['route' => ['nilai.store_mapel', [$id_kelas, $id_tahun_ajar]], 'id' => 'formMapelNilai']) !!}
@@ -18,7 +18,7 @@
                 {{ Form::close() }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Tutup</button>
                 <button type="button" class="btn btn-sm btn-primary" id="btnStoreMapelNilai" onclick="storeMapelNilai()">Simpan</button>
             </div>
         </div>

@@ -100,6 +100,12 @@
                                 <p>Data User</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('ruangan.index') }}" class="nav-link" id="DataRuangan">
+                                <i class="fas fa-user-plus nav-icon"></i>
+                                <p>Data Ruangan</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
@@ -113,7 +119,7 @@
 
                 {{-- Akademik --}}
                 <li class="nav-item has-treeview">
-                    <a href="{{ url('/') }}" class="nav-link" id="Home">
+                    <a href="{{ route('akademik.index') }}" class="nav-link" id="Home">
                         <i class="nav-icon fas fa-book-reader"></i>
                         <p>Akademik</p>
                     </a>

@@ -10,7 +10,7 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
                         <h4 class=" mb-0 ">Data Guru</h4>
-                        <a href="{{ route('guru.create') }}" class="btn btn-sm btn-primary add" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tambah guru"> <i class="fas fa-folder-plus"></i> Guru Baru</a>
+                        <a href="{{ route('guru.create') }}" class="btn btn-sm btn-primary add" data-toggle="tooltip" data-placement="bottom" title="Tambah guru"> <i class="fas fa-folder-plus"></i> Guru Baru</a>
                     </div>
                 </div>
                 <div class="px-3">

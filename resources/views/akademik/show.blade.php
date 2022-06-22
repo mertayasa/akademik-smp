@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('template_backend.app')
 
 @section('content')
     <div class="container-fluid p-0">
@@ -41,10 +41,10 @@
                                 <div class="tab-pane fade show active" id="siswa">
                                     <div class="card-body px-0">
                                         @if (Auth::user()->isAdmin())
-                                            <div class="card-header d-flex justify-content-end px-0 pt-0">
-                                                <a href="#" data-bs-toggle="modal" onclick="createAnggota(this)" data-bs-target="#studentModal"
-                                                    class="btn btn-sm btn-primary add" data-bs-toggle="tooltip"
-                                                    data-bs-placement="bottom" title="Tambah Anggota Kelas"> <i
+                                            <div class="card-header border-0 d-flex justify-content-end px-0 pt-0">
+                                                <a href="#" data-toggle="modal" onclick="createAnggota(this)" data-target="#studentModal"
+                                                    class="btn btn-sm btn-primary add" data-toggle="tooltip"
+                                                    data-placement="bottom" title="Tambah Anggota Kelas"> <i
                                                         class="fas fa-folder-plus"></i> Anggota Kelas Baru</a>
                                             </div>
                                         @endif
@@ -55,13 +55,12 @@
                                 <div class="tab-pane fade" id="jadwal">
                                     <div class="card-body px-0">
                                         @if (Auth::user()->isAdmin())
-                                            <div class="card-header d-flex justify-content-end px-0 pt-0">
+                                            <div class="card-header border-0 d-flex justify-content-end px-0 pt-0">
                                                 <a href="#" onclick="createJadwal(this)" 
                                                     class="btn btn-sm btn-primary add"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#jadwalModal" 
-                                                    data-bs-toggle="tooltip" 
-                                                    data-bs-placement="bottom" 
+                                                    data-toggle="modal"
+                                                    data-target="#jadwalModal" 
+                                                    data-placement="bottom" 
                                                     title="Tambah Jadwal">
                                                     <i class="fas fa-folder-plus"></i> Jadwal Baru</a>
                                             </div>
@@ -71,10 +70,10 @@
                                 </div>
                                 <div class="tab-pane fade" id="absensi">
                                     <div class="card-body px-0">
-                                        <div class="card-header d-flex justify-content-end px-0 pt-0">
+                                        <div class="card-header border-0 d-flex justify-content-end px-0 pt-0">
                                             <button onclick="showAbsensiForm(this)" class="btn btn-sm btn-primary add"
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="bottom"
+                                                data-toggle="tooltip" 
+                                                data-placement="bottom"
                                                 title="Management Absensi">
                                                 <i class="fas fa-folder-plus"></i> Management Absensi</button>
                                         </div>
@@ -96,14 +95,14 @@
                                 @if (Auth::user()->isAdmin())
                                     <div class="tab-pane fade" id="wali">
                                         <div class="card-body px-0">
-                                            <div class="card-header d-flex justify-content-end px-0 pt-0 pb-0">
+                                            <div class="card-header border-0 d-flex justify-content-end px-0 pt-0 pb-0">
                                                 <a href="#"
                                                     onclick="showWaliKelasForm(this)"
                                                     class="btn btn-sm btn-primary add"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#waliKelasModal" 
-                                                    data-bs-toggle="tooltip" 
-                                                    data-bs-placement="bottom" 
+                                                    data-toggle="modal"
+                                                    data-target="#waliKelasModal" 
+                                                    data-toggle="tooltip" 
+                                                    data-placement="bottom" 
                                                     title="Atur Wali Kelas">
                                                     <i class="fas fa-user-edit"></i>
                                                     Atur Wali Kelas
@@ -111,8 +110,8 @@
                                                 <a href="#"
                                                     onclick="deleteWaliKelas(this)"
                                                     class="btn btn-sm btn-danger add ml-2 {{ !isset($wali_kelas) ? 'd-none' : '' }}"
-                                                    data-bs-toggle="tooltip" 
-                                                    data-bs-placement="bottom"
+                                                    data-toggle="tooltip" 
+                                                    data-placement="bottom"
                                                     data-id="{{ $wali_kelas->id ?? '' }}"
                                                     id="btnDeleteWali"
                                                     title="Hapus Wali Kelas">
@@ -150,7 +149,7 @@
 
                 @include('absensi.crud')
                 @include('nilai.mapel_list')
-                <div id="raportContainer" class="d-none"></div>
+                <div id="nilaiContainer" class="d-none"></div>
 
                 <div class="row bottom-hint" data-href="#siswa">
                     <div class="col-12">
@@ -240,7 +239,7 @@
                 mapelListCon.classList.remove('d-none')
             }
 
-            const formRaportContainer = document.getElementById('formRaportContainer')
+            const formnilaiContainer = document.getElementById('formnilaiContainer')
             if (rawHrefValue != '#tabNilai') {
                 hideFormNilai()
             }
