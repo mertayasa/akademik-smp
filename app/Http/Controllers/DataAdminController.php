@@ -20,16 +20,24 @@ class DataAdminController extends Controller
      */
     public function index(User $user)
     {
+        // $dataAdmin = User::where('level', 'admin')->get();
+        // dd($dataAdmin);
         return view('dataAdmin.index');
-        // $dataAdmin = dataAdmin::all();
-        // return view('dataAdmin.index', compact('dataAdmin'));
+        
+
     }
 
-    // public function datatable()
-    // {
-    //     $dataAdmin = dataAdmin::all();
-    //     return dataAdminDataTable::set($dataAdmin);
-    // }
+    public function datatable()
+    {
+        // $dataAdmin = User::where('level', 'admin')->get();
+        // return DataAdminDataTable::set($dataAdmin);
+
+        if (FacadesRequest::is('*admin*')) {
+            $dataAdmin = User::where('level', 'admin')->get();
+            return DataAdminDataTable::set($dataAdmin, 'dataAdmin');
+        }
+
+    }
 
     /**
      * Show the form for creating a new resource.

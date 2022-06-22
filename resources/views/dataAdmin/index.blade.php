@@ -20,7 +20,7 @@
                     </div>
                     <div class="card-body">
                         <div class="col-12">
-                            {{-- @include('admin.datatable') --}}
+                            @include('dataAdmin.datatable')
                         </div>
                     </div>
                 </div>
