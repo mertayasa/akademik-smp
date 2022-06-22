@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\DataAdminDataTable;
 use Illuminate\Http\Request;
+use App\Http\Requests\DataAdminRequest;
 use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -55,18 +56,18 @@ class DataAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(DataAdminRequest $request)
     {
         try {
             $data = $request->all();
-            if($request['lampiran']){
-                $base_64_lampiran = json_decode($request['lampiran'], true);
-                $upload_image = uploadFile($base_64_lampiran, 'lampiran');
-                if ($upload_image === 0) {
-                    return redirect()->back()->withInput()->with('error', 'Gagal mengupload gambar!');
-                }
-                $data['lampiran'] = $upload_image;
-            }
+            // if($request['lampiran']){
+            //     $base_64_lampiran = json_decode($request['lampiran'], true);
+            //     $upload_image = uploadFile($base_64_lampiran, 'lampiran');
+            //     if ($upload_image === 0) {
+            //         return redirect()->back()->withInput()->with('error', 'Gagal mengupload gambar!');
+            //     }
+            //     $data['lampiran'] = $upload_image;
+            // }
 
             User::create($data);
         } catch (Exception $e) {

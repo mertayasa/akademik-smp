@@ -10,7 +10,7 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h4 class=" mb-0 ">Data Admin</h4>
-                            <a href="{{ route('admin.create') }}" class="btn btn-sm btn-primary add"
+                            <a href="{{ route('dataAdmin.create') }}" class="btn btn-sm btn-primary add"
                                 data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tambah admin"> <i
                                     class="fas fa-folder-plus"></i> Admin Baru</a>
                         </div>
