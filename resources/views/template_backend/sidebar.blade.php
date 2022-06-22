@@ -149,7 +149,7 @@
 
             @if (Auth::user()->isAdmin())
                 {{-- Trash --}}
-                <li class="nav-item has-treeview" id="liViewTrash">
+                {{-- <li class="nav-item has-treeview" id="liViewTrash">
                     <a href="#" class="nav-link" id="ViewTrash">
                         <i class="nav-icon fas fa-recycle"></i>
                         <p>
@@ -195,7 +195,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             @endif
 
             </ul>
