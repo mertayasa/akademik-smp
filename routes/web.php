@@ -21,6 +21,7 @@ use App\Http\Controllers\NilaiKesehatanController;
 use App\Http\Controllers\NilaiProporsiController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\DataAdminController;
+use App\Http\Controllers\AbsensiGuruController;
 
 use App\Http\Controllers\AkademikController;
 use App\Http\Controllers\RuanganController;
@@ -181,6 +182,15 @@ Route::middleware(['auth'])->group(function () {
         Route::post('store', [AbsensiController::class, 'store'])->name('store');
         Route::patch('update/{absensi}', [AbsensiController::class, 'update'])->name('update');
         Route::delete('destroy/{absensi}', [AbsensiController::class, 'destroy'])->name('destroy');
+    });
+
+        Route::group(['prefix' => 'absensiGuru', 'as' => 'absensiGuru.'], function () {
+        Route::get('/', [AbsensiGuruController::class, 'index'])->name('index');
+        Route::get('generate-form/{tgl?}', [AbsensiGuruController::class, 'generateForm'])->name('generate_form');
+        Route::post('update-or-create/{semester}/{tgl?}', [AbsensiGuruController::class, 'updateOrCreate'])->name('update_create');
+        Route::post('store', [AbsensiGuruController::class, 'store'])->name('store');
+        Route::patch('update/{absensiGuru}', [AbsensiGuruController::class, 'update'])->name('update');
+        Route::delete('destroy/{absensiGuru}', [AbsensiGuruController::class, 'destroy'])->name('destroy');
     });
 
     Route::group(['prefix' => 'jadwal', 'as' => 'jadwal.'], function () {

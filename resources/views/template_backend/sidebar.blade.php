@@ -11,129 +11,131 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
 
-            @if (Auth::user()->isOrtu() || Auth::user()->isGuru())
-                {{-- Dashboard --}}
-                <li class="nav-item">
-                    <a href="{{ route('dashboard.index') }}" class="nav-link {{ isActive('dashboard') }}"
-                        id="Home">
-                        <i class="nav-icon fas fa-home"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-            @endif
+                @if (Auth::user()->isOrtu() || Auth::user()->isGuru())
+                    {{-- Dashboard --}}
+                    <li class="nav-item">
+                        <a href="{{ route('dashboard.index') }}" class="nav-link {{ isActive('dashboard') }}"
+                            id="Home">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                @endif
 
-            @if (Auth::user()->isAdmin())
-                {{-- Dashboard --}}
-                @php
-                    $is_open_dashboard = isActive(['dashboard']);
-                @endphp
-                <li class="nav-item has-treeview {{ $is_open_dashboard == 'active' ? 'menu-open' : '' }}"
-                    id="liDashboard">
-                    <a href="#" class="nav-link" id="Dashboard">
-                        <i class="nav-icon fas fa-home"></i>
-                        <p>
-                            Dashboard
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview ml-4">
-                        <li class="nav-item">
-                            <a href="{{ route('dashboard.index') }}" class="nav-link {{ isActive('dashboard') }}"
-                                id="Home">
-                                <i class="fas fa-home nav-icon"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('dashboard.index') }}" class="nav-link {{ isActive('dashboard') }}"
-                                id="AdminHome">
-                                <i class="fas fa-home nav-icon"></i>
-                                <p>Dashboard Admin</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            @endif
+                @if (Auth::user()->isAdmin())
+                    {{-- Dashboard --}}
+                    @php
+                        $is_open_dashboard = isActive(['dashboard']);
+                    @endphp
+                    <li class="nav-item has-treeview {{ $is_open_dashboard == 'active' ? 'menu-open' : '' }}"
+                        id="liDashboard">
+                        <a href="#" class="nav-link" id="Dashboard">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>
+                                Dashboard
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview ml-4">
+                            <li class="nav-item">
+                                <a href="{{ route('dashboard.index') }}"
+                                    class="nav-link {{ isActive('dashboard') }}" id="Home">
+                                    <i class="fas fa-home nav-icon"></i>
+                                    <p>Dashboard</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('dashboard.index') }}"
+                                    class="nav-link {{ isActive('dashboard') }}" id="AdminHome">
+                                    <i class="fas fa-home nav-icon"></i>
+                                    <p>Dashboard Admin</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
 
-            @if (Auth::user()->isAdmin())
-                {{-- Master Data --}}
-                @php
-                    $is_open_master = isActive(['kelas', 'guru', 'ortu', 'siswa', 'mapel', 'dataAdmin', 'ruangan']);
-                @endphp
-                <li class="nav-item has-treeview {{ $is_open_master == 'active' ? 'menu-open' : '' }}"
-                    id="liMasterData">
-                    <a href="#" class="nav-link" id="MasterData">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            Master Data
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview ml-4">
-                        <li class="nav-item">
-                            <a href="{{ route('siswa.index') }}" class="nav-link {{ isActive('siswa') }}"
-                                id="DataSiswa">
-                                <i class="fas fa-users nav-icon"></i>
-                                <p>Data Siswa</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('guru.index') }}" class="nav-link {{ isActive('guru') }}"
-                                id="DataGuru">
-                                <i class="fas fa-users nav-icon"></i>
-                                <p>Data Guru</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('ortu.index') }}" class="nav-link {{ isActive('ortu') }}"
-                                id="DataOrangTua">
-                                <i class="fas fa-users nav-icon"></i>
-                                <p>Data Orang Tua</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('dataAdmin.index') }}" class="nav-link {{ isActive('dataAdmin') }}"
-                                id="DatadataAdmin">
-                                <i class="fas fa-users nav-icon"></i>
-                                <p>Data Admin</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('kelas.index') }}" class="nav-link {{ isActive('kelas') }}"
-                                id="DataKelas">
-                                <i class="fas fa-home nav-icon"></i>
-                                <p>Data Kelas</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('ruangan.index') }}" class="nav-link {{ isActive('ruangan') }}" id="DataRuangan">
-                                <i class="fas fa-door-open nav-icon"></i>
-                                <p>Data Ruangan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('mapel.index') }}" class="nav-link {{ isActive('mapel') }}"
-                                id="DataMapel">
-                                <i class="fas fa-book nav-icon"></i>
-                                <p>Data Mata Pelajaran</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                @if (Auth::user()->isAdmin())
+                    {{-- Master Data --}}
+                    @php
+                        $is_open_master = isActive(['kelas', 'guru', 'ortu', 'siswa', 'mapel', 'dataAdmin', 'ruangan']);
+                    @endphp
+                    <li class="nav-item has-treeview {{ $is_open_master == 'active' ? 'menu-open' : '' }}"
+                        id="liMasterData">
+                        <a href="#" class="nav-link" id="MasterData">
+                            <i class="nav-icon fas fa-edit"></i>
+                            <p>
+                                Master Data
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview ml-4">
+                            <li class="nav-item">
+                                <a href="{{ route('siswa.index') }}" class="nav-link {{ isActive('siswa') }}"
+                                    id="DataSiswa">
+                                    <i class="fas fa-users nav-icon"></i>
+                                    <p>Data Siswa</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('guru.index') }}" class="nav-link {{ isActive('guru') }}"
+                                    id="DataGuru">
+                                    <i class="fas fa-users nav-icon"></i>
+                                    <p>Data Guru</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('ortu.index') }}" class="nav-link {{ isActive('ortu') }}"
+                                    id="DataOrangTua">
+                                    <i class="fas fa-users nav-icon"></i>
+                                    <p>Data Orang Tua</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('dataAdmin.index') }}"
+                                    class="nav-link {{ isActive('dataAdmin') }}" id="DatadataAdmin">
+                                    <i class="fas fa-users nav-icon"></i>
+                                    <p>Data Admin</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('kelas.index') }}" class="nav-link {{ isActive('kelas') }}"
+                                    id="DataKelas">
+                                    <i class="fas fa-home nav-icon"></i>
+                                    <p>Data Kelas</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('ruangan.index') }}" class="nav-link {{ isActive('ruangan') }}"
+                                    id="DataRuangan">
+                                    <i class="fas fa-door-open nav-icon"></i>
+                                    <p>Data Ruangan</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('mapel.index') }}" class="nav-link {{ isActive('mapel') }}"
+                                    id="DataMapel">
+                                    <i class="fas fa-book nav-icon"></i>
+                                    <p>Data Mata Pelajaran</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-                {{-- Pengumuman --}}
-                <li class="nav-item">
-                    <a href="{{ route('pengumuman.index') }}" class="nav-link {{ isActive('pengumuman') }}"
-                        id="Home">
-                        <i class="nav-icon fas fa-bullhorn"></i>
-                        <p>Pengumuman</p>
-                    </a>
-                </li>
-            @endif
+                    {{-- Pengumuman --}}
+                    <li class="nav-item">
+                        <a href="{{ route('pengumuman.index') }}" class="nav-link {{ isActive('pengumuman') }}"
+                            id="Home">
+                            <i class="nav-icon fas fa-bullhorn"></i>
+                            <p>Pengumuman</p>
+                        </a>
+                    </li>
+                @endif
 
                 {{-- Akademik --}}
                 <li class="nav-item has-treeview">
-                    <a href="{{ route('akademik.index') }}" class="nav-link {{ isActive('akademik') }}" id="Home">
+                    <a href="{{ route('akademik.index') }}" class="nav-link {{ isActive('akademik') }}"
+                        id="Home">
                         <i class="nav-icon fas fa-book-reader"></i>
                         <p>Akademik</p>
                     </a>
@@ -141,15 +143,16 @@
 
                 {{-- Absensi Guru --}}
                 <li class="nav-item">
-                    <a href="" class="nav-link" id="AbsensiGuru">
-                        <i class="fas fa-calendar-check nav-icon"></i>
-                        <p>Absensi Guru</p>
+                    <a href="{{ route('absensiGuru.index') }}" class="nav-link {{ isActive('absensiGuru') }}"
+                        id="Home">
+                        <i class="nav-icon fas fa-book-reader"></i>
+                        <p>Absensi</p>
                     </a>
                 </li>
 
-            @if (Auth::user()->isAdmin())
-                {{-- Trash --}}
-                {{-- <li class="nav-item has-treeview" id="liViewTrash">
+                @if (Auth::user()->isAdmin())
+                    {{-- Trash --}}
+                    {{-- <li class="nav-item has-treeview" id="liViewTrash">
                     <a href="#" class="nav-link" id="ViewTrash">
                         <i class="nav-icon fas fa-recycle"></i>
                         <p>
@@ -196,7 +199,7 @@
                         </li>
                     </ul>
                 </li> --}}
-            @endif
+                @endif
 
             </ul>
         </nav>

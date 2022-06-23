@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\AbsensiGuru;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
+use Illuminate\Support\Facades\Auth;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class AbsensiGuruController extends Controller
 {
@@ -12,9 +18,14 @@ class AbsensiGuruController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(AbsensiGuru $absensiGuru, User $user)
     {
-        //
+         $id_guru =  Auth::id();
+         $id_card = User::where('id', $id_guru)->get()[0];
+        //  $user->id_card;
+        //  dd($id_card);
+         return view('absensiGuru.index', compact('absensiGuru', 'id_card', 'user'));
+        
     }
 
     /**
@@ -33,9 +44,20 @@ class AbsensiGuruController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
-        //
+         try {
+            $absensiGuru = new AbsensiGuru;
+            $absensiGuru->id_guru = Auth::id();
+            $absensiGuru->tanggal = Carbon::today();
+            $absensiGuru->status = $request->status;
+            $absensiGuru->save();
+
+        } catch (Exception $e) {
+            Log::info($e->getMessage());
+            return redirect()->back()->withInput()->with('error', 'Gagal menambah absensiGuru !');
+        }
+        return redirect('absensiGuru')->with('success', 'Data dataAdminn Berhasil Ditambahkan');
     }
 
     /**
