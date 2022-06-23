@@ -17,7 +17,7 @@ class DataAdminDataTable
                 return
                     '<div class="btn-group">' .
                     '<a href="' . route($level . '.edit', $dataAdmin->id) . '" class="btn  btn-sm  btn-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" style="margin-right: 5px" ><b> Edit </b></a>' .
-                    '<a href="' . route($level . '.show', $dataAdmin->id) . '" class="btn  btn-sm btn-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lihat" style="margin-right: 5px" ><b> Lihat</b></a>' .
+                    // '<a href="' . route($level . '.show', $dataAdmin->id) . '" class="btn  btn-sm btn-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lihat" style="margin-right: 5px" ><b> Lihat</b></a>' .
                     '</div>';
             })->addIndexColumn()->rawColumns(['action', 'foto'])->make(true);
     }

@@ -86,7 +86,7 @@ class DataAdminController extends Controller
      */
     public function edit(User $user)
     {
-        return view('dataAdmin.edit', compact('dataAdmin'));
+        return view('dataAdmin.edit', compact('user'));
     }
 
     /**
@@ -96,20 +96,20 @@ class DataAdminController extends Controller
      * @param  \App\Models\dataAdmin  $dataAdmin
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User $user)
+    public function update(DataAdminRequest $request, User $user)
     {
         try {
             $data = $request->all();
-            if($request['lampiran']){
-                $base_64_lampiran = json_decode($request['lampiran'], true);
-                $upload_image = uploadFile($base_64_lampiran, 'lampiran');
-                if ($upload_image === 0) {
-                    return redirect()->back()->withInput()->with('error', 'Gagal mengupload gambar!');
-                }
-                $data['lampiran'] = $upload_image;
-            }
+            // if($request['lampiran']){
+            //     $base_64_lampiran = json_decode($request['lampiran'], true);
+            //     $upload_image = uploadFile($base_64_lampiran, 'lampiran');
+            //     if ($upload_image === 0) {
+            //         return redirect()->back()->withInput()->with('error', 'Gagal mengupload gambar!');
+            //     }
+            //     $data['lampiran'] = $upload_image;
+            // }
 
-            $dataAdmin->update($data);
+            $user->update($data);
         } catch (Exception $e) {
             Log::info($e->getMessage());
             return redirect()->back()->withInput()->with('error', 'Data dataAdmin Gagal Di Edit');
