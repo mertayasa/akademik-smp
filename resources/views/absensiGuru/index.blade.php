@@ -20,7 +20,7 @@
                             <div class="col-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        ss
+                                        @include('absensiGuru.datatable')
                                     </div>
                                 </div>
                             </div>

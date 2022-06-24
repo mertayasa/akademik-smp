@@ -10,6 +10,7 @@ use Carbon\CarbonPeriod;
 use Illuminate\Support\Facades\Auth;
 use Exception;
 use Illuminate\Support\Facades\Log;
+use App\DataTables\AbsensiGuruDataTable;
 
 class AbsensiGuruController extends Controller
 {
@@ -24,9 +25,28 @@ class AbsensiGuruController extends Controller
          $id_card = User::where('id', $id_guru)->get()[0];
         //  $user->id_card;
         //  dd($id_card);
+        //  $id_guru =  Auth::id();
+        //  $id_card = User::where('id', $id_guru)->get();
+        //  $absensiGuru = AbsensiGuru::where('id_guru', $id_guru)->get();
+        
+        //  dd($absensiGuru);
          return view('absensiGuru.index', compact('absensiGuru', 'id_card', 'user'));
         
     }
+
+        public function datatable()
+    {
+
+         $id_guru =  Auth::id();
+         $id_card = User::where('id', $id_guru)->get()[0];
+         $absensiGuru = AbsensiGuru::where('id_guru', $id_guru)->get();
+        //  $absensiGuru = AbsensiGuru:: all();
+        //  dd($absensiGuru);
+        return AbsensiGuruDataTable::set($absensiGuru);
+
+
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -57,8 +77,10 @@ class AbsensiGuruController extends Controller
             Log::info($e->getMessage());
             return redirect()->back()->withInput()->with('error', 'Gagal menambah absensiGuru !');
         }
-        return redirect('absensiGuru')->with('success', 'Data dataAdminn Berhasil Ditambahkan');
+        return redirect('absensiGuru')->with('success', 'Data absensiGurun Berhasil Ditambahkan');
     }
+
+
 
     /**
      * Display the specified resource.

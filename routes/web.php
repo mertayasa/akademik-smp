@@ -186,8 +186,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::group(['prefix' => 'absensiGuru', 'as' => 'absensiGuru.'], function () {
         Route::get('/', [AbsensiGuruController::class, 'index'])->name('index');
-        Route::get('generate-form/{tgl?}', [AbsensiGuruController::class, 'generateForm'])->name('generate_form');
-        Route::post('update-or-create/{semester}/{tgl?}', [AbsensiGuruController::class, 'updateOrCreate'])->name('update_create');
+        Route::get('datatable', [AbsensiGuruController::class, 'datatable'])->name('datatable');
         Route::post('store', [AbsensiGuruController::class, 'store'])->name('store');
         Route::patch('update/{absensiGuru}', [AbsensiGuruController::class, 'update'])->name('update');
         Route::delete('destroy/{absensiGuru}', [AbsensiGuruController::class, 'destroy'])->name('destroy');
