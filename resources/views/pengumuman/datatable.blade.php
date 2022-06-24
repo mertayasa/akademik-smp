@@ -6,7 +6,7 @@
         <th>Judul</th>
         <th>Status</th>
         <th>Konten</th>
-        <th>Lampiran</th>
+        {{-- <th>Lampiran</th> --}}
         <th>Aksi</th>
         </tr>
     </thead>
@@ -54,17 +54,16 @@
                     data: 'konten', 
                     name: 'konten'
                 },
-                {
-                    data: 'lampiran', 
-                    name: 'lampiran'
-                },
+                    // {
+                    //     data: 'lampiran', 
+                    //     name: 'lampiran'
+                    // },
                 {
                     data: 'action',
                     name: 'action',
                     orderable: false,
                     searchable: false,
                     className:"text-center align-middle"
-
                 }
             ],
             order: [[ 1, "DESC" ]],

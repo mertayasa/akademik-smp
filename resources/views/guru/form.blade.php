@@ -88,49 +88,10 @@
     <div class="col-12 col-md-6 pb-3 pb-md-0">
         {!! Form::label('filePondUpload', 'Foto', ['class' => 'mb-1']) !!}
         {!! Form::file('foto', ['class' => 'd-block filepond', 'id' => 'filePondUpload', 'data-foto' => isset($user) && $user->foto != '' ? $user->getFoto() : '']) !!}
+        <span> <i> Format yang didukung : .png .jpg .jpeg </i> </span> <br>
+        <span> <i> Ukuran maksimal : 2MB </i> </span>
     </div>
 </div>
 
 
-@push('scripts')
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            FilePond.registerPlugin(
-                FilePondPluginFileEncode,
-                FilePondPluginFileValidateSize,
-                FilePondPluginFileValidateType,
-                FilePondPluginImageExifOrientation,
-                FilePondPluginImagePreview
-            )
-
-            let options = {
-                acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg'],
-                maxFileSize: '2MB'
-            }
-
-            let imageUrl
-
-            const url = window.location
-            if (url.pathname.includes('edit')) {
-                imageUrl = document.getElementById('filePondUpload').getAttribute('data-foto')
-                // console.log(imageUrl);
-                if (!isNull(imageUrl)) {
-                    options = {
-                        acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg'],
-                        maxFileSize: '2MB',
-                        files: [{
-                            source: imageUrl,
-                            options: {
-                                type: 'remote'
-                            }
-                        }],
-                    }
-                }
-            }
-
-            FilePond.create(
-                document.getElementById('filePondUpload'), options
-            )
-        })
-    </script>
-@endpush
+@include('template_backend.filepond')

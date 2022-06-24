@@ -244,7 +244,8 @@ function sikap(e) {
             confirmButtonText: 'Ya',
             cancelButtonText: 'Tidak'
         }).then((result) => {
-            if (result.isConfirmed) {
+            // console.log(result.value == true);
+            if (result.value == true) {
                 $.ajax({
                     url: deleteUrl,
                     dataType: "Json",

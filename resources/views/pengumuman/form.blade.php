@@ -35,45 +35,4 @@
     </div>
 </div>
 
-@push('scripts')
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            FilePond.registerPlugin(
-                FilePondPluginFileEncode,
-                FilePondPluginFileValidateSize,
-                FilePondPluginFileValidateType,
-                FilePondPluginImageExifOrientation,
-                FilePondPluginImagePreview
-            )
-
-            let options = {
-                acceptedFileTypes: ['application/pdf'],
-                maxFileSize: '5MB'
-            }
-
-            let imageUrl
-
-            const url = window.location
-            if (url.pathname.includes('edit')) {
-                imageUrl = document.getElementById('filePondUpload').getAttribute('data-lampiran')
-                if(!isNull(imageUrl)){
-                    options = {
-                        acceptedFileTypes: ['application/pdf'],
-                        maxFileSize: '5MB',
-                        files: [{
-                            source: imageUrl,
-                            options: {
-                                type: 'remote'
-                            }
-                        }],
-                    }
-                }
-            }
-
-            FilePond.create(
-                document.getElementById('filePondUpload'), options
-            )
-        })
-    </script>
-@endpush
-
+@include('template_backend.filepond_pdf')
