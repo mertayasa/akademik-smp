@@ -60,9 +60,6 @@ class NilaiController extends Controller
                 $mapel_of_jadwal = Jadwal::geetUniqueMapel($tahun_ajar_active->id, $anggota_kelas->id_kelas);
                 $nilai = [
                     'mapel_of_jadwal' => $mapel_of_jadwal ?? [],
-                    'ekskul' => $ekskul ?? [],
-                    'prestasi_ganjil' => $prestasi_ganjil ?? [],
-                    'prestasi_genap' => $prestasi_genap ?? [],
                     'anggota_kelas' => $anggota_kelas,
                 ];
             }

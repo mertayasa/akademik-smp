@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('template_backend.app')
 
 @section('content')
-    <section class="section">
+    <section class="section col-12">
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -11,12 +11,11 @@
                     </div>
                     <div class="card-body">
                         @include('layouts.flash')
-                        @include('layouts.error_message')
                         {!! Form::model($user, ['route' => ['profile.update', $user->id], 'method' => 'patch']) !!}
                         @include('profile.form')
                         <div class="row mt-3">
                             <div class="col-12">
-                                <a href="{{ route('dashboard.index') }}" class="btn btn-sm btn-danger">Kembali</a>
+                                <a href="{{ route('siswa.index_ortu') }}" class="btn btn-sm btn-danger">Kembali</a>
                                 <button class="btn btn-sm btn-primary ml-3" type="submit">Simpan</button>
                             </div>
                         </div>

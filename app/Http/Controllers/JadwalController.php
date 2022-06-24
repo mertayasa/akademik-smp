@@ -35,7 +35,7 @@ class JadwalController extends Controller
     public function indexGuru()
     {
         $tahun_ajar_active = TahunAjar::where('status', 'aktif')->first();
-        $jadwal = Jadwal::with('kelas')->where('status', 'aktif')->where('id_tahun_ajar', $tahun_ajar_active->id)->get()->sortBy('kelas.id');
+        $jadwal = Jadwal::with('kelas', 'ruangan')->where('status', 'aktif')->where('id_tahun_ajar', $tahun_ajar_active->id)->get()->sortBy('kelas.id');
         
         $data = [
             'groupped_jadwal' => $jadwal->groupBy('kelas.id')
@@ -54,7 +54,7 @@ class JadwalController extends Controller
             $tahun_ajar_active = TahunAjar::where('status', 'aktif')->first();
             $anggota_kelas = AnggotaKelas::where('id_siswa', $id_siswa)->where('id_tahun_ajar', $tahun_ajar_active->id)->first();
             if($anggota_kelas){
-                $jadwal = Jadwal::with('kelas')->where('id_kelas', $anggota_kelas->id_kelas)->where('status', 'aktif')->where('id_tahun_ajar', $tahun_ajar_active->id)->get()->sortBy('kelas.id');
+                $jadwal = Jadwal::with('kelas', 'ruangan')->where('id_kelas', $anggota_kelas->id_kelas)->where('status', 'aktif')->where('id_tahun_ajar', $tahun_ajar_active->id)->get()->sortBy('kelas.id');
                 if(count($jadwal) > 0){
                     $groupped_jadwal = $jadwal->groupBy('kelas.id');
                 };

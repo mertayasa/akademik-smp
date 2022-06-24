@@ -182,6 +182,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('store', [AbsensiController::class, 'store'])->name('store');
         Route::patch('update/{absensi}', [AbsensiController::class, 'update'])->name('update');
         Route::delete('destroy/{absensi}', [AbsensiController::class, 'destroy'])->name('destroy');
+
+        Route::get('index-ortu', [AbsensiController::class, 'indexOrtu'])->name('index.ortu');
     });
 
         Route::group(['prefix' => 'absensiGuru', 'as' => 'absensiGuru.'], function () {

@@ -3,9 +3,10 @@
         <thead>
             <tr>
                 <th>Mata Pelajaran</th>
-                <th>Guru</th>
                 <th>Jam Mulai</th>
                 <th>Jam Selesai</th>
+                <th>Guru</th>
+                <th>Ruangan</th>
             </tr>
         </thead>
         @foreach ($groupped_jadwal as $key => $jadwal)
@@ -23,9 +24,10 @@
                     @foreach ($jadwal_by_hari as $jad_hari)
                         <tr>
                             <td>{{ $jad_hari->mapel->nama }}</td>
-                            <td>{{ $jad_hari->guru->nama }}</td>
                             <td>{{ $jad_hari->jam_mulai }}</td>
                             <td>{{ $jad_hari->jam_selesai }}</td>
+                            <td>{{ $jad_hari->guru->nama }}</td>
+                            <td>{{ $jad_hari->ruangan->nama }}</td>
                         </tr>                  
                     @endforeach
                 @endforeach

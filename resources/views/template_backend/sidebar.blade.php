@@ -11,7 +11,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
 
-                @if (Auth::user()->isOrtu() || Auth::user()->isGuru())
+                @if (Auth::user()->isGuru())
                     {{-- Dashboard --}}
                     <li class="nav-item">
                         <a href="{{ route('dashboard.index') }}" class="nav-link {{ isActive('dashboard') }}"
@@ -132,23 +132,52 @@
                     </li>
                 @endif
 
-                {{-- Akademik --}}
-                <li class="nav-item has-treeview">
-                    <a href="{{ route('akademik.index') }}" class="nav-link {{ isActive('akademik') }}"
-                        id="Home">
-                        <i class="nav-icon fas fa-book-reader"></i>
-                        <p>Akademik</p>
-                    </a>
-                </li>
+                @if (Auth::user()->isGuru())
+                    {{-- Akademik --}}
+                    <li class="nav-item has-treeview">
+                        <a href="{{ route('akademik.index') }}" class="nav-link {{ isActive('akademik') }}"
+                            id="Home">
+                            <i class="nav-icon fas fa-book-reader"></i>
+                            <p>Akademik</p>
+                        </a>
+                    </li>
 
-                {{-- Absensi Guru --}}
-                <li class="nav-item">
-                    <a href="{{ route('absensiGuru.index') }}" class="nav-link {{ isActive('absensiGuru') }}"
-                        id="Home">
-                        <i class="nav-icon fas fa-book-reader"></i>
-                        <p>Absensi Guru</p>
-                    </a>
-                </li>
+                    {{-- Absensi Guru --}}
+                    <li class="nav-item">
+                        <a href="{{ route('absensiGuru.index') }}" class="nav-link {{ isActive('absensiGuru') }}"
+                            id="Home">
+                            <i class="nav-icon fas fa-book-reader"></i>
+                            <p>Absensi Guru</p>
+                        </a>
+                    </li>
+                @endif
+
+                @if (Auth::user()->isOrtu())
+                    <li class="nav-item">
+                        <a href="{{ route('siswa.index_ortu') }}" class="nav-link {{ isActive('siswa') }}" id="Siswa">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Profil Anak (Siswa)</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('jadwal.index.ortu') }}" class="nav-link {{ isActive('jadwal') }}" id="Jadwal">
+                            <i class="nav-icon fas fa-calendar-week"></i>
+                            <p>Jadwal Pelajaran</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('nilai.index.ortu') }}" class="nav-link {{ isActive('nilai') }}" id="Nilai">
+                            <i class="nav-icon fas fa-star"></i>
+                            <p>Nilai</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('absensi.index.ortu') }}" class="nav-link {{ isActive('absensi') }}" id="Absensi">
+                            <i class="nav-icon fas fa-book-reader"></i>
+                            <p>Absensi</p>
+                        </a>
+                    </li>
+                @endif
 
                 @if (Auth::user()->isAdmin())
                     {{-- Trash --}}

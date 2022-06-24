@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('template_backend.app')
 
 @section('content')
     <div class="container-fluid p-0">
@@ -10,12 +10,14 @@
                     <div class="card-body">
                         {!! Form::open(['method' => 'get']) !!}
                         <div class="row align-items-end">
-                            <div class="col-12 col-md-6 pb-3 pb-md-0">
+                            <div class="col-12 col-md-4">
                                 {!! Form::label('user', 'Nama Siswa', ['class' => 'mb-1']) !!}
-                                {!! Form::select('id_siswa', ['' => 'Pilih Siswa'] + $siswa->toArray(), $id_siswa ?? null, ['class' => 'form-control', 'id' => 'filterSiswa', 'autocomplete' => 'off']) !!}
-                            </div>
-                            <div class="col-12 col-md-6 pb-3 pb-md-0">
-                                <button type="submit" class="btn btn-sm btn-primary">Pilih</button>
+                                <div class="input-group mb-2">
+                                    {!! Form::select('id_siswa', ['' => 'Pilih Siswa'] + $siswa->toArray(), $id_siswa ?? null, ['class' => 'form-control', 'id' => 'filterSiswa', 'autocomplete' => 'off']) !!}
+                                    <div class="input-group-prepend">
+                                            <button type="submit" class="btn btn-sm btn-primary">Filter</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         {!! Form::close() !!}
@@ -41,17 +43,13 @@
                                         @include('nilai.raport_detail', [
                                             'anggota_kelas' => $nilai['anggota_kelas'],
                                             'semester' => 'ganjil',
-                                            'prestasi' => $nilai['prestasi_ganjil'],
-                                            'ekskul' => $nilai['ekskul'],
                                             'mapel_of_jadwal' => $nilai['mapel_of_jadwal'],
                                         ])
                                     </div>
-                                    <div class="tab-pane fade pt-2" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="tab-pane fade pt-3" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                         @include('nilai.raport_detail', [
                                             'anggota_kelas' => $nilai['anggota_kelas'],
                                             'semester' => 'genap',
-                                            'prestasi' => $nilai['prestasi_genap'],
-                                            'ekskul' => $nilai['ekskul'],
                                             'mapel_of_jadwal' => $nilai['mapel_of_jadwal'],
                                         ])
                                     </div>
