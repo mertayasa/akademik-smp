@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use App\DataTables\AbsensiGuruDataTable;
+use Illuminate\Support\Facades\Request as FacadesRequest;
+
 
 class AbsensiGuruController extends Controller
 {
@@ -21,29 +23,45 @@ class AbsensiGuruController extends Controller
      */
     public function index(AbsensiGuru $absensiGuru, User $user)
     {
+        //  $id_guru =  Auth::id();
+        //  $id_card = User::where('id', $id_guru)->get()[0];
+        //  return view('absensiGuru.index', compact('absensiGuru', 'id_card', 'user'));
+
+        
+       
+        if (Auth::user()->isGuru()){
          $id_guru =  Auth::id();
          $id_card = User::where('id', $id_guru)->get()[0];
-        //  $user->id_card;
-        //  dd($id_card);
-        //  $id_guru =  Auth::id();
-        //  $id_card = User::where('id', $id_guru)->get();
-        //  $absensiGuru = AbsensiGuru::where('id_guru', $id_guru)->get();
-        
-        //  dd($absensiGuru);
-         return view('absensiGuru.index', compact('absensiGuru', 'id_card', 'user'));
+           return view('absensiGuru.index', compact('absensiGuru', 'id_card', 'user'));
+        }
+
+        if (Auth::user()->isAdmin()) {
+            $absensiGuru= AbsensiGuru::all();
+            return view('absensiGuru.indexAdmin', compact('absensiGuru'));
+        }
         
     }
 
         public function datatable()
     {
 
+        //  $id_guru =  Auth::id();
+        //  $id_card = User::where('id', $id_guru)->get()[0];
+        //  $absensiGuru = AbsensiGuru::where('id_guru', $id_guru)->get();
+        // return AbsensiGuruDataTable::set($absensiGuru);
+
+          if (Auth::user()->isGuru()){
          $id_guru =  Auth::id();
          $id_card = User::where('id', $id_guru)->get()[0];
          $absensiGuru = AbsensiGuru::where('id_guru', $id_guru)->get();
-        //  $absensiGuru = AbsensiGuru:: all();
-        //  dd($absensiGuru);
         return AbsensiGuruDataTable::set($absensiGuru);
 
+        }
+
+        if (Auth::user()->isAdmin()) {
+            $absensiGuru= AbsensiGuru::all();
+             return AbsensiGuruDataTable::set($absensiGuru);
+        }
 
     }
 
@@ -77,7 +95,7 @@ class AbsensiGuruController extends Controller
             Log::info($e->getMessage());
             return redirect()->back()->withInput()->with('error', 'Gagal menambah absensiGuru !');
         }
-        return redirect('absensiGuru')->with('success', 'Data absensiGurun Berhasil Ditambahkan');
+        return redirect('absensiGuru')->with('success', 'Berhasil melakukan Absensi');
     }
 
 

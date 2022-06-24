@@ -15,8 +15,7 @@ class AbsensiGuruDataTable
                 $deleteUrl = "'" . route('absensiGuru.destroy', $absensiGuru->id) . "', 'absensiGuruDataTable'";
                 return
                     '<div class="btn-group">' .
-                    '<a href="#" class="btn btn-sm btn-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" style="margin-right: 5px" ><b> Edit </b></a>' .
-                    '<a href="#" onclick="deleteModel(' . $deleteUrl . ',)" class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" style="margin-right: 5px"><b> Hapus</b></a>' .
+                    '<a href="#" class="btn btn-sm btn-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lihat Absen" style="margin-right: 5px" ><b> Lihat Absen </b></a>' .
 
                     '</div>';
             })->addIndexColumn()->rawColumns(['action'])->make(true);
