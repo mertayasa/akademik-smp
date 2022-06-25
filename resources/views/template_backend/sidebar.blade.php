@@ -130,6 +130,15 @@
                             <p>Pengumuman</p>
                         </a>
                     </li>
+
+                    {{-- Absensi Guru --}}
+                    <li class="nav-item">
+                        <a href="{{ route('absensiGuru.index') }}" class="nav-link {{ isActive('absensiGuru') }}"
+                            id="Home">
+                            <i class="nav-icon fas fa-book-reader"></i>
+                            <p>Absensi Guru</p>
+                        </a>
+                    </li>
                 @endif
 
                 @if (Auth::user()->isGuru())
