@@ -154,25 +154,29 @@
 
                 @if (Auth::user()->isOrtu())
                     <li class="nav-item">
-                        <a href="{{ route('siswa.index_ortu') }}" class="nav-link {{ isActive('siswa') }}" id="Siswa">
+                        <a href="{{ route('siswa.index_ortu') }}" class="nav-link {{ isActive('siswa') }}"
+                            id="Siswa">
                             <i class="nav-icon fas fa-users"></i>
                             <p>Profil Anak (Siswa)</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('jadwal.index.ortu') }}" class="nav-link {{ isActive('jadwal') }}" id="Jadwal">
+                        <a href="{{ route('jadwal.index.ortu') }}" class="nav-link {{ isActive('jadwal') }}"
+                            id="Jadwal">
                             <i class="nav-icon fas fa-calendar-week"></i>
                             <p>Jadwal Pelajaran</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('nilai.index.ortu') }}" class="nav-link {{ isActive('nilai') }}" id="Nilai">
+                        <a href="{{ route('nilai.index.ortu') }}" class="nav-link {{ isActive('nilai') }}"
+                            id="Nilai">
                             <i class="nav-icon fas fa-star"></i>
                             <p>Nilai</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('absensi.index.ortu') }}" class="nav-link {{ isActive('absensi') }}" id="Absensi">
+                        <a href="{{ route('absensi.index.ortu') }}" class="nav-link {{ isActive('absensi') }}"
+                            id="Absensi">
                             <i class="nav-icon fas fa-book-reader"></i>
                             <p>Absensi</p>
                         </a>

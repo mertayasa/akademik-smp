@@ -23,22 +23,22 @@ class AbsensiGuruController extends Controller
      */
     public function index(AbsensiGuru $absensiGuru, User $user)
     {
-        //  $id_guru =  Auth::id();
-        //  $id_card = User::where('id', $id_guru)->get()[0];
-        //  return view('absensiGuru.index', compact('absensiGuru', 'id_card', 'user'));
+         $id_guru =  Auth::id();
+         $id_card = User::where('id', $id_guru)->get()[0];
+         return view('absensiGuru.index', compact('absensiGuru', 'id_card', 'user'));
 
         
        
-        if (Auth::user()->isGuru()){
-         $id_guru =  Auth::id();
-         $id_card = User::where('id', $id_guru)->get()[0];
-           return view('absensiGuru.index', compact('absensiGuru', 'id_card', 'user'));
-        }
+        // if (Auth::user()->isGuru()){
+        //  $id_guru =  Auth::id();
+        //  $id_card = User::where('id', $id_guru)->get()[0];
+        //    return view('absensiGuru.index', compact('absensiGuru', 'id_card', 'user'));
+        // }
 
-        if (Auth::user()->isAdmin()) {
-            $absensiGuru= AbsensiGuru::all();
-            return view('absensiGuru.indexAdmin', compact('absensiGuru'));
-        }
+        // if (Auth::user()->isAdmin()) {
+        //     $absensiGuru= AbsensiGuru::all();
+        //     return view('absensiGuru.indexAdmin', compact('absensiGuru'));
+        // }
         
     }
 
