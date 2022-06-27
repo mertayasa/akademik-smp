@@ -249,7 +249,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     
-        Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::get('create', [AdminController::class, 'create'])->name('create');
         Route::post('store', [AdminController::class, 'store'])->name('store');
@@ -260,7 +260,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('datatable/{level}', [AdminController::class, 'datatable'])->name('datatable');
     });
 
-            Route::group(['prefix' => 'dataAdmin', 'as' => 'dataAdmin.'], function () {
+    Route::group(['prefix' => 'dataAdmin', 'as' => 'dataAdmin.'], function () {
         Route::get('/', [DataAdminController::class, 'index'])->name('index');
         Route::get('create', [DataAdminController::class, 'create'])->name('create');
         Route::post('store', [DataAdminController::class, 'store'])->name('store');

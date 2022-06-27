@@ -6,7 +6,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class=" mb-0 ">Data Kelas {{ $id_kelas }} Tahun Ajaran
+                        <h2 class=" mb-0 ">Data "{{ $kelas->kode }}" Tahun Ajaran
                             {{ $tahun_ajar->tahun_mulai }} - {{ $tahun_ajar->tahun_selesai }}</h2>
                     </div>
                     <div class="px-3">

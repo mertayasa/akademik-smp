@@ -8,7 +8,7 @@
       <div class="card-body">
 
           <div class="row">
-              @forelse ($dashboard_data['pengumuman'] as $data)
+              @forelse ($pengumuman as $data)
                   <div class="col-12 bg-white pt-3 pb-0">
                       <div class="d-flex flex-row comment-row mb-2">
                           <div class="p-2 pr-5">
