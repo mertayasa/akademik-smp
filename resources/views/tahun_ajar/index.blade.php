@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('template_backend.app')
 
 @section('content')
     <div class="container-fluid p-0">
@@ -7,18 +7,19 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class=" mb-0 ">Data Tahun Ajaran</h4>
-                        <a href="{{ route('tahun_ajar.create') }}" class="btn btn-sm btn-primary add" data-toggle="tooltip"
-                            data-placement="bottom" title="Tambah tahun_ajar"> <i class="fas fa-folder-plus"></i>
-                            tahun_ajar Baru</a>
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h4 class=" mb-0 ">Data Tahun Ajaran</h4>
+                            <a href="{{ route('tahun_ajar.create') }}" class="btn btn-sm btn-primary add" data-toggle="tooltip"
+                                data-placement="bottom" title="Tambah tahun_ajar"> <i class="fas fa-folder-plus"></i>
+                                Tahun Ajar Baru</a>
+                        </div>
                     </div>
                     <div class="px-3">
                         @include('layouts.flash')
-                        @include('layouts.error_message')
                     </div>
                     <div class="card-body">
-                        <div class=" d-flex justify-content-between">
+                        <div class="col-12">
                             @include('tahun_ajar.datatable')
                         </div>
                     </div>

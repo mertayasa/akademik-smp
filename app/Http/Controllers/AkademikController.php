@@ -62,6 +62,7 @@ class AkademikController extends Controller
             'siswa' => Siswa::pluck('nama', 'id'),
             'guru' => User::guru()->get(),
             'id_kelas' => $id_kelas,
+            'kelas' => Kelas::find($id_kelas),
             'id_tahun_ajar' => $id_tahun_ajar,
             'tahun_ajar' => $tahun_ajar,
             'mapel_of_jadwal' => $mapel_of_jadwal,

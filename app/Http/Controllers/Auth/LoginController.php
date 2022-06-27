@@ -27,15 +27,15 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::HOME;
 
-    public function redirectTo() {
-        if(Auth::user()->isOrtu()){
-            return route('siswa.index_ortu');
-        }
+    // public function redirectTo() {
+    //     if(Auth::user()->isOrtu()){
+    //         return route('siswa.index_ortu');
+    //     }
 
-        return route('dashboard.index');
-    }
+    //     return route('dashboard.index');
+    // }
 
     /**
      * Create a new controller instance.

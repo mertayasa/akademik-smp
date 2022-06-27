@@ -10,6 +10,7 @@ class UniqueAnggota implements Rule
 
     protected $id_kelas;
     protected $id_tahun_ajar;
+    protected $error_message;
 
     /**
      * Create a new rule instance.
@@ -35,8 +36,19 @@ class UniqueAnggota implements Rule
             return false;
         }
 
+        $anggota_kelas = AnggotaKelas::where('id_tahun_ajar', $this->id_tahun_ajar)->where('id_siswa', $value)->first();
+        if($anggota_kelas != null){
+            $this->error_message = 'Siswa sudah menjadi anggota '.$anggota_kelas->kelas->kode;
+            return false;
+        }
+
         $anggota_kelas = AnggotaKelas::where('id_kelas', $this->id_kelas)->where('id_tahun_ajar', $this->id_tahun_ajar)->where('id_siswa', $value)->count();
-        return $anggota_kelas > 0 ? false : true;
+        if($anggota_kelas > 0){
+            $this->error_message = 'Siswa sudah ada di kelas ini';
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -46,6 +58,7 @@ class UniqueAnggota implements Rule
      */
     public function message()
     {
+        return $this->error_message;
         return 'Siswa sudah ada di kelas ini';
     }
 }

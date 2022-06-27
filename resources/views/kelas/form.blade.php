@@ -1,13 +1,19 @@
 <div class="row mt-3">
     <div class="col-12  pb-3 pb-md-0">
-        {!! Form::label('announcetitle', 'Kode Kelas', ['class' => 'mb-1']) !!}
-        {!! Form::text('kode', null, ['class' => 'form-control', 'id' => 'announcetitle']) !!}
+        {!! Form::label('kode_kelas', 'Kode Kelas', ['class' => 'mb-1']) !!}
+        {!! Form::text('kode', null, ['class' => 'form-control', 'id' => 'kode_kelas']) !!}
     </div>
 </div>
 <div class="row mt-3">
     <div class="col-12  pb-3 pb-md-0">
-        {!! Form::label('description', 'Jenjang Kelas', ['class' => 'mb-1']) !!}
-        {!! Form::text('jenjang', null, ['class' => 'form-control', 'id' => 'description']) !!}
+        {!! Form::label('jenjang', 'Jenjang Kelas', ['class' => 'mb-1']) !!}
+        {!! Form::select('jenjang', ['' => 'Pilih Jenjang', 1 => 1, 2 => 2, 3 => 3], null, ['class' => 'form-control', 'id' => 'jenjang']) !!}
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-12  pb-3 pb-md-0">
+        {!! Form::label('kelompok', 'Kelompok Kelas', ['class' => 'mb-1']) !!}
+        {!! Form::select('kelompok', ['' => 'Pilih Kelompok', 'Pagi' => 'Pagi', 'Siang' => 'Siang'], null, ['class' => 'form-control', 'id' => 'kelompok']) !!}
     </div>
 </div>
 {{-- <div class="row mt-3">

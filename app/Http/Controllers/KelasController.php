@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
 use App\DataTables\KelasDataTable;
+use App\Http\Requests\KelasRequest;
 use Exception;
 use Illuminate\Support\Facades\Log;
 
@@ -43,10 +44,10 @@ class KelasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(KelasRequest $request)
     {
         try {
-            Kelas::create($request->all());
+            Kelas::create($request->validated());
         } catch (Exception $e) {
             Log::info($e->getMessage());
             return redirect()->back()->withInput()->with('error', 'Data kelas Gagal Ditambahkan');
@@ -84,10 +85,10 @@ class KelasController extends Controller
      * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kelas $kelas)
+    public function update(KelasRequest $request, Kelas $kelas)
     {
         try {
-            $kelas->update($request->all());
+            $kelas->update($request->validated());
         } catch (Exception $e) {
             Log::info($e->getMessage());
             return redirect()->back()->withInput()->with('error', 'Data kelas Gagal Di Edit');

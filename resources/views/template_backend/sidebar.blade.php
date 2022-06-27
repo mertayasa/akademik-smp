@@ -11,7 +11,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
 
-                @if (Auth::user()->isGuru())
+                {{-- @if (Auth::user()->isGuru()) --}}
                     {{-- Dashboard --}}
                     <li class="nav-item">
                         <a href="{{ route('dashboard.index') }}" class="nav-link {{ isActive('dashboard') }}"
@@ -20,10 +20,10 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                @endif
+                {{-- @endif --}}
 
-                @if (Auth::user()->isAdmin())
-                    {{-- Dashboard --}}
+                {{-- Dashboard Admin --}}
+                {{-- @if (Auth::user()->isAdmin())
                     @php
                         $is_open_dashboard = isActive(['dashboard']);
                     @endphp
@@ -53,7 +53,7 @@
                             </li>
                         </ul>
                     </li>
-                @endif
+                @endif --}}
 
                 @if (Auth::user()->isAdmin())
                     {{-- Master Data --}}
@@ -159,13 +159,16 @@
 
                 @if (Auth::user()->isGuru())
                     {{-- Akademik --}}
-                    <li class="nav-item has-treeview">
-                        <a href="{{ route('akademik.index') }}" class="nav-link {{ isActive('akademik') }}"
-                            id="Home">
-                            <i class="nav-icon fas fa-book-reader"></i>
-                            <p>Akademik</p>
-                        </a>
-                    </li>
+
+                    @if (Auth::user()->isWali())
+                        <li class="nav-item has-treeview">
+                            <a href="{{ route('akademik.index') }}" class="nav-link {{ isActive('akademik') }}"
+                                id="Home">
+                                <i class="nav-icon fas fa-book-reader"></i>
+                                <p>Akademik</p>
+                            </a>
+                        </li>
+                    @endif
 
                     {{-- Absensi Guru --}}
                     <li class="nav-item">
