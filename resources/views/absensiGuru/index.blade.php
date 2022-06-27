@@ -35,8 +35,22 @@
                                         @include('absensiGuru.form')
                                         <div class="row mt-3 m-3">
                                             <div class="col-12  pb-3 pb-md-0">
-                                                <button class="btn btn-md btn-primary" type="submit"> <i
-                                                        class="fa-solid fa-floppy-disk"></i> Simpan Absen</button>
+                                                @if ($cek_absen > 0)
+                                                    <div class="alert alert-warning d-flex align-items-center"
+                                                        role="alert">
+                                                        <svg class="bi flex-shrink-0 me-2" width="24" height="24"
+                                                            role="img" aria-label="Warning:">
+                                                            <use xlink:href="#exclamation-triangle-fill" />
+                                                        </svg>
+                                                        <div>
+                                                            <i>"Hari ini Anda sudah melakukan Absensi"</i>
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <button class="btn btn-md btn-primary" type="submit"> <i
+                                                            class="fa-solid fa-floppy-disk"></i> Simpan Absen</button>
+                                                @endif
+
                                             </div>
                                         </div>
                                         {!! Form::close() !!}

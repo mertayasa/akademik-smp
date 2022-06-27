@@ -25,7 +25,11 @@ class AbsensiGuruController extends Controller
     {
          $id_guru =  Auth::id();
          $id_card = User::where('id', $id_guru)->get()[0];
-         return view('absensiGuru.index', compact('absensiGuru', 'id_card', 'user'));
+
+         $cek_absen = AbsensiGuru::where('id_guru', Auth::id())->whereDate('created_at', Carbon::today())->count();
+        // dd($cek_absen);
+
+         return view('absensiGuru.index', compact('absensiGuru', 'id_card', 'user', 'cek_absen'));
 
         
        
