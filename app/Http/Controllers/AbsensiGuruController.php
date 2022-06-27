@@ -23,26 +23,26 @@ class AbsensiGuruController extends Controller
      */
     public function index(AbsensiGuru $absensiGuru, User $user)
     {
-        //  $id_guru =  Auth::id();
-        //  $id_card = User::where('id', $id_guru)->get()[0];
-        //  return view('absensiGuru.index', compact('absensiGuru', 'id_card', 'user'));
+         $id_guru =  Auth::id();
+         $id_card = User::where('id', $id_guru)->get()[0];
+         return view('absensiGuru.index', compact('absensiGuru', 'id_card', 'user'));
 
         
        
-        if (Auth::user()->isGuru()){
-         $id_guru =  Auth::id();
-         $id_card = User::where('id', $id_guru)->get()[0];
-           return view('absensiGuru.index', compact('absensiGuru', 'id_card', 'user'));
-        }
+        // if (Auth::user()->isGuru()){
+        //  $id_guru =  Auth::id();
+        //  $id_card = User::where('id', $id_guru)->get()[0];
+        //    return view('absensiGuru.index', compact('absensiGuru', 'id_card', 'user'));
+        // }
 
-        if (Auth::user()->isAdmin()) {
-            $absensiGuru= AbsensiGuru::all();
-            return view('absensiGuru.indexAdmin', compact('absensiGuru'));
-        }
+        // if (Auth::user()->isAdmin()) {
+        //     $absensiGuru= AbsensiGuru::all();
+        //     return view('absensiGuru.indexAdmin', compact('absensiGuru'));
+        // }
         
     }
 
-        public function datatable()
+        public function datatable(User $user)
     {
 
         //  $id_guru =  Auth::id();
@@ -50,19 +50,28 @@ class AbsensiGuruController extends Controller
         //  $absensiGuru = AbsensiGuru::where('id_guru', $id_guru)->get();
         // return AbsensiGuruDataTable::set($absensiGuru);
 
-          if (Auth::user()->isGuru()){
-         $id_guru =  Auth::id();
-         $id_card = User::where('id', $id_guru)->get()[0];
-         $absensiGuru = AbsensiGuru::where('id_guru', $id_guru)->get();
+    
+        if (Auth::user()->isGuru()){
+            $id_guru =  Auth::id();
+            $id_card = User::where('id', $id_guru)->get()[0];
+            $absensiGuru = AbsensiGuru::where('id_guru', $id_guru)->get();
         return AbsensiGuruDataTable::set($absensiGuru);
 
         }
 
         if (Auth::user()->isAdmin()) {
             $absensiGuru= AbsensiGuru::all();
-             return AbsensiGuruDataTable::set($absensiGuru);
+            $absensiGuru= AbsensiGuru::distinct()->get(['id_guru']);
+        return AbsensiGuruDataTable::set($absensiGuru,$user);
         }
 
+    }
+
+        public function datatable_absen(User $user, $absensiGuru=null)
+    {
+         $absensiGurus = AbsensiGuru::where('id_guru', $absensiGuru)->get();
+
+        return AbsensiGuruDataTable::set($absensiGurus, $user);
     }
 
 
@@ -106,13 +115,12 @@ class AbsensiGuruController extends Controller
      * @param  \App\Models\AbsensiGuru  $absensiGuru
      * @return \Illuminate\Http\Response
      */
-    public function show(AbsensiGuru $absensiGuru)
+    public function show(AbsensiGuru $absensiGuru, User $user)
     {
-        //
+        return view('absensiGuru.show', compact('absensiGuru', 'user'));
     }
-
     /**
-     * Show the form for editing the specified resource.
+ * Show the form for editing the specified resource
      *
      * @param  \App\Models\AbsensiGuru  $absensiGuru
      * @return \Illuminate\Http\Response

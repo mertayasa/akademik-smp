@@ -190,8 +190,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [AbsensiGuruController::class, 'index'])->name('index');
         Route::get('datatable', [AbsensiGuruController::class, 'datatable'])->name('datatable');
         Route::post('store', [AbsensiGuruController::class, 'store'])->name('store');
-        Route::patch('update/{absensiGuru}', [AbsensiGuruController::class, 'update'])->name('update');
-        Route::delete('destroy/{absensiGuru}', [AbsensiGuruController::class, 'destroy'])->name('destroy');
+        Route::get('show/{user}', [AbsensiGuruController::class, 'show'])->name('show');
+        // Route::delete('destroy/{absensiGuru}', [AbsensiGuruController::class, 'destroy'])->name('destroy');
+        Route::get('datatable_absen/{id_guru?}', [AbsensiGuruController::class, 'datatable_absen'])->name('datatable_absen');
     });
 
     Route::group(['prefix' => 'jadwal', 'as' => 'jadwal.'], function () {

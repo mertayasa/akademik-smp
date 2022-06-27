@@ -14,6 +14,9 @@
                         </div>
                     @endif
 
+
+                    <!-- Test push -->
+
                     {{ __('You are logged in!') }}
                 </div>
             </div>

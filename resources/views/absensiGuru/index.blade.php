@@ -15,33 +15,51 @@
                     <div class="px-3">
                         @include('layouts.flash')
                     </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        @include('absensiGuru.datatable')
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="card card-primary">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Absen Harian Guru</h3>
-                                    </div>
-                                    {!! Form::open(['route' => 'absensiGuru.store']) !!}
-                                    @include('absensiGuru.form')
-                                    <div class="row mt-3 m-3">
-                                        <div class="col-12  pb-3 pb-md-0">
-                                            <button class="btn btn-md btn-primary" type="submit"> <i
-                                                    class="fa-solid fa-floppy-disk"></i> Simpan Absen</button>
+
+                    @if (Auth::user()->isGuru())
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            @include('absensiGuru.datatable')
                                         </div>
                                     </div>
-                                    {!! Form::close() !!}
+                                </div>
+                                <div class="col-6">
+                                    <div class="card card-primary">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Absen Harian Guru</h3>
+                                        </div>
+                                        {!! Form::open(['route' => 'absensiGuru.store']) !!}
+                                        @include('absensiGuru.form')
+                                        <div class="row mt-3 m-3">
+                                            <div class="col-12  pb-3 pb-md-0">
+                                                <button class="btn btn-md btn-primary" type="submit"> <i
+                                                        class="fa-solid fa-floppy-disk"></i> Simpan Absen</button>
+                                            </div>
+                                        </div>
+                                        {!! Form::close() !!}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
+
+                    @if (Auth::user()->isAdmin())
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            @include('absensiGuru.datatable')
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </div>

@@ -16,6 +16,10 @@ class AbsensiGuru extends Model
         'tanggal',
         'status',
     ];
+        public $with = [
+        'user'
+    ];
+
 
     static $status = [
         'Hadir' => 'Hadir', 
@@ -26,8 +30,8 @@ class AbsensiGuru extends Model
         'Tanpa Keterangan' => 'Tanpa Keterangan'
     ];
 
-    public function guru()
+    public function user()
     {
-        return $this->belongsTo('App\Models\Users', 'id_guru');
+        return $this->belongsTo('App\Models\User', 'id_guru');
     }
 }
