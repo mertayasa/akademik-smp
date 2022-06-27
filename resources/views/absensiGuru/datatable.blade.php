@@ -81,7 +81,7 @@
                 ajax: url,
                 columns: columns,
                 order: [
-                    // [1, "DESC"]
+                    [1, "DESC"]
                 ],
                 columnDefs: [
                     // { width: 300, targets: 1 },
