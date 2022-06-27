@@ -58,7 +58,7 @@
                 @if (Auth::user()->isAdmin())
                     {{-- Master Data --}}
                     @php
-                        $is_open_master = isActive(['kelas', 'guru', 'ortu', 'siswa', 'mapel', 'dataAdmin', 'ruangan']);
+                        $is_open_master = isActive(['kelas', 'guru', 'ortu', 'siswa', 'mapel', 'dataAdmin', 'ruangan', 'tahun_ajar']);
                     @endphp
                     <li class="nav-item has-treeview {{ $is_open_master == 'active' ? 'menu-open' : '' }}"
                         id="liMasterData">
@@ -115,8 +115,15 @@
                             <li class="nav-item">
                                 <a href="{{ route('mapel.index') }}" class="nav-link {{ isActive('mapel') }}"
                                     id="DataMapel">
-                                    <i class="fas fa-book nav-icon"></i>
+                                    <i class="fas fa-book-open nav-icon"></i>
                                     <p>Data Mata Pelajaran</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('tahun_ajar.index') }}" class="nav-link {{ isActive('tahun_ajar') }}"
+                                    id="DataTahunAjar">
+                                    <i class="fas fa-book nav-icon"></i>
+                                    <p>Data Tahun Ajaran</p>
                                 </a>
                             </li>
                         </ul>
