@@ -13,6 +13,6 @@
 
     <div class="col-12  pb-3 pb-md-0">
         {!! Form::label('status', 'Keterangan Kehadiran', ['class' => 'mb-1']) !!}
-        {!! Form::select('status', [\App\Models\absensiGuru::$status, null], null, ['class' => 'form-control', 'id' => 'status']) !!}
+        {!! Form::select('status', \App\Models\AbsensiGuru::$status, null, ['class' => 'form-control', 'id' => 'status']) !!}
     </div>
 </div>
