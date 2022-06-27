@@ -11,6 +11,13 @@ class AbsensiGuruDataTable
      {
         // 
         return Datatables::of($absensiGuru)
+            ->editColumn('jam_absen', function ($absensiGuru) {
+                return getDateTimeLocal($absensiGuru->tanggal );
+            })
+             ->addColumn('tanggal', function ($absensiGuru) {
+                return indonesianDateShort($absensiGuru->tanggal);
+            })
+
             ->addColumn('action', function ($absensiGuru) {
                 return
                     '<div class="btn-group">' .

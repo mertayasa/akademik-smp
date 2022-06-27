@@ -229,3 +229,21 @@ function province()
     return "Bali";
 }
 
+
+
+// function getDateTimeLocal($jam_absen)
+// {
+//     $date_time = strtotime($jam_absen);
+//     $new_date_time = Date('H:i', $date_time);
+//     return $new_date_time;
+// }
+
+function indonesianDateShort($date, $extra_format = null)
+{
+    return Carbon::parse($date)->isoFormat('ll ' . $extra_format);
+}
+
+function getDateTimeLocal($date, $extra_format = null)
+{
+    return Carbon::parse($date)->isoFormat('HH:mm' . $extra_format);
+}

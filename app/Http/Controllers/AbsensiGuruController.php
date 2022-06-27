@@ -91,15 +91,14 @@ class AbsensiGuruController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $user)
+    public function store(Request $request, User $user, $extra_format = null)
     {
          try {
             $absensiGuru = new AbsensiGuru;
             $absensiGuru->id_guru = Auth::id();
-            $absensiGuru->tanggal = Carbon::today();
+            $absensiGuru->tanggal = Carbon::now();
             $absensiGuru->status = $request->status;
-            $absensiGuru->save();
-
+            $absensiGuru->save();;
         } catch (Exception $e) {
             Log::info($e->getMessage());
             return redirect()->back()->withInput()->with('error', 'Gagal menambah absensiGuru !');

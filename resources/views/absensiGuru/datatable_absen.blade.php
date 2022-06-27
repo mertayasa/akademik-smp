@@ -48,8 +48,8 @@
                         className: "text-center align-middle"
                     },
                     {
-                        data: 'tanggal',
-                        name: 'tanggal',
+                        data: 'jam_absen',
+                        name: 'jam_absen',
                         className: "text-center align-middle"
                     }
                 ],
