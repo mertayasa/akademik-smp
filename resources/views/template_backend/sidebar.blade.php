@@ -122,6 +122,15 @@
                         </ul>
                     </li>
 
+                    {{-- Akademik --}}
+                    <li class="nav-item has-treeview">
+                        <a href="{{ route('akademik.index') }}" class="nav-link {{ isActive('akademik') }}"
+                            id="Home">
+                            <i class="nav-icon fas fa-book-reader"></i>
+                            <p>Akademik</p>
+                        </a>
+                    </li>
+
                     {{-- Pengumuman --}}
                     <li class="nav-item">
                         <a href="{{ route('pengumuman.index') }}" class="nav-link {{ isActive('pengumuman') }}"
