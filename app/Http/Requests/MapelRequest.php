@@ -25,12 +25,12 @@ class MapelRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'is_lokal' => ['required', Rule::in(['true', 'false'])],
+            'paket' => ['required', Rule::in(['Pelajaran Umum', 'Ekstrakurikuler'])],
+            'kelompok' => ['required', Rule::in(['Pagi', 'Siang'])]
         ];
         
         if($this->method() == 'PATCH'){
             $rules += ['nama' => ['required', 'max:50', 'unique:mapel,nama,'.$this->route('mapel')->id]];
-            $rules += ['status' => ['required', Rule::in(['aktif', 'nonaktif'])]];
         }else{
             $rules += ['nama' => ['required', 'max:50', 'unique:mapel,nama']];
         };

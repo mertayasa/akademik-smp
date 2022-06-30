@@ -233,7 +233,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('datatable-guru', [NilaiController::class, 'datatableGuru'])->name('datatable.guru');
 
         //  Route::get('export/{anggota_kelas}/{semester}', [NilaiController::class, 'export'])->name('export');
-         Route::get('export/{id_kelas?}/{id_tahun_ajaran?}', [NilaiController::class, 'export'])->name('export');
+         Route::get('export/{id_kelas?}/{id_tahun_ajaran?}/{semester?}', [NilaiController::class, 'export'])->name('export');
     });
 
     Route::group(['prefix' => 'history_nilai', 'as' => 'history_nilai.'], function () {

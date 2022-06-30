@@ -53,17 +53,16 @@ class NilaiController extends Controller
         $id_ortu = Auth::id();
         $siswa = Siswa::where('id_user', $id_ortu)->pluck('nama', 'id');
         $id_siswa = $request->input('id_siswa', null);
-        if(isset($id_siswa)){
+        if (isset($id_siswa)) {
             $tahun_ajar_active = TahunAjar::where('status', 'aktif')->first();
             $anggota_kelas = AnggotaKelas::where('id_siswa', $id_siswa)->where('id_tahun_ajar', $tahun_ajar_active->id)->first();
-            if($anggota_kelas){
+            if ($anggota_kelas) {
                 $mapel_of_jadwal = Jadwal::geetUniqueMapel($tahun_ajar_active->id, $anggota_kelas->id_kelas);
                 $nilai = [
                     'mapel_of_jadwal' => $mapel_of_jadwal ?? [],
                     'anggota_kelas' => $anggota_kelas,
                 ];
             }
-
         }
 
         $data  =  [
@@ -85,7 +84,7 @@ class NilaiController extends Controller
         $tahun_ajar_active = TahunAjar::where('status', 'aktif')->first();
         $anggota_kelas = AnggotaKelas::byKelasAndTahun(Kelas::pluck('id')->toArray(), $tahun_ajar_active->id)->get();
         $custom_action = 'anggota_kelas.datatable_nilai_guru_action';
-        
+
         return AnggotaKelasDataTable::set($anggota_kelas, $custom_action);
     }
 
@@ -127,29 +126,29 @@ class NilaiController extends Controller
 
     public function storeMapel(Request $request, $id_kelas, $id_tahun_ajar)
     {
-        try{
+        try {
             $anggota_kelas_raw = AnggotaKelas::byKelasAndTahun($id_kelas, $id_tahun_ajar);
             $anggota_kelas = $anggota_kelas_raw->get();
 
-            DB::transaction(function() use($anggota_kelas, $request){
-                foreach($anggota_kelas as $anggota){
+            DB::transaction(function () use ($anggota_kelas, $request) {
+                foreach ($anggota_kelas as $anggota) {
                     Nilai::updateOrCreate([
                         'id_anggota_kelas' => $anggota->id,
                         'id_mapel' => $request->id_mapel,
                         'semester' => 'ganjil',
-                    ],[
+                    ], [
                         'id_anggota_kelas' => $anggota->id,
                         'id_mapel' => $request->id_mapel,
                         'semester' => 'ganjil',
                     ]);
                 }
-        
-                foreach($anggota_kelas as $anggota){
+
+                foreach ($anggota_kelas as $anggota) {
                     Nilai::updateOrCreate([
                         'id_anggota_kelas' => $anggota->id,
                         'id_mapel' => $request->id_mapel,
                         'semester' => 'genap',
-                    ],[
+                    ], [
                         'id_anggota_kelas' => $anggota->id,
                         'id_mapel' => $request->id_mapel,
                         'semester' => 'genap',
@@ -158,7 +157,7 @@ class NilaiController extends Controller
             }, 5);
 
             $table = $this->renderNilaiMapelTable($id_kelas, $id_tahun_ajar, $anggota_kelas_raw);
-        }catch(Exception $e){
+        } catch (Exception $e) {
             Log::info($e->getMessage());
             return response(['code' => 0, 'message' => 'Gagal menambahkan mata pelajaran yang dinilai']);
         }
@@ -170,14 +169,14 @@ class NilaiController extends Controller
     {
         $anggota_kelas = AnggotaKelas::byKelasAndTahun($id_kelas, $id_tahun_ajar);
         $nilai_by_anggota = Nilai::whereIn('id_anggota_kelas', $anggota_kelas->pluck('id')->toArray())->where('id_mapel', $id_mapel)->get();
-        try{
-            DB::transaction(function () use($nilai_by_anggota){
-                foreach($nilai_by_anggota as $nilai){
+        try {
+            DB::transaction(function () use ($nilai_by_anggota) {
+                foreach ($nilai_by_anggota as $nilai) {
                     $nilai->delete();
                 }
             });
             $table = $this->renderNilaiMapelTable($id_kelas, $id_tahun_ajar, $anggota_kelas);
-        }catch(Exception $e){
+        } catch (Exception $e) {
             Log::info($e->getMessage());
             return response(['code' => 0, 'message' => 'Gagal menghapus data mata pelajaran yang dinilai']);
         }
@@ -242,24 +241,24 @@ class NilaiController extends Controller
 
     public function editRaport(AnggotaKelas $anggota_kelas, $semester)
     {
-        try{
+        try {
             $mapel_of_jadwal = Jadwal::geetUniqueMapel($anggota_kelas->id_tahun_ajar, $anggota_kelas->id_kelas);
-    
+
             $data = [
                 'anggota_kelas' => $anggota_kelas,
                 'semester' => $semester,
                 'mapel_of_jadwal' => $mapel_of_jadwal,
             ];
-    
+
             $form_raport = view('nilai.edit_raport', $data)->render();
             $raport_detail = view('nilai.raport_detail', $data)->render();
-        }catch(Exception $e){
+        } catch (Exception $e) {
             Log::info($e->getMessage());
             return response(['code' => 0, 'message' => 'Gagal mengambil data nilai']);
         }
 
         return response([
-            'code' => 1, 
+            'code' => 1,
             'form_raport' => $form_raport,
             'raport_detail' => $raport_detail,
         ]);
@@ -267,17 +266,17 @@ class NilaiController extends Controller
 
     public function showRaport(AnggotaKelas $anggota_kelas, $semester)
     {
-        try{
+        try {
             $mapel_of_jadwal = Jadwal::geetUniqueMapel($anggota_kelas->id_tahun_ajar, $anggota_kelas->id_kelas);
-    
+
             $data = [
                 'anggota_kelas' => $anggota_kelas,
                 'semester' => $semester,
                 'mapel_of_jadwal' => $mapel_of_jadwal,
             ];
-    
+
             $form_raport = view('nilai.show_raport', $data)->render();
-        }catch(Exception $e){
+        } catch (Exception $e) {
             Log::info($e->getMessage());
             return response(['code' => 0, 'message' => 'Gagal mengambil data nilai']);
         }
@@ -287,12 +286,12 @@ class NilaiController extends Controller
 
     public function updateRaport(Request $request, AnggotaKelas $anggota_kelas, $semester)
     {
-        try{
-            DB::transaction(function () use($request, $anggota_kelas, $semester){
+        try {
+            DB::transaction(function () use ($request, $anggota_kelas, $semester) {
                 $data_pengetahuan = $request->input('pengetahuan', []);
                 $data_keterampilan = $request->input('keterampilan', []);
 
-                foreach($data_pengetahuan as $key => $pengetahuan){
+                foreach ($data_pengetahuan as $key => $pengetahuan) {
                     Nilai::updateOrCreate([
                         'id_anggota_kelas' => $anggota_kelas->id,
                         'id_mapel' => $key,
@@ -310,13 +309,13 @@ class NilaiController extends Controller
                         'desk_pengetahuan' => $pengetahuan['keterangan'] ?? '-',
                     ]);
                 }
-        
-                foreach($data_keterampilan as $key => $keterampilan){
+
+                foreach ($data_keterampilan as $key => $keterampilan) {
                     Nilai::updateOrCreate([
                         'id_anggota_kelas' => $anggota_kelas->id,
                         'id_mapel' => $key,
                         'semester' => $semester,
-                    ],[
+                    ], [
                         'id_anggota_kelas' => $anggota_kelas->id,
                         'semester' => $semester,
                         'id_mapel' => $key,
@@ -335,8 +334,7 @@ class NilaiController extends Controller
                 'semester' => $semester,
                 'mapel_of_jadwal' => $mapel_of_jadwal,
             ])->render();
-
-        }catch(Exception $e){
+        } catch (Exception $e) {
             Log::info($e->getMessage());
             return response(['code' => 0, 'message' => 'Gagal menyimpan data nilai']);
         }
@@ -387,19 +385,37 @@ class NilaiController extends Controller
         return $pdf->stream('raport.pdf');
     }
 
-    public function export(Nilai $nilai, $id_kelas, $id_tahun_ajar)
+    public function export($id_kelas, $id_tahun_ajar, $semester)
     {
 
-    $anggota_kelas = AnggotaKelas::byKelasAndTahun($id_kelas, $id_tahun_ajar)->get()->pluck('id');
+        $anggota_kelas = AnggotaKelas::byKelasAndTahun($id_kelas, $id_tahun_ajar)->get();
 
-    $nilai= array();
-    foreach ($anggota_kelas as $data){
-    $nilai[]=Nilai::where('id_anggota_kelas', $data)->get();
+        $nilai = array();
+        foreach ($anggota_kelas as $data) {
+            $nilai[] = Nilai::where('id_anggota_kelas', $data)->get();
+        }
+
+        $mapel_of_jadwal = Jadwal::geetUniqueMapel($id_tahun_ajar, $id_kelas);
+
+        // $pdf = PDF::loadview('nilai.export', [
+        //     'anggota_kelas' => $anggota_kelas,
+        //     'nilai' => $nilai,
+        //     'mapel_of_jadwal' => $mapel_of_jadwal,
+        //     'tahun_ajaran' => TahunAjar::find($id_tahun_ajar),
+        //     'semester' => $semester,
+        //     'kelas' => Kelas::find($id_kelas)
+        // ])
+        // ->setPaper('a4', 'landscape');;
+
+        // return $pdf->stream('raport.pdf');
+
+        return view('nilai.export', [
+            'anggota_kelas' => $anggota_kelas,
+            'nilai' => $nilai,
+            'mapel_of_jadwal' => $mapel_of_jadwal,
+            'semester' => $semester,
+            'tahun_ajaran' => TahunAjar::find($id_tahun_ajar),
+            'kelas' => Kelas::find($id_kelas)
+        ]);
     }
-
-    dd($nilai);
-
-        return view('nilai.export',compact('nilai', 'id_kelas', 'id_tahun_ajar'));
-    }
-
 }
