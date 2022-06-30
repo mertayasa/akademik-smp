@@ -376,7 +376,7 @@ class NilaiController extends Controller
 
         $mapel_of_jadwal = Jadwal::geetUniqueMapel($anggota_kelas->id_tahun_ajar, $anggota_kelas->id_kelas);
 
-         $data = [
+        $data = [
             'anggota_kelas' => $anggota_kelas,
             'semester' => $semester,
             'mapel_of_jadwal' => $mapel_of_jadwal,
@@ -386,4 +386,20 @@ class NilaiController extends Controller
 
         return $pdf->stream('raport.pdf');
     }
+
+    public function export(Nilai $nilai, $id_kelas, $id_tahun_ajar)
+    {
+
+    $anggota_kelas = AnggotaKelas::byKelasAndTahun($id_kelas, $id_tahun_ajar)->get()->pluck('id');
+
+    $nilai= array();
+    foreach ($anggota_kelas as $data){
+    $nilai[]=Nilai::where('id_anggota_kelas', $data)->get();
+    }
+
+    dd($nilai);
+
+        return view('nilai.export',compact('nilai', 'id_kelas', 'id_tahun_ajar'));
+    }
+
 }

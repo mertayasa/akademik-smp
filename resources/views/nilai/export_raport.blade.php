@@ -19,8 +19,8 @@
     {{-- SAMPUL --}}
     <div class="sampul">
         <center>
-            <img class="img-fluid mt-5" src="{{ asset('admin/img/logo.sd.png') }}" alt="Responsive image" width="170"
-                height="170">
+            <img class="img-fluid mt-5" src="{{ asset('admin/img/logo.sd.png') }}" alt="Responsive image"
+                width="170" height="170">
         </center>
 
         <div class="sampul-judul mt-3 mb-3">
@@ -124,7 +124,7 @@
             <tr>
                 <td>Agama</td>
                 <td> : </td>
-                <td>{{ $anggota_kelas->siswa->agama}}</td>
+                <td>{{ $anggota_kelas->siswa->agama }}</td>
             </tr>
             <tr>
                 <td>Pendidikan Sebelumnya</td>
@@ -179,7 +179,7 @@
             <tr>
                 <td>Kelurahan/Desa</td>
                 <td> : </td>
-                <td>Baha</td>
+                <td>.</td>
             </tr>
             <tr>
                 <td>Kecamatan</td>
@@ -244,7 +244,7 @@
             <tr>
                 <td style="width: 200px">Nama Sekolah</td>
                 <td> : </td>
-                <td> SD NO. 2 BAHA</td>
+                <td> SD NO. 2 .</td>
             </tr>
             <tr>
                 <td>NPSN</td>
@@ -269,7 +269,7 @@
             <tr>
                 <td>Kelurahan/Desa</td>
                 <td> : </td>
-                <td>Baha</td>
+                <td>.</td>
             </tr>
             <tr>
                 <td>Kecamatan</td>
@@ -294,7 +294,7 @@
             <tr>
                 <td>E-mail</td>
                 <td> : </td>
-                <td>sd2baha@gmail.com</td>
+                <td>sd2.@gmail.com</td>
             </tr>
 
         </table>
@@ -326,7 +326,7 @@
             <tr>
                 <td>Nama Sekolah </td>
                 <td> :</td>
-                <td>SD N 2 BAHA</td>
+                <td>SD N 2 .</td>
                 <td style="width:20px;"></td>
                 <td>Tahun Pelajaran</td>
                 <td> : </td>
