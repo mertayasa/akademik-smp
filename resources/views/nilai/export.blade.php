@@ -86,7 +86,7 @@
                 <td colspan="2" rowspan="2" style="vertical-align: bottom;">Ket</td>
                 <td rowspan="2" colspan="2"></td>
                 <td rowspan="2" colspan="2"></td>
-                <td rowspan="2" colspan="2" style="vertical-align: bottom">Jumlan <br> Peng & Ket</td>
+                <td rowspan="2" colspan="2" style="vertical-align: bottom">Jumlah <br> Peng & Ket</td>
                 <td rowspan="2" colspan="2" style="vertical-align: bottom">Rerata</td>
                 <td rowspan="2" colspan="2" style="vertical-align: bottom">Rank</td>
             </tr>
