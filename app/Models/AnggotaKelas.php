@@ -172,5 +172,84 @@ class AnggotaKelas extends Model
 
         return 0;
     }
+
+    public function nilaiUlhaP_1($semester, $id_mapel)
+    {
+        $nilai = $this->nilai->where('semester', $semester)->where('id_mapel', $id_mapel)->first();
+        if($nilai){
+            return round(($nilai->ulha1_p));
+        }
+
+        return 0;
+    }
+
+    public function nilaiUlhaP_2($semester, $id_mapel)
+    {
+        $nilai = $this->nilai->where('semester', $semester)->where('id_mapel', $id_mapel)->first();
+        if($nilai){
+            return round(($nilai->ulha2_p));
+        }
+
+        return 0;
+    }
     
+    public function nilaiUlhaP_3($semester, $id_mapel)
+    {
+        $nilai = $this->nilai->where('semester', $semester)->where('id_mapel', $id_mapel)->first();
+        if($nilai){
+            return round(($nilai->ulha3_p));
+        }
+
+        return 0;
+    }
+
+        public function nilaiUlhaK_1($semester, $id_mapel)
+    {
+        $nilai = $this->nilai->where('semester', $semester)->where('id_mapel', $id_mapel)->first();
+        if($nilai){
+            return round(($nilai->ulha1_k));
+        }
+
+        return 0;
+    }
+
+    public function nilaiUlhaK_2($semester, $id_mapel)
+    {
+        $nilai = $this->nilai->where('semester', $semester)->where('id_mapel', $id_mapel)->first();
+        if($nilai){
+            return round(($nilai->ulha2_k));
+        }
+
+        return 0;
+    }
+    
+    public function nilaiUlhaK_3($semester, $id_mapel)
+    {
+        $nilai = $this->nilai->where('semester', $semester)->where('id_mapel', $id_mapel)->first();
+        if($nilai){
+            return round(($nilai->ulha3_k));
+        }
+
+        return 0;
+    }
+
+        public function nilaiPts($semester, $id_mapel)
+    {
+        $nilai = $this->nilai->where('semester', $semester)->where('id_mapel', $id_mapel)->first();
+        if($nilai){
+            return round(($nilai->pts));
+        }
+
+        return 0;
+    }
+
+        public function nilaiPas($semester, $id_mapel)
+    {
+        $nilai = $this->nilai->where('semester', $semester)->where('id_mapel', $id_mapel)->first();
+        if($nilai){
+            return round(($nilai->pas));
+        }
+
+        return 0;
+    }
 }
