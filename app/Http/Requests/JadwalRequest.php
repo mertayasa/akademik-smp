@@ -36,15 +36,16 @@ class JadwalRequest extends FormRequest
             'hari' => ['required', Rule::in(['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'])],
             'jam_mulai' => ['required'],
             'jam_selesai' => ['required'],
-            'id_ruangan' => ['required']
+            'id_ruangan' => ['required'],
+            'id_mapel' => ['required', 'exists:mapel,id']
         ];
 
-        if($this->_method == 'PATCH'){
-            $id_jadwal = $this->route('jadwal')->id;
-            $rules += ['id_mapel' => ['required', 'exists:mapel,id', new UniqueJadwal($this->hari, $this->id_tahun_ajar, $this->id_kelas, $this->id_mapel, $this->jam_mulai, $id_jadwal)]];
-        }else{
-            $rules += ['id_mapel' => ['required', 'exists:mapel,id', new UniqueJadwal($this->hari, $this->id_tahun_ajar, $this->id_kelas, $this->id_mapel, $this->jam_mulai, null)]];
-        };
+        // if($this->_method == 'PATCH'){
+        //     $id_jadwal = $this->route('jadwal')->id;
+        //     $rules += ['id_mapel' => ['required', 'exists:mapel,id', new UniqueJadwal($this->hari, $this->id_tahun_ajar, $this->id_kelas, $this->id_mapel, $this->jam_mulai, $id_jadwal)]];
+        // }else{
+        //     $rules += ['id_mapel' => ['required', 'exists:mapel,id', new UniqueJadwal($this->hari, $this->id_tahun_ajar, $this->id_kelas, $this->id_mapel, $this->jam_mulai, null)]];
+        // };
 
         return $rules;
     }
