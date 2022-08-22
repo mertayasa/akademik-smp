@@ -104,6 +104,7 @@
             @php
                 $ranking = [];
             @endphp
+            {{-- Looping (perulangan) anggota kelas --}}
             @foreach ($anggota_kelas as $anggota)
                 @php
                     $total_peng_siswa = 0;
@@ -112,31 +113,29 @@
                 <tr>
                     <td class="text-center td{{ $anggota->id }}">{{ $loop->iteration }}</td>
                     <td class="text-left td{{ $anggota->id }}">{{ $anggota->siswa->nama }}</td>
+                    {{-- Looping mata pelajaran --}}
                     @foreach ($mapel_of_jadwal as $mapel)
                         @php
+                            // Ambil nilai rata-rata pengetahuan (check fungsinya di model anggota kelas)
                             $rata_peng = $anggota->rataNilaiPengetahuan($semester, $mapel->id);
+
+                            // Ambil nilai rata-rata keterampilan (check fungsinya di model anggota kelas)
                             $rata_ket = $anggota->rataNilaiKeterampilan($semester, $mapel->id);
                             
                             $total_peng_siswa = $total_peng_siswa + $rata_peng;
                             $total_ket_siswa = $total_ket_siswa + $rata_ket;
                         @endphp
                         <td class="text-center td{{ $anggota->id }}">{{ $rata_peng }}</td>
-                        <td class="text-center td{{ $anggota->id }}">
-                            {{ getPredikatNilai($anggota->rataNilaiPengetahuan($semester, $mapel->id)) }}</td>
+                        <td class="text-center td{{ $anggota->id }}">{{ getPredikatNilai($anggota->rataNilaiPengetahuan($semester, $mapel->id)) }}</td>
                         <td class="text-center td{{ $anggota->id }}">{{ $rata_ket }}</td>
-                        <td class="text-center td{{ $anggota->id }}">
-                            {{ getPredikatNilai($anggota->rataNilaiKeterampilan($semester, $mapel->id)) }}</td>
+                        <td class="text-center td{{ $anggota->id }}">{{ getPredikatNilai($anggota->rataNilaiKeterampilan($semester, $mapel->id)) }}</td>
                     @endforeach
-                    <td colspan="2" class="text-center td{{ $anggota->id }}">
-                        {{ round($total_peng_siswa / $mapel_of_jadwal->count(), 2) }}</td>
-                    <td colspan="2" class="text-center td{{ $anggota->id }}">
-                        {{ round($total_ket_siswa / $mapel_of_jadwal->count(), 2) }}</td>
+                    <td colspan="2" class="text-center td{{ $anggota->id }}">{{ round($total_peng_siswa / $mapel_of_jadwal->count(), 2) }}</td>
+                    <td colspan="2" class="text-center td{{ $anggota->id }}">{{ round($total_ket_siswa / $mapel_of_jadwal->count(), 2) }}</td>
                     <td colspan="2" class="text-center td{{ $anggota->id }}">{{ $total_peng_siswa }}</td>
                     <td colspan="2" class="text-center td{{ $anggota->id }}">{{ $total_peng_siswa }}</td>
-                    <td colspan="2" class="text-center td{{ $anggota->id }}">
-                        {{ $total_ket_siswa + $total_peng_siswa }}</td>
-                    <td colspan="2" class="text-center td{{ $anggota->id }}">
-                        {{ round(($total_ket_siswa + $total_peng_siswa) / ($mapel_of_jadwal->count() * 2), 2) }}</td>
+                    <td colspan="2" class="text-center td{{ $anggota->id }}">{{ $total_ket_siswa + $total_peng_siswa }}</td>
+                    <td colspan="2" class="text-center td{{ $anggota->id }}">{{ round(($total_ket_siswa + $total_peng_siswa) / ($mapel_of_jadwal->count() * 2), 2) }}</td>
                     <td colspan="2" class="text-center td{{ $anggota->id }}" id="rankind{{ $anggota->id }}">1
                     </td>
                     @php

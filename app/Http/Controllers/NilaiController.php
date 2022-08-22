@@ -292,6 +292,9 @@ class NilaiController extends Controller
                 $data_keterampilan = $request->input('keterampilan', []);
 
                 foreach ($data_pengetahuan as $key => $pengetahuan) {
+                    // updateOrCreate -> Apabila di database tidak ada data, maka dia akan buat data baru
+                    // Apabila di database sudah ada data berdasarkan id_anggota_kelas, semester dan id_jadwal, maka data akan diupdate
+                    
                     Nilai::updateOrCreate([
                         'id_anggota_kelas' => $anggota_kelas->id,
                         'id_mapel' => $key,
