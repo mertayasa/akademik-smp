@@ -126,15 +126,33 @@
                             $total_ket_siswa = $total_ket_siswa + $rata_ket;
                         @endphp
                         <td class="text-center td{{ $anggota->id }}">{{ $rata_peng }}</td>
+
+                        {{-- Mencari nilai predikat A sampai D (fungsinya check di app/helpers/Helpers.php) --}}
                         <td class="text-center td{{ $anggota->id }}">{{ getPredikatNilai($anggota->rataNilaiPengetahuan($semester, $mapel->id)) }}</td>
                         <td class="text-center td{{ $anggota->id }}">{{ $rata_ket }}</td>
+
+                        {{-- Mencari nilai predikat A sampai D (fungsinya check di app/helpers/Helpers.php) --}}
                         <td class="text-center td{{ $anggota->id }}">{{ getPredikatNilai($anggota->rataNilaiKeterampilan($semester, $mapel->id)) }}</td>
                     @endforeach
+                    {{-- Mencari rata-rata nilai pengetahuan siswa dari semua mapel --}}
+                    {{-- Rumus -> total sum dari semua nilai pengetahuan mapel dibagi jumlah mapel --}}
                     <td colspan="2" class="text-center td{{ $anggota->id }}">{{ round($total_peng_siswa / $mapel_of_jadwal->count(), 2) }}</td>
+
+                    {{-- Mencari rata-rata nilai keterampilan siswa dari semua mapel --}}
+                    {{-- Rumus -> total sum dari semua nilai keterampilan mapel dibagi jumlah mapel --}}
                     <td colspan="2" class="text-center td{{ $anggota->id }}">{{ round($total_ket_siswa / $mapel_of_jadwal->count(), 2) }}</td>
+
+                    {{-- Menampilkan jumlah nilai pengetahuan siswa dari semua mapel --}}
                     <td colspan="2" class="text-center td{{ $anggota->id }}">{{ $total_peng_siswa }}</td>
+                    
+                    {{-- Menampilkan jumlah nilai keterampilan siswa dari semua mapel --}}
                     <td colspan="2" class="text-center td{{ $anggota->id }}">{{ $total_peng_siswa }}</td>
+
+                    {{-- Menampilkan penjumlahan nilai keterampilan dan pengetahuan siswa dari semua mapel --}}
                     <td colspan="2" class="text-center td{{ $anggota->id }}">{{ $total_ket_siswa + $total_peng_siswa }}</td>
+
+                    {{-- Menampilkan rata-rata nilai siswa dari semua mapel berdasarkan nilai pengetahuan dan keterampilan --}}
+                    {{-- Rumus -> total nilai keterangan ditambah total nilai pengetahuan dibagi jumlah mapel --}}
                     <td colspan="2" class="text-center td{{ $anggota->id }}">{{ round(($total_ket_siswa + $total_peng_siswa) / ($mapel_of_jadwal->count() * 2), 2) }}</td>
                     <td colspan="2" class="text-center td{{ $anggota->id }}" id="rankind{{ $anggota->id }}">1
                     </td>
