@@ -1,0 +1,21 @@
+Route -> routes/web.php
+* Untuk menghandle url yang diketikkan di browser atau yang diklik di menu atau button
+
+Controller -> app/Http/Controllers/*nama_controller.php
+* Untuk menangani request yang dikirimkan ke server dari route,
+* Mengambil data dari database dan mengolahnya
+* Mengolah data untuk disimpan ke database atau ditampilkan ke view
+* Garis besarnya -> Controller merupakan jembatan yang menghubungkan route, model, view
+
+View -> resources/views/*nama_file_atau_folder_view
+* Untuk menampilkan halaman user interface yang berisi data dari database atau controller
+
+Model -> app/Models/*nama_model.php
+* Untuk melakukan koneksi ke table di database 
+
+
+Gambaran umum alur sistem di laravel : 
+1. User melakukan request (membuka halaman, klik tombol, reload halaman, dll)
+2. Sistem akan meneruskan request ke controller melalui file route berdasarkan url yang diminta user
+3. Controller akan meneruskan request ke model untuk mengambil data dari database
+4. Model akan mengambil data dari database dan mengirimkan ke controller untuk ditampilkan ke view
